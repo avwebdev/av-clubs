@@ -1,7 +1,6 @@
 var express = require("express");
 var app = express();
 const fs = require("fs");
-const index = fs.readFileSync("index.html");
 const credentials = JSON.parse(fs.readFileSync("credentials.json"));
 const { google } = require('googleapis');
 const { sheets } = require("googleapis/build/src/apis/sheets");
@@ -11,9 +10,7 @@ const club = require("./js/club.js");
 
 auth.authorize(setData);
 
-app.get("/", function (req, res) {
-    res.end(index);
-});
+app.use("/", express.static( __dirname + "/front-end"));
 
 app.post("/getData", function(req, res) {
     res.setHeader("Content-Type", "application/json");

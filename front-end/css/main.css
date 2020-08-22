@@ -1,0 +1,21 @@
+body {
+    padding: 10%;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin: 0px;
+    background-color: aqua;
+}
+
+#left-navbar {
+    float: left;
+    display: flex;
+    align-items: center;
+}
+
+#go-home {
+    float: right;
+}
+
+#navbar, #navbar * {
+    height: 150px;
+}
