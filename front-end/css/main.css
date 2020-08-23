@@ -1,21 +1,107 @@
+:root {
+    --navbar-height: 150px;
+}
+
 body {
     padding: 10%;
     padding-top: 0px;
     padding-bottom: 0px;
     margin: 0px;
-    background-color: aqua;
+    background-color: white;
 }
 
-#left-navbar {
+#left-navbar, #left-navbar * {
     float: left;
-    display: flex;
-    align-items: center;
 }
 
-#go-home {
+#links, #links * {
     float: right;
 }
 
+#left-navbar > h1 {
+    margin: 0px;
+    margin-left: 20px;
+    padding-top: 58px;
+}
+
+#open-sidebar {
+    display: none;
+}
+
+#links > a {
+    padding-top: 70px;
+    margin-left: 60px;
+    cursor: pointer;
+}
+
+#links > a:hover {
+    height: auto;
+    border-bottom: 2px solid black;
+}
+
 #navbar, #navbar * {
-    height: 150px;
+    height: var(--navbar-height);
+}
+
+
+
+#browse-clubs{
+    border: 2px solid black;
+    height: auto;
+    width: 65%;
+    display: inline-block;
+}
+
+#search-bar{
+    border: 1px solid black ;
+   margin-top:5%;
+   margin-left:8%;
+   margin-right: 8%;
+   border-radius: 5px;
+   height: 40px;
+   display: flex;
+   align-items: center;
+}
+.search{
+    font-size: 40px;
+}
+#search-text{
+    width: 98%;
+    background: none;
+    border: none;
+    height: 100%;
+    font-size: x-large;
+}
+
+.club-div {}
+
+.club-title {}
+
+#categories{
+    
+    display: flex;
+    height:150px;
+    align-items: center;
+    
+}
+.topic{
+  background-color: black;
+   border-radius: 50%;
+   height: 80px;
+   width:20%;
+   margin-left: 5%;
+
+}
+
+.break{
+    flex-basis: 100%;
+    height: 0;
+}
+#club-feed{
+    float: right;
+    display: inline-block;
+    border: 2px solid black ;
+    width:30%;
+    height: 80%;
+    text-align: center;
 }
