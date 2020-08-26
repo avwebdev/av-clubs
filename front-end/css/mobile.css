@@ -1,29 +1,33 @@
-@media (max-width: 800px) {
+@media (max-width: 940px) {
     :root {
         --navbar-height: 50px;
     }
-
     body {
         padding: 10px;
         padding-top: 0px;
         padding-bottom: 0px;
     }
-
-    #left-navbar > h1 {
+    #left-navbar>h1 {
         margin: 0px;
         margin-left: 20px;
         padding-top: 17px;
         font-size: 13pt;
     }
-
-    #links > a {
+    #links>a {
         display: none;
     }
-
     #open-sidebar {
         display: inline-block;
         padding-top: 12px;
         font-size: 17pt;
         margin-right: 10px;
+    }
+}
+
+@media (max-width: 1200px) {
+    body {
+        padding: 3%;
+        padding-top: 0px;
+        padding-bottom: 0px;
     }
 }
