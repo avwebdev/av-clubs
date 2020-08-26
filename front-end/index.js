@@ -7,15 +7,38 @@ async function getData() {
 getData().then((allClubs) => {
   const clubsDiv = document.getElementById("all-clubs");
   const searchBar = document.getElementById("search-bar");
+  const clubSuggestions = document.getElementById("club-suggestions");
+
   searchBar.onchange = searchClubs;
+  searchBar.oninput = searchClubs;
+  searchBar.onblur = onSearchBlur;
   
   populateClubs(allClubs);
-  
+
   function searchClubs(e) {
+    removeAllChildNodes(clubSuggestions);
+    const search = e.target.value.toLowerCase();
+    let i = 0;
     for(const name in allClubs) {
-      if(name.includes(e.target.value)) {
-        console.log(name);
+      if(name.toLowerCase().includes(search)) {
+        if (i < 5) {
+          const clubSuggestion = createElement("div", {class: "club-suggestion"});
+          const title = createElement("h5", {
+            innerText: name
+          });
+          clubSuggestion.appendChild(title);
+          clubSuggestions.appendChild(clubSuggestion);
+          i++;
+        }
       }
+    }
+    if(i === 0) {
+      const clubSuggestion = createElement("div", {class: "club-suggestion"});
+      const title = createElement("h5", {
+          innerText: "No Results Found"
+      });
+      clubSuggestion.appendChild(title);
+      clubSuggestions.appendChild(clubSuggestion);
     }
   }
   
@@ -43,4 +66,10 @@ getData().then((allClubs) => {
     }
     return element;
   }
+
+  function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
 });

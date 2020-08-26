@@ -7,6 +7,37 @@
         padding-top: 0px;
         padding-bottom: 0px;
     }
+    #main-wrapper {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        width: 100%;
+    }
+    #club-feed {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    .announcement {
+        border-radius: 15px;
+        border: 2px solid black;
+        max-width: 200px;
+        max-height: 100px;
+    }
+    .main-text{
+        position: absolute;
+        left:5px;
+        text-align: left;
+       
+    }
+    .announcement i {
+        display: none;
+    }
+    .announcement p {
+        display: none;
+    }
+    #browse-clubs {
+        width: 100%;
+    }
     #left-navbar>h1 {
         margin: 0px;
         margin-left: 20px;
@@ -22,6 +53,17 @@
         font-size: 17pt;
         margin-right: 10px;
     }
+    
+    #browse-clubs{
+        width: 95%;
+    }
+
+    .topic{
+  height: 110px;
+  width: 110px;
+  margin: 10px;
+  margin-bottom: var(--topic-margin-bottom);
+}
 }
 
 @media (max-width: 1200px) {
@@ -30,4 +72,13 @@
         padding-top: 0px;
         padding-bottom: 0px;
     }
+}
+
+@media (max-width: 550px) {
+    .topic{
+  height: 90px;
+  width: 90px;
+  margin: 10px;
+  margin-bottom: var(--topic-margin-bottom);
+}
 }

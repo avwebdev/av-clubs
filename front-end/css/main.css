@@ -1,5 +1,6 @@
 :root {
     --navbar-height: 150px;
+    --topic-margin-bottom: 70px;
 }
 
 body {
@@ -53,10 +54,11 @@ body {
 }
 
 #search-bar{
-    border: 1px solid black ;
+    position: relative;
+   border: 1px solid black ;
    margin-top:5%;
-   margin-left:8%;
-   margin-right: 8%;
+   width: 90%;
+   margin-left: 5%;
    border-radius: 5px;
    height: 40px;
    display: flex;
@@ -65,6 +67,19 @@ body {
 .search{
     font-size: 40px;
 }
+#club-suggestions {
+    border: 2px solid black;
+    background-color: white;
+    position: absolute;
+    z-index: 1;
+    top: 40px;
+    width: 95%;
+}
+
+.club-suggestion {
+
+}
+
 #search-text{
     width: 98%;
     background: none;
@@ -78,19 +93,36 @@ body {
 .club-title {}
 
 #categories{
-    
     display: flex;
-    height:150px;
+    justify-content: center;
     align-items: center;
-    
+    flex-wrap: wrap;
+    width: 90%;
+    margin-left: 5%;
 }
-.topic{
-  background-color: black;
-   border-radius: 50%;
-   height: 80px;
-   width:20%;
-   margin-left: 5%;
 
+.topic{
+  background-color: white;
+  border-radius: 50%;
+  height: 8vw;
+  width: 8vw;
+  margin: 1.4vw;
+  margin-bottom: var(--topic-margin-bottom);
+  border: 5px solid black;
+  position: relative;
+}
+
+.topic h3 {
+    position: absolute;
+    top: 100%;
+    text-align: center;
+    width: 100%;
+    font-size: 12pt;
+}
+
+#category-header {
+    margin-left: 5%;
+    margin-top: 5%;
 }
 
 .break{
@@ -104,4 +136,49 @@ body {
     width:30%;
     height: 80%;
     text-align: center;
+    
 }
+
+#club-feed h1{
+    text-decoration: underline;
+}
+
+.announcement{
+    position: relative;
+    height: 150px;
+    border-bottom: 1px solid black;
+}
+.announcement p{
+    position: absolute;
+    bottom: 5px;
+    left:5px;
+
+}
+.announcement i{
+    position: absolute;
+    bottom: 10px;
+    right:5px;
+    font-size: xx-large;
+
+    transition: 0.5s;
+}
+.announcement i:active{
+    transform: rotate(-180deg);
+}
+
+#announcements{
+    height: auto;
+    margin-left: 5%;
+    margin-right: 5%;
+
+}
+.main-text{
+    position: absolute;
+    left:5px;
+    text-align: left;
+   
+}
+.answer{
+    display: none;
+}
+

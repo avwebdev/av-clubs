@@ -19,7 +19,7 @@
         </div>
         <div id="links">
             <a>Club Resources</a>
-            <a id>Back to student page</a>
+            <a href="https://sites.google.com/site/avstudentweb/" id>Back to student page</a>
             <i class="mdi mdi-menu" id="open-sidebar"></i>
         </div>
     </div>
@@ -30,31 +30,33 @@
             <div id = "search-bar">
                 <i class = "mdi mdi-magnify search"></i>
                 <input type="text" placeholder="Search" id = "search-text">
+                <div id="club-suggestions"></div>
             </div>
+            <h2 id="category-header">Browse clubs by category</h2>
             <div id = "categories">
                 <div class = "topic">
-
+                    <h3>Coding and Robotics</h3>
                 </div>
                 <div class = "topic">
-
+                    <h3>Business and Finance</h3>
                 </div>
                 <div class = "topic">
-
-                </div>
-                <div class = "topic break">
-
+                    <h3>Community Service</h3>
                 </div>
                 <div class = "topic">
-
+                    <h3>Science and mathematics</h3>
                 </div>
                 <div class = "topic">
-
+                    <h3>Arts</h3>
                 </div>
                 <div class = "topic">
-
+                    <h3>Entertainment</h3>
                 </div>
                 <div class = "topic">
-
+                    <h3></h3>
+                </div>
+                <div class = "topic">
+                    <h3>Other</h3>
                 </div>
             </div>
 
@@ -65,11 +67,81 @@
         </div>
         <div id="club-feed">
             <h1> Club Announcements </h1>
+            <div id="announcements">
+                <div class="announcement">
+                    <h4 class = "main-text">
+                        Gay SOOBS GAY SOOBS sure soobs Soobs likes pp he likes to licky licky big pp
+                    </h4>
+                    <p> 05/06/2020</p>
+                    <i onclick = "rotate(this)"  class = "mdi mdi-arrow-down-drop-circle-outline"></i>
+
+
+                </div>
+                 <div  class = "answer">
+                    <p>Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky </p>
+                 </div>
+
+
+                
+                <div class="announcement">
+                    <h4 class = "main-text">
+                        Test
+                    </h4>
+                    <p> 05/06/2020</p>
+                    <i class = "mdi mdi-arrow-down-drop-circle-outline"></i>
+
+
+                </div>
+                
+            </div>
 
         </div>
     </div>
     <script src="index.js"></script>
+    <script>
+         removeBorderOnLast()
+         var count = 0;
+     function rotate(element){
+            if(count%2==0){
+            element.style.transform = "rotate(-180deg)";
+            count++;
+            }
+        
+        else if(count%2==1){
+            element.style.transform = "none";
+            count++;
+        }
+        display(element);
+        }
+        function display(element){
+            console.log(1);
+            var feed = document.getElementsByClassName("announcement");
+            var answer = document.getElementsByClassName("answers");
+            for(var x = 0; x<feed.length; x++){
+                if(element.isEqualNode(feed[x])){
+                    console.log(2)
+                    answer[x].style.display = "block";
+                }
+            }
 
+
+        }
+       function removeBorderOnLast(){
+           var list = document.getElementsByClassName("announcement");
+           for(var x = 0; x<list.length;x++){
+               if(x==list.length-1){
+                   list[x].style.border = "none";
+               }
+           }
+       }
+
+        document.querySelectorAll("mdi mdi-arrow-down-drop-circle-outline").onclick = function(event) {
+            var element = evert.currentTarget;
+            rotate(element);
+        }
+
+       
+    </script>
 </body>
 
 </html>
