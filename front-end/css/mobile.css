@@ -68,7 +68,7 @@
 
 @media (max-width: 1200px) {
     body {
-        padding: 3%;
+        padding: .8%;
         padding-top: 0px;
         padding-bottom: 0px;
     }
@@ -76,9 +76,9 @@
 
 @media (max-width: 550px) {
     .topic{
-  height: 90px;
-  width: 90px;
-  margin: 10px;
+  height: 100px;
+  width: 100px;
+  margin: 12.5px;
   margin-bottom: var(--topic-margin-bottom);
 }
 }
