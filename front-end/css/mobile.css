@@ -78,7 +78,12 @@
     .topic{
   height: 100px;
   width: 100px;
-  margin: 12.5px;
+  margin: 17.5px;
   margin-bottom: var(--topic-margin-bottom);
+}
+
+#categories {
+    width: 97%;
+    margin-left: 1.5%;
 }
 }
