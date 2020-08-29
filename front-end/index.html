@@ -9,6 +9,7 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="css/mobile.css">
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.0.min.js"></script>
 </head>
 
 <body>
@@ -29,7 +30,7 @@
         <div id="browse-clubs">
             <div id = "search-bar">
                 <i class = "mdi mdi-magnify search"></i>
-                <input type="text" placeholder="Search" id = "search-text">
+                <input type="text" placeholder="Search" id="search-input">
                 <div id="club-suggestions"></div>
             </div>
             <h2 id="category-header">Browse clubs by category</h2>
@@ -70,12 +71,10 @@
             <div id="announcements">
                 <div class="announcement">
                     <h4 class = "main-text">
-                        Gay SOOBS GAY SOOBS sure soobs Soobs likes pp he likes to licky licky big pp
+                        Tuba Suba Tuba 
                     </h4>
-                    <p> 05/06/2020</p>
+                    <p id = "date"> 05/06/2020</p>
                     <i onclick = "rotate(this)"  class = "mdi mdi-arrow-down-drop-circle-outline"></i>
-
-
                 </div>
                  <div  class = "answer">
                     <p>Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky </p>
@@ -83,16 +82,18 @@
 
 
                 
-                <div class="announcement">
+                 <div class="announcement">
                     <h4 class = "main-text">
-                        Test
+                        Subee gooba nooba jooba 
                     </h4>
-                    <p> 05/06/2020</p>
-                    <i class = "mdi mdi-arrow-down-drop-circle-outline"></i>
+                    <p id = "date"> 05/06/2020</p>
+                    <i onclick = "rotate(this)"  class = "mdi mdi-arrow-down-drop-circle-outline"></i>
 
 
                 </div>
-                
+                 <div  class = "answer">
+                    <p>Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky </p>
+                 </div>
             </div>
 
         </div>
@@ -100,8 +101,10 @@
     <script src="index.js"></script>
     <script>
          removeBorderOnLast()
+         mobileSlide();
          var count = 0;
      function rotate(element){
+        display(element, count);
             if(count%2==0){
             element.style.transform = "rotate(-180deg)";
             count++;
@@ -111,35 +114,69 @@
             element.style.transform = "none";
             count++;
         }
-        display(element);
+       
         }
-        function display(element){
-            console.log(1);
+        function display(i , counter){
+            var element = i.parentNode;
             var feed = document.getElementsByClassName("announcement");
-            var answer = document.getElementsByClassName("answers");
+            var answer = document.getElementsByClassName("answer");
             for(var x = 0; x<feed.length; x++){
+               
                 if(element.isEqualNode(feed[x])){
-                    console.log(2)
-                    answer[x].style.display = "block";
+                
+                    if(counter%2==0){
+                       
+                        answer[x].style.display = "block";
+                        answer[x].style.borderTop = "1px solid black";
+                      
+                    }
+                    else if(counter%2==1){
+                        answer[x].style.display = "none";
+                    }
                 }
             }
-
 
         }
        function removeBorderOnLast(){
            var list = document.getElementsByClassName("announcement");
-           for(var x = 0; x<list.length;x++){
-               if(x==list.length-1){
-                   list[x].style.border = "none";
-               }
-           }
-       }
+           list[0].style.border = "none";
+        }
+       
 
         document.querySelectorAll("mdi mdi-arrow-down-drop-circle-outline").onclick = function(event) {
             var element = evert.currentTarget;
             rotate(element);
         }
 
+
+        function mobileSlide(){
+            var announcements = document.querySelectorAll(".announcement");
+            announcements.forEach((v) => {
+
+                if (v.nextElementSibling && v.nextElementSibling.classList.contains("answer")) {
+                    console.log("hello");
+                    v.appendChild(v.nextElementSibling);
+                }
+            });
+        }
+
+        window.addEventListener("load", function() {
+           if (window.innerWidth <= 940) {
+                mobileSlide();
+            }
+            else {
+                
+            }
+        });
+
+        window.addEventListener("resize", function() {
+            if (window.innerWidth <= 940) {
+                mobileSlide();
+            }
+            else {
+                
+            }
+        });
        
     </script>
 </body>

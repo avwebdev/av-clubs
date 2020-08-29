@@ -1,61 +1,103 @@
+const clubsDiv = document.getElementById("all-clubs");
+const searchInput = document.getElementById("search-input");
+const clubSuggestions = document.getElementById("club-suggestions");
+
 async function getData() {
   const response = await fetch("/getData", {method: "POST"});
   const json = await response.json();
   return json;
 }
 
-getData().then((allClubs) => {
-  const clubsDiv = document.getElementById("all-clubs");
-  const searchBar = document.getElementById("search-bar");
-  const clubSuggestions = document.getElementById("club-suggestions");
 
-  searchBar.onchange = searchClubs;
-  searchBar.oninput = searchClubs;
-  searchBar.onblur = onSearchBlur;
+getData().then((allClubs) => {
+  searchInput.onblur = onSearchBlur;
+  searchInput.onchange = searchClubs;
+  searchInput.oninput = searchClubs;
   
   populateClubs(allClubs);
 
+  function onSearchBlur(e) {
+    console.log(e);
+    clubSuggestions.style.display = "none";
+  }
+
   function searchClubs(e) {
+    //Show suggestions
+    clubSuggestions.style.display = "block";
+    //Remove all previous suggestions
     removeAllChildNodes(clubSuggestions);
+    //Turn search into lower case string
     const search = e.target.value.toLowerCase();
+    //Go through all clubs
     let i = 0;
     for(const name in allClubs) {
-      if(name.toLowerCase().includes(search)) {
-        if (i < 5) {
-          const clubSuggestion = createElement("div", {class: "club-suggestion"});
-          const title = createElement("h5", {
-            innerText: name
-          });
-          clubSuggestion.appendChild(title);
-          clubSuggestions.appendChild(clubSuggestion);
+      //If the search matches the name
+      if(i < 5 && name.toLowerCase().includes(search)) {
+          createSuggestion(name, true);
           i++;
-        }
       }
     }
     if(i === 0) {
-      const clubSuggestion = createElement("div", {class: "club-suggestion"});
-      const title = createElement("h5", {
-          innerText: "No Results Found"
-      });
-      clubSuggestion.appendChild(title);
-      clubSuggestions.appendChild(clubSuggestion);
+      createSuggestion("No Results Found")
     }
+  }
+
+  function createSuggestion(text, withOnClick) {
+    const clubSuggestion = createElement("div", {
+      class: "club-suggestion", 
+      id:`club-suggestion-${text}`,
+      onclick: () => {
+        if(withOnClick) { 
+          document.getElementById(`club-div-${text}`).scrollIntoView({
+            behavior: "smooth",
+          });
+        }
+      }
+    });
+    const title = createElement("h5", {
+        innerText: text
+    });
+    clubSuggestion.appendChild(title);
+    clubSuggestions.appendChild(clubSuggestion);
   }
   
   async function populateClubs(clubs) {
+    let counter = 0;
     for(const name in clubs) {
-      const club = createClubDiv(name, clubs[name]);
-      clubsDiv.appendChild(club);
+      counter++;
+      
+      if (counter == 5) {
+        var viewAll = document.createElement("div");
+        viewAll.classList.add("club-div");
+        viewAll.id = "view-all-clubs";
+        viewAll.style.justifyContent = "center";
+        viewAll.innerHTML = `<h2>View All ${Object.keys(clubs).length} Clubs</h2>`;
+
+        viewAll.onclick = () => {openClubs("all")};
+        clubsDiv.appendChild(viewAll);
+      }
+      else if (counter > 5) {
+        let club = createClubDiv(name, clubs[name]);
+        club.classList.add("invisible-club");
+        clubsDiv.appendChild(club);
+      }
+      else {
+        const club = createClubDiv(name, clubs[name]);
+        clubsDiv.appendChild(club);
+      }
     }
   }
 
   function createClubDiv(name, club) {
-    const clubDiv = createElement("div", {className: "club-div"});
+    console.log(`club-div-${name}`);
+    const clubDiv = createElement("div", {className: "club-div", id:`club-div-${name}`});
     const clubTitle = createElement("h1", {
       className: "club-title",
       innerText: name
     });
     clubDiv.appendChild(clubTitle);
+    const i = createElement("i", {className: "mdi mdi-arrow-down-drop-circle-outline"})
+    clubDiv.appendChild(i);
     return clubDiv;
   }
   
@@ -69,7 +111,11 @@ getData().then((allClubs) => {
 
   function removeAllChildNodes(parent) {
     while (parent.firstChild) {
-        parent.removeChild(parent.firstChild);
+      parent.removeChild(parent.firstChild);
     }
-}
+  }
 });
+
+function openClubs(mode) {
+  
+}
