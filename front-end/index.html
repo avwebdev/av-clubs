@@ -68,41 +68,123 @@
         </div>
         <div id="club-feed">
             <h1> Club Announcements </h1>
+            <!-- <div  id = "left"> -->
+                <i class = "mdi mdi-arrow-left-bold-outline" id = "left"></i>
+            <!-- </div> -->
+            
             <div id="announcements">
+
                 <div class="announcement">
-                    <h4 class = "main-text">
-                        Tuba Suba Tuba 
+                    <div class = "main-text">
+                        <h4>
+                        aaa
                     </h4>
+                    </div>
                     <p id = "date"> 05/06/2020</p>
                     <i onclick = "rotate(this)"  class = "mdi mdi-arrow-down-drop-circle-outline"></i>
                 </div>
                  <div  class = "answer">
-                    <p>Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky </p>
+                   <p> Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky
+                    Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky </p>
                  </div>
 
-
-                
+                    <div class="announcement">
+                        <div class = "main-text">
+                            <h4>
+                            aaaa
+                        </h4>
+                        </div>
+                        <p id = "date"> 05/06/2020</p>
+                        <i onclick = "rotate(this)"  class = "mdi mdi-arrow-down-drop-circle-outline"></i>
+                    </div>
+                     <div  class = "answer">
+                       <p> Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky
+                        Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky </p>
+                     </div>
+                    
+                       <div class="announcement">
+                            <div class = "main-text">
+                                <h4>
+                                Tuba Suba Tuba 
+                            </h4>
+                            </div>
+                            <p id = "date"> 05/06/2020</p>
+                            <i onclick = "rotate(this)"  class = "mdi mdi-arrow-down-drop-circle-outline"></i>
+                        </div>
+                         <div  class = "answer">
+                           <p> Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky
+                            Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky </p>
+                         </div>
+                         <!-- 
+                            <div class="announcement">
+                                <div class = "main-text">
+                                    <h4>
+                                    aa
+                                </h4>
+                                </div>
+                                <p id = "date"> 05/06/2020</p>
+                                <i onclick = "rotate(this)"  class = "mdi mdi-arrow-down-drop-circle-outline"></i>
+                            </div>
+                             <div  class = "answer">
+                               <p> Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky
+                                Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky </p>
+                 </div>
                  <div class="announcement">
-                    <h4 class = "main-text">
-                        Subee gooba nooba jooba 
+                    <div class = "main-text">
+                        <h4>
+                        aaaa
                     </h4>
+                    </div>
                     <p id = "date"> 05/06/2020</p>
                     <i onclick = "rotate(this)"  class = "mdi mdi-arrow-down-drop-circle-outline"></i>
-
-
                 </div>
                  <div  class = "answer">
-                    <p>Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky </p>
+                   <p> Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky
+                    Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky </p>
                  </div>
-            </div>
+                 <div class="announcement">
+                    <div class = "main-text">
+                        <h4>
+                        aaaa
+                    </h4>
+                    </div>
+                    <p id = "date"> 05/06/2020</p>
+                    <i onclick = "rotate(this)"  class = "mdi mdi-arrow-down-drop-circle-outline"></i>
+                </div>
+                 <div  class = "answer">
+                   <p> Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky
+                    Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky </p>
+                 </div>
+            </div> -->
 
         </div>
+        <i class = "mdi mdi-arrow-right-bold-outline" id = "right"></i>
+
     </div>
     <script src="index.js"></script>
     <script>
+        
          removeBorderOnLast()
-         mobileSlide();
+        //  mobileSlide();
          var count = 0;
+
+
+        // function split(){
+        //     var list = document.getElementsByClassName("announcement");
+        //     // if(list.length>=3){
+        //     //     list[1].style.borderLeft= "1px solid black";
+        //     //     list[1].style.borderRight= "1px solid black";
+        //     // }
+        //     for(var x = 0; x<list.length;){
+        //         console.log(5);
+        //         if(x+3<list.length){
+                  
+        //             list[x+1].style.borderLeft= "1px solid black";
+        //             list[x+1].style.borderRight= "1px solid black";
+        //             x+=3;
+        //         }
+        //     }
+        // }
      function rotate(element){
         display(element, count);
             if(count%2==0){
@@ -160,18 +242,21 @@
             });
         }
 
-        window.addEventListener("load", function() {
-           if (window.innerWidth <= 940) {
-                mobileSlide();
-            }
-            else {
+        // window.addEventListener("load", function() {
+        //    if (window.innerWidth <= 940) {
+        //         mobileSlide();
+        //        split();
+        //     }
+        //     else {
                 
-            }
-        });
+        //     }
+        // });
 
         window.addEventListener("resize", function() {
             if (window.innerWidth <= 940) {
                 mobileSlide();
+              
+                // split();
             }
             else {
                 

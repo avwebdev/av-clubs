@@ -135,7 +135,9 @@ body {
     text-align: center;
     
 }
-
+#left{
+    display: none;
+}
 #club-feed h1{
     text-decoration: underline;
 }
@@ -145,7 +147,7 @@ body {
     height: 100px;
     border-top: 1px solid black;
 }
-.announcement p{
+#date{
     position: absolute;
     bottom: 5px;
     left:5px;
@@ -156,12 +158,12 @@ body {
     bottom: 10px;
     right:5px;
     font-size: xx-large;
-
+    
     transition: 0.5s;
 }
-.announcement i:active{
+/* .announcement i:active{
     transform: rotate(-180deg);
-}
+} */
 
 #announcements{
     height: auto;
@@ -170,9 +172,10 @@ body {
 
 }
 .main-text{
-    position: absolute;
-    left:5px;
+    /* position: absolute; */
+    /* left:5px; */
     text-align: left;
+    min-height: 30px;
    
 }
 .answer{
