@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amador Clubs</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css">
@@ -13,6 +17,22 @@
 </head>
 
 <body>
+    <div id = "back-screen">
+
+        <div id= "big-answer">
+          <div  id = "close-button">  <i class = "mdi mdi-close"></i></div>
+            <div>
+                <h1>Title</h1>
+            </div>
+            <div>
+                <p>01/02/2020</p>
+            </div>
+            <div id = "description">
+                Get recked subha u suck
+            </div>
+        </div>
+
+    </div>
     <div id="navbar">
         <div id="left-navbar">
             <img src="images/logo.png" alt="logo">
@@ -27,6 +47,9 @@
 
 
     <div id="main-wrapper">
+        <div id="mobile-announcements">
+            
+        </div>
         <div id="browse-clubs">
             <div id="search-bar">
                 <i class="mdi mdi-magnify search"></i>
@@ -60,7 +83,7 @@
                     <h3>Other</h3>
                 </div>
             </div>
-
+            
 
             <div id="all-clubs">
                 <div id="sort-area">
@@ -70,10 +93,7 @@
         </div>
         <div id="club-feed">
             <h1> Club Announcements </h1>
-            <!-- <div  id = "left"> -->
-                <i class = "mdi mdi-arrow-left-bold-outline" id = "left"></i>
-            <!-- </div> -->
-            
+           
             <div id="announcements">
 
                 <div class="announcement">
@@ -81,168 +101,91 @@
                         <h4>
                         aaa
                     </h4>
-                    </div>
-                    <p id = "date"> 05/06/2020</p>
-                    <i onclick = "rotate(this)"  class = "mdi mdi-arrow-down-drop-circle-outline"></i>
-                </div>
-                 <div  class = "answer">
-                   <p> Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky
+                    <p> Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky
                     Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky </p>
-                 </div>
-
-                    <div class="announcement">
-                        <div class = "main-text">
-                            <h4>
-                            aaaa
-                        </h4>
-                        </div>
+                    </div>
+                    <div class="announcement-bottom-bar">
                         <p id = "date"> 05/06/2020</p>
-                        <i onclick = "rotate(this)"  class = "mdi mdi-arrow-down-drop-circle-outline"></i>
+                        <i class = "mdi mdi-arrow-expand"></i>
                     </div>
-                     <div  class = "answer">
-                       <p> Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky
-                        Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky </p>
-                     </div>
-                    
-                       <div class="announcement">
-                            <div class = "main-text">
-                                <h4>
-                                Tuba Suba Tuba 
-                            </h4>
-                            </div>
-                            <p id = "date"> 05/06/2020</p>
-                            <i onclick = "rotate(this)"  class = "mdi mdi-arrow-down-drop-circle-outline"></i>
-                        </div>
-                         <div  class = "answer">
-                           <p> Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky
-                            Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky </p>
-                         </div>
-                         <!-- 
-                            <div class="announcement">
-                                <div class = "main-text">
-                                    <h4>
-                                    aa
-                                </h4>
-                                </div>
-                                <p id = "date"> 05/06/2020</p>
-                                <i onclick = "rotate(this)"  class = "mdi mdi-arrow-down-drop-circle-outline"></i>
-                            </div>
-                             <div  class = "answer">
-                               <p> Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky
-                                Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky </p>
-                 </div>
-                 <div class="announcement">
+                </div>
+                <div class="announcement">
                     <div class = "main-text">
                         <h4>
-                        aaaa
+                        aaa
                     </h4>
-                    </div>
-                    <p id = "date"> 05/06/2020</p>
-                    <i onclick = "rotate(this)"  class = "mdi mdi-arrow-down-drop-circle-outline"></i>
-                </div>
-                 <div  class = "answer">
-                   <p> Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky
+                    <p> Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky
                     Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky </p>
-                 </div>
-                 <div class="announcement">
-                    <div class = "main-text">
-                        <h4>
-                        aaaa
-                    </h4>
                     </div>
-                    <p id = "date"> 05/06/2020</p>
-                    <i onclick = "rotate(this)"  class = "mdi mdi-arrow-down-drop-circle-outline"></i>
+                    <div class="announcement-bottom-bar">
+                        <p id = "date"> 05/06/2020</p>
+                        <i class = "mdi mdi-arrow-expand"></i>
+                    </div>
                 </div>
-                 <div  class = "answer">
-                   <p> Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky
-                    Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky </p>
-                 </div>
-            </div> -->
-
         </div>
-        <i class = "mdi mdi-arrow-right-bold-outline" id = "right"></i>
+       
 
     </div>
     <script src="index.js"></script>
     <script>
-        
-         removeBorderOnLast()
-        //  mobileSlide();
-         var count = 0;
+       
+    //    appear();
+        function appear(){
+            
+            var back = document.getElementById("back-screen");
+            console.log(back);
+            back.style.animation = "backScreen 1s forwards";
+           
+            var desc = document.getElementById("big-answer");
+            console.log(desc);
+            desc.style.animation= "movedown 1s forwards";
+        }
 
 
-        // function split(){
-        //     var list = document.getElementsByClassName("announcement");
-        //     // if(list.length>=3){
-        //     //     list[1].style.borderLeft= "1px solid black";
-        //     //     list[1].style.borderRight= "1px solid black";
-        //     // }
-        //     for(var x = 0; x<list.length;){
-        //         console.log(5);
-        //         if(x+3<list.length){
+
+        //  removeBorderOnLast()
+        // //  mobileSlide();
+        //  var count = 0;
+
+
+        // // function split(){
+        // //     var list = document.getElementsByClassName("announcement");
+        // //     // if(list.length>=3){
+        // //     //     list[1].style.borderLeft= "1px solid black";
+        // //     //     list[1].style.borderRight= "1px solid black";
+        // //     // }
+        // //     for(var x = 0; x<list.length;){
+        // //         console.log(5);
+        // //         if(x+3<list.length){
                   
-        //             list[x+1].style.borderLeft= "1px solid black";
-        //             list[x+1].style.borderRight= "1px solid black";
-        //             x+=3;
-        //         }
-        //     }
+        // //             list[x+1].style.borderLeft= "1px solid black";
+        // //             list[x+1].style.borderRight= "1px solid black";
+        // //             x+=3;
+        // //         }
+        // //     }
+        // // }
+        // function removeBorderOnLast() {
+        //     var list = document.getElementsByClassName("announcement");
+        //     list[0].style.border = "none";
         // }
-     function rotate(element){
-        display(element, count);
-            if(count%2==0){
-            element.style.transform = "rotate(-180deg)";
-            count++;
-            }
-
-            else if (count % 2 == 1) {
-                element.style.transform = "none";
-                count++;
-            }
-
-        }
-        function display(i, counter) {
-            var element = i.parentNode;
-            var feed = document.getElementsByClassName("announcement");
-            var answer = document.getElementsByClassName("answer");
-            for (var x = 0; x < feed.length; x++) {
-
-                if (element.isEqualNode(feed[x])) {
-
-                    if (counter % 2 == 0) {
-
-                        answer[x].style.display = "block";
-                        answer[x].style.borderTop = "1px solid black";
-
-                    }
-                    else if (counter % 2 == 1) {
-                        answer[x].style.display = "none";
-                    }
-                }
-            }
-
-        }
-        function removeBorderOnLast() {
-            var list = document.getElementsByClassName("announcement");
-            list[0].style.border = "none";
-        }
 
 
-        document.querySelectorAll("mdi mdi-arrow-down-drop-circle-outline").onclick = function (event) {
-            var element = evert.currentTarget;
-            rotate(element);
-        }
+        // document.querySelectorAll("mdi mdi-arrow-down-drop-circle-outline").onclick = function (event) {
+        //     var element = evert.currentTarget;
+        //     rotate(element);
+        // }
 
 
-        function mobileSlide() {
-            var announcements = document.querySelectorAll(".announcement");
-            announcements.forEach((v) => {
+        // function mobileSlide() {
+        //     var announcements = document.querySelectorAll(".announcement");
+        //     announcements.forEach((v) => {
 
-                if (v.nextElementSibling && v.nextElementSibling.classList.contains("answer")) {
-                    console.log("hello");
-                    v.appendChild(v.nextElementSibling);
-                }
-            });
-        }
+        //         if (v.nextElementSibling && v.nextElementSibling.classList.contains("answer")) {
+        //             console.log("hello");
+        //             v.appendChild(v.nextElementSibling);
+        //         }
+        //     });
+        // }
 
         // window.addEventListener("load", function() {
         //    if (window.innerWidth <= 940) {
@@ -254,16 +197,16 @@
         //     }
         // });
 
-        window.addEventListener("resize", function () {
-            if (window.innerWidth <= 940) {
-                mobileSlide();
+        // window.addEventListener("resize", function () {
+        //     if (window.innerWidth <= 940) {
+        //         mobileSlide();
               
-                // split();
-            }
-            else {
+        //         // split();
+        //     }
+        //     else {
 
-            }
-        });
+        //     }
+        // });
 
     </script>
 </body>

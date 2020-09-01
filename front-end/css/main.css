@@ -68,16 +68,14 @@ body {
 }
 
 #club-suggestions {
-    display: "none";
+    display: none;
     border: 2px solid black;
     background-color: white;
     position: absolute;
     z-index: 1;
     top: 40px;
-    width: 95%;
+    width: 98%;
 }
-
-.club-suggestion {}
 
 #search-input {
     width: 98%;
@@ -97,7 +95,7 @@ body {
 }
 
 .topic {
-    background-color: white;
+    /* background-color: white; */
     border-radius: 50%;
     height: 8vw;
     width: 8vw;
@@ -142,7 +140,6 @@ body {
 
 .announcement {
     position: relative;
-    height: 100px;
     border-top: 1px solid black;
 }
 #date{
@@ -169,6 +166,16 @@ body {
     margin-left: 5%;
     margin-right: 5%;
 }
+
+.announcement-bottom-bar {
+    position: relative;
+    min-height: 50px;
+}
+
+
+
+
+
 .main-text{
     /* position: absolute; */
     /* left:5px; */
@@ -177,32 +184,42 @@ body {
    
 }
 
-.answer {
-    display: none;
-    transition: 0.5s;
-    text-align: left;
-    color: gray
-}
-
 .club-div {
+    display: flex;
+    flex-direction: column;
     width: 90%;
     margin-left: 5%;
     border: 3px solid purple;
     border-radius: 10px;
     margin-bottom: 20px;
-    display: flex;
     justify-content: space-between;
+}
+
+.club-div-display {
+    display: flex;
     align-items: center;
+    width: 100%;
 }
 
 .club-title {
     font-size: 18pt;
+    flex-grow: 1;
     margin-left: 10px;
 }
 
-.club-div i {
+.club-dropdown {
+    display: none;
+    flex-direction: column;
+}
+
+.club-dropdown-icon {
     font-size: 40px;
     margin-right: 10px;
+}
+
+.club-dropdown-item {
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .invisible-club {
@@ -222,4 +239,71 @@ body {
     padding: 10px;
     padding-left: 13px;
     padding-right: 13px;
+}
+
+#back-screen{
+    
+    position: absolute;
+    background-attachment: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    /* background-color: black;
+    opacity: 0.7;
+     */
+   /* display: flex; */
+   justify-content: center;
+   display: none;
+   animation-duration: 1s;
+}
+#back-screen::after{
+    content:'';
+    background-color: black; 
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    opacity:0.5;
+    z-index:1;
+}
+#big-answer{
+    z-index: 2;
+    width: 60%;
+    margin-top: 5%;
+    height: fit-content;
+    height: -moz-fit-content;
+    filter: brightness(100%);
+    background-color: white;
+   border-radius: 7px;
+   animation-duration: 1s;
+   animation-fill-mode: forwards;
+}
+
+#close-button{
+    position: absolute;
+    font-size: 22px;
+    left:0;
+    top:0;
+    border-top-left-radius: 7px;
+    color:white;
+    opacity: 0.8;
+    background-color: red;
+    border-bottom-right-radius: 7px;
+    animation-fill-mode: forwards;
+
+}
+
+@keyframes backScreen{
+   from{ display: initial; }
+    to{
+        display: flex;
+    }
+}
+
+
+@keyframes movedown{
+    from{transform: translateY(-200%); }
+    to{ transform: initial;}
 }
