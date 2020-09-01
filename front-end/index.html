@@ -28,128 +28,130 @@
 
     <div id="main-wrapper">
         <div id="browse-clubs">
-            <div id = "search-bar">
-                <i class = "mdi mdi-magnify search"></i>
+            <div id="search-bar">
+                <i class="mdi mdi-magnify search"></i>
                 <input type="text" placeholder="Search" id="search-input">
                 <div id="club-suggestions"></div>
             </div>
             <h2 id="category-header">Browse clubs by category</h2>
-            <div id = "categories">
-                <div class = "topic">
+            <div id="categories">
+                <div class="topic">
                     <h3>Coding and Robotics</h3>
                 </div>
-                <div class = "topic">
+                <div class="topic">
                     <h3>Business and Finance</h3>
                 </div>
-                <div class = "topic">
+                <div class="topic">
                     <h3>Community Service</h3>
                 </div>
-                <div class = "topic">
+                <div class="topic">
                     <h3>Science and mathematics</h3>
                 </div>
-                <div class = "topic">
+                <div class="topic">
                     <h3>Arts</h3>
                 </div>
-                <div class = "topic">
+                <div class="topic">
                     <h3>Entertainment</h3>
                 </div>
-                <div class = "topic">
+                <div class="topic">
                     <h3></h3>
                 </div>
-                <div class = "topic">
+                <div class="topic">
                     <h3>Other</h3>
                 </div>
             </div>
 
 
             <div id="all-clubs">
-
+                <div id="sort-area">
+                    
+                </div>
             </div>
         </div>
         <div id="club-feed">
             <h1> Club Announcements </h1>
             <div id="announcements">
                 <div class="announcement">
-                    <h4 class = "main-text">
-                        Tuba Suba Tuba 
+                    <h4 class="main-text">
+                        Tuba Suba Tuba
                     </h4>
-                    <p id = "date"> 05/06/2020</p>
-                    <i onclick = "rotate(this)"  class = "mdi mdi-arrow-down-drop-circle-outline"></i>
+                    <p id="date"> 05/06/2020</p>
+                    <i onclick="rotate(this)" class="mdi mdi-arrow-down-drop-circle-outline"></i>
                 </div>
-                 <div  class = "answer">
+                <div class="answer">
                     <p>Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky </p>
-                 </div>
+                </div>
 
 
-                
-                 <div class="announcement">
-                    <h4 class = "main-text">
-                        Subee gooba nooba jooba 
+
+                <div class="announcement">
+                    <h4 class="main-text">
+                        Subee gooba nooba jooba
                     </h4>
-                    <p id = "date"> 05/06/2020</p>
-                    <i onclick = "rotate(this)"  class = "mdi mdi-arrow-down-drop-circle-outline"></i>
+                    <p id="date"> 05/06/2020</p>
+                    <i onclick="rotate(this)" class="mdi mdi-arrow-down-drop-circle-outline"></i>
 
 
                 </div>
-                 <div  class = "answer">
+                <div class="answer">
                     <p>Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky </p>
-                 </div>
+                </div>
             </div>
 
         </div>
     </div>
     <script src="index.js"></script>
     <script>
-         removeBorderOnLast()
-         mobileSlide();
-         var count = 0;
-     function rotate(element){
-        display(element, count);
-            if(count%2==0){
-            element.style.transform = "rotate(-180deg)";
-            count++;
+        removeBorderOnLast()
+        mobileSlide();
+        var count = 0;
+        function rotate(element) {
+            display(element, count);
+            if (count % 2 == 0) {
+                element.style.transform = "rotate(-180deg)";
+                count++;
             }
-        
-        else if(count%2==1){
-            element.style.transform = "none";
-            count++;
+
+            else if (count % 2 == 1) {
+                element.style.transform = "none";
+                count++;
+            }
+
         }
-       
-        }
-        function display(i , counter){
+        function display(i, counter) {
             var element = i.parentNode;
             var feed = document.getElementsByClassName("announcement");
             var answer = document.getElementsByClassName("answer");
-            for(var x = 0; x<feed.length; x++){
-               
-                if(element.isEqualNode(feed[x])){
-                
-                    if(counter%2==0){
-                       
+            for (var x = 0; x < feed.length; x++) {
+
+                if (element.isEqualNode(feed[x])) {
+
+                    if (counter % 2 == 0) {
+
                         answer[x].style.display = "block";
                         answer[x].style.borderTop = "1px solid black";
-                      
+
                     }
-                    else if(counter%2==1){
+                    else if (counter % 2 == 1) {
                         answer[x].style.display = "none";
                     }
                 }
             }
 
         }
-       function removeBorderOnLast(){
-           var list = document.getElementsByClassName("announcement");
-           list[0].style.border = "none";
+        function removeBorderOnLast() {
+            var list = document.getElementsByClassName("announcement");
+            list[0].style.border = "none";
         }
-       
 
-        document.querySelectorAll("mdi mdi-arrow-down-drop-circle-outline").onclick = function(event) {
+
+        document.querySelectorAll("mdi mdi-arrow-down-drop-circle-outline").onclick = function (event) {
             var element = evert.currentTarget;
             rotate(element);
         }
 
 
-        function mobileSlide(){
+        function mobileSlide() {
             var announcements = document.querySelectorAll(".announcement");
             announcements.forEach((v) => {
 
@@ -160,24 +162,24 @@
             });
         }
 
-        window.addEventListener("load", function() {
-           if (window.innerWidth <= 940) {
-                mobileSlide();
-            }
-            else {
-                
-            }
-        });
-
-        window.addEventListener("resize", function() {
+        window.addEventListener("load", function () {
             if (window.innerWidth <= 940) {
                 mobileSlide();
             }
             else {
-                
+
             }
         });
-       
+
+        window.addEventListener("resize", function () {
+            if (window.innerWidth <= 940) {
+                mobileSlide();
+            }
+            else {
+
+            }
+        });
+
     </script>
 </body>
 
