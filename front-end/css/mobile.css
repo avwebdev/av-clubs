@@ -44,7 +44,6 @@
         /* position: absolute;
         left:5px; */
         text-align: left;
-       
     }
     .announcement i {
         display: none;
@@ -113,17 +112,15 @@
         font-size: 17pt;
         margin-right: 10px;
     }
-    
-    #browse-clubs{
+    #browse-clubs {
         width: 95%;
     }
-
-    .topic{
-  height: 110px;
-  width: 110px;
-  margin: 10px;
-  margin-bottom: var(--topic-margin-bottom);
-}
+    .topic {
+        height: 110px;
+        width: 110px;
+        margin: 10px;
+        margin-bottom: var(--topic-margin-bottom);
+    }
 }
 #date{
     /* transform: translateY(200%); */
