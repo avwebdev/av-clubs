@@ -17,17 +17,17 @@
 </head>
 
 <body>
-    <div id = "back-screen">
+    <div id="back-screen">
 
-        <div id= "big-answer">
-          <div  id = "close-button">  <i class = "mdi mdi-close"></i></div>
+        <div id="big-answer">
+            <div id="close-button"> <i class="mdi mdi-close"></i></div>
             <div>
                 <h1>Title</h1>
             </div>
             <div>
                 <p>01/02/2020</p>
             </div>
-            <div id = "description">
+            <div id="description">
                 Get recked subha u suck
             </div>
         </div>
@@ -45,11 +45,38 @@
         </div>
     </div>
 
+    <div id="mobile-announcements">
+        <div class="swiper-container">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide">Slide 1</div>
+                <div class="swiper-slide">Slide 2</div>
+                <div class="swiper-slide">Slide 3</div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <script>
+            var mySwiper = new Swiper('.swiper-container', {
+                // Optional parameters
+                slidesPerView: 'auto',
+                spaceBetween: 20,
+                centeredSlides: true,
+
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            })
+
+        </script>
+
+
+
+    </div>
 
     <div id="main-wrapper">
-        <div id="mobile-announcements">
-            
-        </div>
         <div id="browse-clubs">
             <div id="search-bar">
                 <i class="mdi mdi-magnify search"></i>
@@ -83,63 +110,63 @@
                     <h3>Other</h3>
                 </div>
             </div>
-            
+
 
             <div id="all-clubs">
                 <div id="sort-area">
-                    
+
                 </div>
             </div>
         </div>
         <div id="club-feed">
             <h1> Club Announcements </h1>
-           
+
             <div id="announcements">
 
                 <div class="announcement">
-                    <div class = "main-text">
+                    <div class="main-text">
                         <h4>
-                        aaa
-                    </h4>
-                    <p> Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky
-                    Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky </p>
+                            aaa
+                        </h4>
+                        <p> Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky
+                            Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky </p>
                     </div>
                     <div class="announcement-bottom-bar">
-                        <p id = "date"> 05/06/2020</p>
-                        <i class = "mdi mdi-arrow-expand"></i>
+                        <p id="date"> 05/06/2020</p>
+                        <i class="mdi mdi-arrow-expand"></i>
                     </div>
                 </div>
                 <div class="announcement">
-                    <div class = "main-text">
+                    <div class="main-text">
                         <h4>
-                        aaa
-                    </h4>
-                    <p> Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky
-                    Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky </p>
+                            aaa
+                        </h4>
+                        <p> Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky
+                            Soobs likes to licky licky some cocky cocky Soobs likes to licky licky some cocky cocky </p>
                     </div>
                     <div class="announcement-bottom-bar">
-                        <p id = "date"> 05/06/2020</p>
-                        <i class = "mdi mdi-arrow-expand"></i>
+                        <p id="date"> 05/06/2020</p>
+                        <i class="mdi mdi-arrow-expand"></i>
                     </div>
                 </div>
-        </div>
-       
+            </div>
 
-    </div>
-    <script src="index.js"></script>
-    <script>
-       
-    //    appear();
-        function appear(){
-            
-            var back = document.getElementById("back-screen");
-            console.log(back);
-            back.style.animation = "backScreen 1s forwards";
-           
-            var desc = document.getElementById("big-answer");
-            console.log(desc);
-            desc.style.animation= "movedown 1s forwards";
-        }
+
+        </div>
+        <script src="index.js"></script>
+        <script>
+
+            //    appear();
+            function appear() {
+
+                var back = document.getElementById("back-screen");
+                console.log(back);
+                back.style.animation = "backScreen 1s forwards";
+
+                var desc = document.getElementById("big-answer");
+                console.log(desc);
+                desc.style.animation = "movedown 1s forwards";
+            }
 
 
 
@@ -157,7 +184,7 @@
         // //     for(var x = 0; x<list.length;){
         // //         console.log(5);
         // //         if(x+3<list.length){
-                  
+
         // //             list[x+1].style.borderLeft= "1px solid black";
         // //             list[x+1].style.borderRight= "1px solid black";
         // //             x+=3;
@@ -193,14 +220,14 @@
         //        split();
         //     }
         //     else {
-                
+
         //     }
         // });
 
         // window.addEventListener("resize", function () {
         //     if (window.innerWidth <= 940) {
         //         mobileSlide();
-              
+
         //         // split();
         //     }
         //     else {
@@ -208,7 +235,7 @@
         //     }
         // });
 
-    </script>
+        </script>
 </body>
 
 </html>

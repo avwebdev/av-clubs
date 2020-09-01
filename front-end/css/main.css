@@ -295,6 +295,10 @@ body {
 
 }
 
+#mobile-announcements {
+    display: none;
+}
+
 @keyframes backScreen{
    from{ display: initial; }
     to{
