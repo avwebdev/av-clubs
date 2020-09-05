@@ -32,24 +32,47 @@
         display: inline-block;
         border-radius: 10px;
     }
-
     #mobile-announcements {
         display: block;
     }
-
     .swiper-container {
         display: block;
         height: 200px;
     }
-
     .swiper-slide {
         width: 240px;
-        border:  2px solid grey;
+        border: 2px solid grey;
         margin: 5px;
         border-radius: 5px;
         height: 160px;
     }
-
+    .swiper-slide h3 {
+        height: 20px;
+    }
+    .swiper-slide p {
+        display: inline-block;
+        width: 100%;
+        margin-top: 0px;
+        text-overflow: ellipsis;
+        height: 96px;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        /* number of lines to show */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .swiper-slide * {
+        margin: 5px;
+    }
+    .swiper-slide .bottom-bar {
+        margin-top: 0px;
+    } 
+    .swiper-slide .bottom-bar i {
+        float: right;
+        font-size: 25px;
+        position: relative;
+        bottom: 8px;
+    }
     .main-text {
         /* position: absolute;
         left:5px; */
