@@ -60,7 +60,6 @@
                 <div class="swiper-slide">Slide 2</div>
                 <div class="swiper-slide">Slide 3</div>
             </div>
-            <div class="swiper-pagination"></div>
         </div>
 
         <script>
@@ -68,12 +67,8 @@
                 // Optional parameters
                 slidesPerView: 'auto',
                 spaceBetween: 10,
-                centeredSlides: true,
-
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
+                centeredSlides: false,
+                freeMode: true,
             })
 
         </script>
@@ -139,7 +134,7 @@
                     </div>
                     <div class="announcement-bottom-bar">
                         <p id="date"> 05/06/2020</p>
-                        <i class="mdi mdi-arrow-expand"></i>
+                        <i  class="mdi mdi-arrow-expand" onclick="appear();"></i>
                     </div>
                 </div>
                 <div class="announcement">
@@ -152,7 +147,7 @@
                     </div>
                     <div class="announcement-bottom-bar">
                         <p id="date"> 05/06/2020</p>
-                        <i class="mdi mdi-arrow-expand"></i>
+                        <i class="mdi mdi-arrow-expand" onclick="appear();"></i>
                     </div>
                 </div>
             </div>
@@ -168,6 +163,7 @@
                 var back = document.getElementById("back-screen");
                 console.log(back);
                 back.style.animation = "backScreen 1s forwards";
+                back.style.opacity = "1";
 
                 var desc = document.getElementById("big-answer");
                 console.log(desc);

@@ -27,8 +27,7 @@ getData().then((allClubs) => {
 
   populateClubs(allClubs);
 
-  function onSearchBlur(e) {
-    console.log(e);
+  function onSearchBlur() {
     clubSuggestions.style.display = "none";
   }
 
@@ -78,17 +77,20 @@ getData().then((allClubs) => {
       counter++;
 
       if (counter == 5) {
-        var viewAll = document.createElement("div");
-        viewAll.classList.add("club-div");
-        viewAll.id = "view-all-clubs";
-        viewAll.style.justifyContent = "center";
-        viewAll.innerHTML = `<h2>View All ${Object.keys(clubs).length} Clubs</h2>`;
-
-        viewAll.onclick = () => { openClubs("all") };
+        const viewAll = createElement("div", {
+          id: "view-all-clubs",
+          style: {
+            justifyContent: "center"
+          },
+          className: "club-div",
+          onclick: () => { openClubs("all") }
+        });
+        const viewAllTitle = createElement("h2", {innerText: `View All ${Object.keys(clubs).length} Clubs`});
+        viewAll.appendChild(viewAllTitle);
         clubsDiv.appendChild(viewAll);
       }
       else if (counter > 5) {
-        let club = createClubDiv(name, clubs[name]);
+        const club = createClubDiv(name, clubs[name]);
         club.classList.add("invisible-club");
         clubsDiv.appendChild(club);
       }
@@ -100,7 +102,6 @@ getData().then((allClubs) => {
   }
 
   function createClubDiv(name, club) {
-    console.log(club);
     const clubDiv = createElement("div", { className: "club-div", id: `club-div-${name}` });
     clubDiv.setAttribute("data-count", "0");
     const clubDisplay = createElement("div", {className: "club-div-display"});
@@ -114,24 +115,27 @@ getData().then((allClubs) => {
     clubDiv.appendChild(clubDisplay);
     //Dropdown
     const clubDropdown = createElement("div", {className: "club-dropdown"});
-    const clubDescription = createElement("p", {innerText: `Description: ${club[description]}`, className: "club-dropdown-item club-description"});
-    const clubContact = createElement("p", {innerText: `Contact Email: ${club[contact]}`, className: "club-dropdown-item club-contact"});
-    const clubMeetingTime = createElement("p", {innerText: `Meeting Time: ${club[meetingTime]}`, className: "club-dropdown-item club-meeting-time"});
-    const clubMeetingLocation = createElement("p", {innerText: `Meeting Location: ${club[meetingLocation]}`, className: "club-dropdown-item club-meeting-location"});
-    const clubOfficers = createElement("p", {
-      innerText: `Officers: ${club[president]} (President), ${club[vicePresident]} (Vice President), ${club[secretary]} (Secretary), ${club[treasurer]} (Treasurer), ${club[otherOfficers]}`, 
-      className: "club-dropdown-item club-officers"});
-    clubDropdown.appendChild(clubDescription);
-    clubDropdown.appendChild(clubContact);
-    clubDropdown.appendChild(clubMeetingTime);
-    clubDropdown.appendChild(clubMeetingLocation);
-    clubDropdown.appendChild(clubOfficers);
+    clubDropdown.appendChild(createElement("h1", {innerText: "test"}));
+    // addClubDropdownItem(`Description: ${club[description]}`, "club-description", clubDropdown);
+    // addClubDropdownItem(`Contact Email: ${club[contact]}`, "club-contact", clubDropdown);
+    // addClubDropdownItem(`Meeting Time: ${club[meetingTime]}`,"club-meeting-time", clubDropdown );
+    // addClubDropdownItem(`Meeting Location: ${club[meetingLocation]}`, "club-meeting-location", clubDropdown);
+    // addClubDropdownItem(`Officers: ${club[president]} (President), ${club[vicePresident]} (Vice President), ${club[secretary]} (Secretary), ${club[treasurer]} (Treasurer), ${club[otherOfficers]}`, "club-officers", clubDropdown);
 
     clubDiv.appendChild(clubDropdown);
     return clubDiv;
   }
 
+  function addClubDropdownItem(text, className, clubDropdown) {
+    const clubDropdownItem = createElement("p", {
+      innerText: text,
+      className: `club-dropdown-item ${className}`
+    });
+    clubDropdown.appendChild(clubDropdownItem);
+  }
+
   function showClubInfo(element) {
+    console.log(element);
     const clubDropdown = element.getElementsByClassName("club-dropdown")[0];
     let count = parseInt(element.getAttribute("data-count"));
     if(count % 2 === 0) {

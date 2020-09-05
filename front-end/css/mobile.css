@@ -66,6 +66,7 @@
     }
     .swiper-slide .bottom-bar {
         margin-top: 0px;
+        font-weight: 600;
     } 
     .swiper-slide .bottom-bar i {
         float: right;
