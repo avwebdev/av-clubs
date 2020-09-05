@@ -77,6 +77,23 @@ body {
     width: 98%;
 }
 
+.club-suggestion {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    height: 100%;
+    min-height: 40px;
+    cursor: pointer;
+}
+
+.club-suggestion:hover {
+    background-color: #edeef0;
+}
+
+.club-suggestion-title {
+    margin: 0px;
+}
+
 #search-input {
     width: 98%;
     background: none;
@@ -244,8 +261,8 @@ body {
 
 #back-screen{
     
-    position: fixed;
-    background-attachment: fixed;
+    
+   
     left: 0;
     right: 0;
     top: 0;
@@ -263,7 +280,7 @@ body {
 }
 
 #big-answer{
-    z-index: 2;
+    z-index: 100000000;
     width: 60%;
     margin-top: 5%;
     position: absolute;
@@ -271,11 +288,15 @@ body {
     height: fit-content;
     transform: translateY(-200%);
     height: -moz-fit-content;
-    filter: brightness(100%);
     background-color: white;
    border-radius: 7px;
    animation-duration: 1s;
    animation-fill-mode: forwards;
+   padding-left: 20px;
+   padding-bottom: 50px;
+}
+.center{
+    text-align: center;
 }
 
 #close-button{
@@ -295,6 +316,41 @@ body {
 #mobile-announcements {
     display: none;
 }
+.slideout-menu {
+    position: fixed;
+   
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    z-index: 0;
+    display: none;
+  }
+  
+
+  
+  .slideout-menu-right {
+    right: 0;
+  }
+  
+  .slideout-panel {
+    position: relative;
+    z-index: 1;
+    width: 20%;
+    float: right;
+    will-change: transform;
+    background-color: black; /* A background-color is required */
+    min-height: 100vh;
+    display: none;
+  }
+  
+  .slideout-open,
+  .slideout-open body,
+  .slideout-open .slideout-panel {
+    overflow: hidden;
+  }
+  
+  .slideout-open .slideout-menu {
+    display: block;
+  }
 
 @keyframes backScreen{
     from{

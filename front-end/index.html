@@ -14,17 +14,18 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="css/mobile.css">
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
 </head>
 
 <body>
     <div id="back-screen">
 
         <div id="big-answer">
-            <div id="close-button"> <i class="mdi mdi-close"></i></div>
-            <div>
+            <div id="close-button" > <i class="mdi mdi-close" onclick="disappear();"></i></div>
+            <div class = "center">
                 <h1>Title</h1>
             </div>
-            <div>
+            <div class = "center">
                 <p>01/02/2020</p>
             </div>
             <div id="description">
@@ -43,22 +44,46 @@
             <a href="https://sites.google.com/site/avstudentweb/" id>Back to student page</a>
             <i class="mdi mdi-menu" id="open-sidebar"></i>
         </div>
-    </div>
 
+        <div id="menu" >
+           
+        </div>
+          
+          <main id="panel">
+            <header>
+              <h2>Panel</h2>
+            </header>
+        </main>
+    </div>
+    
+<script>
+  var slideout = new Slideout({
+    'panel': document.getElementById('panel'),
+    'menu': document.getElementById('menu'),
+    'padding': 256,
+    'tolerance': 70
+  });
+
+  // Toggle button
+  document.querySelector('#open-sidebar').addEventListener('click', function() {
+    slideout.toggle();
+  });
+
+</script>
     <div id="mobile-announcements">
         <div class="swiper-container">
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
-                <div class="swiper-slide">
+                <div class="swiper-slide" onclick="appear();">
                     <h3>Club Fair</h3>
                     <p>Hey amador students we would like to do blach on the dat aof bah loprp eipsum immaculta good job on the dat aof bah loprp eipsum immaculta good job on the dat aof bah loprp eipsum immaculta good job</p>
                     <div class="bottom-bar">
                         2/3/5<i class="mdi mdi-arrow-expand"></i>
                     </div>
                 </div>
-                <div class="swiper-slide">Slide 2</div>
-                <div class="swiper-slide">Slide 3</div>
+                <div class="swiper-slide" onclick="appear();">Slide 2</div>
+                <div class="swiper-slide" onclick="appear();">Slide 3</div>
             </div>
         </div>
 
@@ -86,28 +111,28 @@
             </div>
             <h2 id="category-header">Browse clubs by category</h2>
             <div id="categories">
-                <div class="topic">
+                <div class="topic" data-tag-code="codingandrobotics">
                     <h3>Coding and Robotics</h3>
                 </div>
-                <div class="topic">
+                <div class="topic" data-tag-code="businessandfinance">
                     <h3>Business and Finance</h3>
                 </div>
-                <div class="topic">
+                <div class="topic" data-tag-code="community">
                     <h3>Community Service</h3>
                 </div>
-                <div class="topic">
+                <div class="topic" data-tag-code="scienceandmath">
                     <h3>Science and mathematics</h3>
                 </div>
-                <div class="topic">
+                <div class="topic" data-tag-code="arts">
                     <h3>Arts</h3>
                 </div>
-                <div class="topic">
+                <div class="topic" data-tag-code="entertainment">
                     <h3>Entertainment</h3>
                 </div>
                 <div class="topic">
                     <h3></h3>
                 </div>
-                <div class="topic">
+                <div class="topic" data-tag-code="other">
                     <h3>Other</h3>
                 </div>
             </div>
@@ -156,18 +181,46 @@
         </div>
         <script src="index.js"></script>
         <script>
-
+            var count = 0;
             //    appear();
             function appear() {
-
+            if(count%2==0){
                 var back = document.getElementById("back-screen");
                 console.log(back);
+                back.style.position = "fixed";
                 back.style.animation = "backScreen 1s forwards";
+                
                 back.style.opacity = "1";
+                
 
                 var desc = document.getElementById("big-answer");
                 console.log(desc);
                 desc.style.animation = "movedown 1s forwards";
+                count++;
+            }
+             
+                // var back = document.getElementById("back-screen");
+                // console.log(back);
+                // back.style.animation = "backScreen 1s forwards";
+                // back.style.opacity = "1";
+
+                // var desc = document.getElementById("big-answer");
+                // console.log(desc);
+                // desc.style.animation = "movedown 1s forwards";
+            }
+            function disappear(){
+                if (count % 2 == 1) {
+                var back = document.getElementById("back-screen");
+                console.log(back);
+                back.style.animation = "none";
+                back.style.opacity = "0";
+                back.style.position = "static";
+                var desc = document.getElementById("big-answer");
+                console.log(desc);
+                desc.style.animation = "none";
+                desc.style.transform = "translateY(-200%)";
+                count++;
+             }
             }
 
 
@@ -238,6 +291,7 @@
         // });
 
         </script>
+        <noscript>Enable JavaScript, please</noscript>
 </body>
 
 </html>
