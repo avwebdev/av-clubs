@@ -17,8 +17,8 @@
         width: 100%;
         margin-bottom: 5px;
     }
-    #announcements{
-       display: none;
+    #announcements, #club-feed {
+        display: none;
     }
     .announcement {
         /* border-radius: 15px; */
@@ -31,9 +31,49 @@
         width: 300px;
         display: inline-block;
         border-radius: 10px;
-
     }
-    .main-text{
+    #mobile-announcements {
+        display: block;
+    }
+    .swiper-container {
+        display: block;
+        height: 200px;
+    }
+    .swiper-slide {
+        width: 240px;
+        border: 2px solid grey;
+        margin: 5px;
+        border-radius: 5px;
+        height: 160px;
+    }
+    .swiper-slide h3 {
+        height: 20px;
+    }
+    .swiper-slide p {
+        display: inline-block;
+        width: 100%;
+        margin-top: 0px;
+        text-overflow: ellipsis;
+        height: 96px;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        /* number of lines to show */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .swiper-slide * {
+        margin: 5px;
+    }
+    .swiper-slide .bottom-bar {
+        margin-top: 0px;
+    } 
+    .swiper-slide .bottom-bar i {
+        float: right;
+        font-size: 25px;
+        position: relative;
+        bottom: 8px;
+    }
+    .main-text {
         /* position: absolute;
         left:5px; */
         text-align: left;
@@ -41,28 +81,27 @@
     .announcement i {
         display: none;
     }
-    #left{
+    #left {
         display: inline-block;
         width: 5%;
         position: absolute;
-        left:1%;
-        top:200px;
+        left: 1%;
+        top: 200px;
         font-size: 40px;
         /* float: left; */
         opacity: 0.8;
     }
-    #right{
+    #right {
         display: inline-block;
         width: 5%;
         position: absolute;
-        right:1%;
-        top:195px;
+        right: 1%;
+        top: 195px;
         font-size: 40px;
         /* float: left; */
         opacity: 0.8;
     }
-   
-    .answer{
+    .answer {
         display: block !important;
         /* transform: translateY(-2%); */
         /* transform: translateX(-100%); */
@@ -90,12 +129,6 @@
         padding-top: 17px;
         font-size: 13pt;
     }
-
-
-
-
-
-
     #links>a {
         display: none;
     }
@@ -115,13 +148,13 @@
         margin-bottom: var(--topic-margin-bottom);
     }
 }
-#date{
+
+#date {
     /* transform: translateY(200%); */
     /* margin-top: 300% ; */
     /* position: absolute;
     float: left;
     bottom: 0; */
-    
 }
 
 @media (max-width: 1200px) {
@@ -133,56 +166,53 @@
 }
 
 @media (max-width: 700px) {
-    .topic{
-  height: 100px;
-  width: 100px;
-  margin: 17.5px;
-  margin-bottom: var(--topic-margin-bottom);
-}
-.announcement{
-    width: 200px;
-}
-.answer{
-    height: 120px;
-}
-.answer p{
-    top:25%;
-    font-size: small;
+    .topic {
+        height: 100px;
+        width: 100px;
+        margin: 17.5px;
+        margin-bottom: var(--topic-margin-bottom);
+    }
+    .announcement {
+        width: 200px;
+    }
+    .answer {
+        height: 120px;
+    }
+    .answer p {
+        top: 25%;
+        font-size: small;
+    }
+    #categories {
+        width: 97%;
+        margin-left: 1.5%;
+    }
 }
 
-#categories {
-    width: 97%;
-    margin-left: 1.5%;
-}
-}
- @media(max-width: 550px){
-    .announcement{
+@media(max-width: 550px) {
+    .announcement {
         width: 200px;
-        
-    
     }
-    #announcements{
+    #announcements {
         position: relative;
     }
-    #left{
+    #left {
         display: inline-block;
         width: 5%;
         position: absolute;
-        left:1%;
-        top:200px;
+        left: 1%;
+        top: 200px;
         font-size: 40px;
         /* float: left; */
         opacity: 0.8;
     }
-    #right{
+    #right {
         display: inline-block;
         width: 5%;
         position: absolute;
-        right:6%;
-        top:198px;
+        right: 6%;
+        top: 198px;
         font-size: 40px;
         /* float: left; */
         opacity: 0.8;
     }
-   
 }
