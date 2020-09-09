@@ -225,8 +225,6 @@ function openClubs(mode, tagName, oTagName) {
       applyTag(mode, tagName, oTagName);
       document.getElementById("all-clubs").scrollIntoView({
         behavior: "smooth",
-        block: "end", 
-        inline: "nearest"
       });
   }
 }
