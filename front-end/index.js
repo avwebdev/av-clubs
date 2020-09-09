@@ -94,17 +94,17 @@ getData().then((allClubs) => {
         clubsDiv.appendChild(club);
       }
     }
-        const viewAll = createElement("div", {
-          id: "view-all-clubs",
-          style: {
-            justifyContent: "center"
-          },
-          className: "club-div",
-          onclick: () => openClubs("all")
-        });
-        const viewAllTitle = createElement("h2", {innerText: `View All ${Object.keys(clubs).length} Clubs`});
-        viewAll.appendChild(viewAllTitle);
-        clubsDiv.appendChild(viewAll);
+    const viewAll = createElement("div", {
+      id: "view-all-clubs",
+      style: {
+        justifyContent: "center"
+      },
+      className: "club-div",
+      onclick: () => openClubs("all")
+    });
+    const viewAllTitle = createElement("h2", {innerText: `View All ${Object.keys(clubs).length} Clubs`});
+    viewAll.appendChild(viewAllTitle);
+    clubsDiv.appendChild(viewAll);
   }
 
   function createClubDiv(name, club) {
@@ -156,7 +156,7 @@ getData().then((allClubs) => {
     const i = createElement("i", { className: "mdi mdi-arrow-down-drop-circle-outline club-dropdown-icon"});
     i.onclick = () => {
       showClubInfo(clubDiv);
-      rotate(i);
+      rotate(clubDiv);
     }
     i.style.transition = "0.5s";
     clubDisplay.appendChild(i);
@@ -189,11 +189,10 @@ getData().then((allClubs) => {
     const clubDropdown = element.getElementsByClassName("club-dropdown")[0];
     let count = parseInt(element.getAttribute("data-count"));
     if(count % 2 === 0) {
-      clubDropdown.style.display = "flex";
+      clubDropdown.classList.add("club-dropdown-showing");
     } else {
-      clubDropdown.style.display = "none";
-    }   
-    element.setAttribute("data-count", (count + 1).toString());    
+      clubDropdown.classList.remove("club-dropdown-showing");
+    }
   }
 
   function createElement(type, attributes) {
@@ -224,6 +223,11 @@ function openClubs(mode, tagName, oTagName) {
       document.styleSheets[document.styleSheets.length - 1].addRule(`.${oTagName}`, "display: flex !important");
       document.styleSheets[document.styleSheets.length - 1].addRule(`#view-all-clubs`, "display: flex !important");
       applyTag(mode, tagName, oTagName);
+      document.getElementById("all-clubs").scrollIntoView({
+        behavior: "smooth",
+        block: "end", 
+        inline: "nearest"
+      });
   }
 }
 
@@ -281,17 +285,17 @@ function clearTags() {
   document.querySelector("#sort-area").innerHTML = "";
 }
 
-var counter = 0;
+
 function rotate(element){
-  // display(element, count);
-  if(counter%2==0){
-    element.style.transform = "rotate(-180deg)";
-    counter++;
+  const i = element.getElementsByTagName('i')[0];
+  const count = parseInt(element.getAttribute("data-count"));
+  if(count % 2 === 0){
+    i.style.transform = "rotate(-180deg)";
   }
   else {
-      element.style.transform = "none";
-      counter++;
+    i.style.transform = "none";
   }
+  element.setAttribute("data-count", (count + 1).toString());
 }
 
 function display(i, counter) {

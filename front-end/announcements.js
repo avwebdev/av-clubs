@@ -37,6 +37,7 @@ async function loadAnnouncements() {
 
 
     }
+    mySwiper.update();
 }
 
 loadAnnouncements();
