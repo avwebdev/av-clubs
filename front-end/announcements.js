@@ -18,7 +18,7 @@ async function loadAnnouncements() {
                 <p>${announcement["Paragraph 1"]}</p>
             </div>
             <div class="announcement-bottom-bar">
-                <p id="date">${announcement.Date}</p>
+                <p class="date">${announcement.Date}</p>
                 <i class="mdi mdi-arrow-expand" onclick="appear(${key});"></i>
             </div>
         </div>    

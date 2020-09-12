@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
 :root {
     --navbar-height: 150px;
     --topic-margin-bottom: 70px;
@@ -9,6 +10,7 @@ body {
     padding-bottom: 0px;
     margin: 0px;
     background-color: white;
+    font-family: 'Noto Serif', serif;
 }
 
 #left-navbar, #left-navbar * {
@@ -162,7 +164,7 @@ body {
     border-top: 1px solid black;
 }
 
-#date {
+.date {
     position: absolute;
     bottom: 5px;
     left: 5px;
@@ -299,10 +301,43 @@ body {
     animation-fill-mode: forwards;
     padding-left: 20px;
     padding-bottom: 50px;
+    overflow-y: scroll;
+    max-height: 75vh;
+    scrollbar-width: none;
 }
 
 .center {
     text-align: center;
+}
+
+#big-answer h1, #date {
+    display: inline-block;
+}
+
+#date, #big-answer i {
+    position: relative;
+    bottom: 3px;
+}
+
+#date {
+    font-size: 22px;
+}
+
+#big-answer i {
+    font-size: 15px;
+    margin: 5px;
+    bottom: 4px;
+}
+
+#top-container {
+    text-align: left;
+    margin-left: 20px;
+}
+
+#description {
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 18px;
 }
 
 #close-button {
