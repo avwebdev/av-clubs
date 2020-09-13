@@ -64,9 +64,11 @@ getData().then((allClubs) => {
       onclick: () => {
         if (withOnClick) {
           openClubs("all");
-          var div = document.getElementById(`club-div-${text}`);         
-          showClubInfo(div);
-          rotate(div);
+          var div = document.getElementById(`club-div-${text}`);
+          if(parseInt(div.getAttribute("data-count"))%2===0)  {
+            showClubInfo(div);
+            rotate(div);
+          }        
           div.scrollIntoView({
             behavior: "smooth",
           });

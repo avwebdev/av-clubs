@@ -314,7 +314,7 @@ body {
     display: inline-block;
 }
 
-#date, #big-answer i {
+#date, #top-container i {
     position: relative;
     bottom: 3px;
 }
@@ -323,7 +323,7 @@ body {
     font-size: 22px;
 }
 
-#big-answer i {
+#top-container i {
     font-size: 15px;
     margin: 5px;
     bottom: 4px;
@@ -332,6 +332,12 @@ body {
 #top-container {
     text-align: left;
     margin-left: 20px;
+}
+
+#big-answer a i {
+    font-size: 25px;
+    position: relative;
+    top: 2px;
 }
 
 #description {
@@ -343,14 +349,19 @@ body {
 #close-button {
     position: absolute;
     font-size: 22px;
-    left: 0;
+    right: 0;
     top: 0;
-    border-top-left-radius: 7px;
+    width: 30px;
+    height: 30px;
+    border-top-right-radius: 7px;
     color: white;
     opacity: 0.8;
     background-color: red;
-    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
     animation-fill-mode: forwards;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #mobile-announcements {
