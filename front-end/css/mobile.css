@@ -45,11 +45,11 @@
     }
     .swiper-slide {
         width: 240px;
-        border: 2px solid grey;
         margin: 5px;
         border-radius: 5px;
         height: 160px;
-        background-color: var(--)
+        background-color: var(--color-secondary);
+        padding: 3px;
     }
     .swiper-slide h3 {
         height: 20px;

@@ -185,6 +185,11 @@ background-color: #cecece;
     background-color: #edeef0;
 }
 
+.club-suggestion:focus {
+    background-color: #edeef0;
+    outline: none;
+}
+
 .club-suggestion-title {
     margin: 0px;
 }
