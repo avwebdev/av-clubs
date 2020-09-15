@@ -2,6 +2,7 @@ const clubsDiv = document.getElementById("all-clubs");
 const searchBar = document.getElementById("search-bar");
 const searchInput = document.getElementById("search-input");
 const clubSuggestions = document.getElementById("club-suggestions");
+const clearSearch = document.getElementById("search-clear");
 
 // Club fields
 const description = "What is the purpose of your club?";
@@ -25,6 +26,7 @@ getData().then((allClubs) => {
   searchInput.onchange = searchClubs;
   searchInput.oninput = searchClubs;
   document.onclick = checkIfSuggestionClicked;
+  clearSearch.onclick = clearSearchInput;
 
   populateClubs(allClubs);
 
@@ -55,6 +57,11 @@ getData().then((allClubs) => {
     if (i === 0) {
       createSuggestion("No Results Found")
     }
+  }
+
+  function clearSearchInput() {
+    searchInput.value = "";
+    clubSuggestions.style.display = "none";
   }
 
   function createSuggestion(text, withOnClick) {

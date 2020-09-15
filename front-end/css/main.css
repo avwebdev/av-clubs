@@ -1,7 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
 :root {
     --navbar-height: 150px;
     --topic-margin-bottom: 70px;
+    /* Good gray combo */
+    --color-primary: #dfe4ea;
+    --color-secondary: #ced6e0;
+    --main-div-border-radius: 10px;
 }
 
 body {
@@ -9,8 +13,26 @@ body {
     padding-top: 0px;
     padding-bottom: 0px;
     margin: 0px;
-    background-color: white;
-    font-family: 'Noto Serif', serif;
+    background-color: var(--color-primary);
+    font-family: 'PT Sans', sans-serif;
+}
+
+#mobile-nav-right {
+    position: fixed;
+    right: -100%;
+    height: 100%;
+    background-color: yellow;
+    transition: 0.5s;
+    z-index: 1000;
+    
+}
+
+.mobile-links {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:30px;
 }
 
 #left-navbar, #left-navbar * {
@@ -35,6 +57,8 @@ body {
     padding-top: 70px;
     margin-left: 60px;
     cursor: pointer;
+    text-decoration: none;
+    color: black;
 }
 
 #links>a:hover {
@@ -47,10 +71,13 @@ body {
 }
 
 #browse-clubs {
-    border: 2px solid black;
+    /* border: 2px solid black; */
     height: auto;
     width: 65%;
     display: inline-block;
+    background-color: var(--color-secondary);
+    color: block;
+    border-radius: var(--main-div-border-radius);
 }
 
 #search-bar {
@@ -65,6 +92,43 @@ body {
     align-items: center;
 }
 
+#search-input {
+    width: 100%;
+    padding-left: 10px;
+    background: none;
+    border: none;
+    height: 100%;
+    font-size: x-large;
+}
+
+#search-clear {
+    /* display */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* position */
+    position: absolute;
+    right: 0;
+    /* background & border */
+    border-radius: 50%;
+    transition: background-color 0.3s;
+    /* display */
+    cursor: pointer;
+    font-size: 20px;
+    margin-right: 10px;
+    width: 24px;
+    height: 24px;
+}
+
+#search-clear::before {
+    width: 20px;
+    height: 20px;
+}
+
+#search-clear:hover {
+    background-color: rgb(172, 175, 176, 0.3);
+}
+
 .search {
     font-size: 40px;
 }
@@ -72,10 +136,11 @@ body {
 #club-suggestions {
     display: none;
     border: 2px solid black;
+    border-radius: 3px;
     background-color: white;
     position: absolute;
     z-index: 1;
-    top: 40px;
+    top: 45px;
     width: 98%;
 }
 
@@ -94,14 +159,6 @@ body {
 
 .club-suggestion-title {
     margin: 0px;
-}
-
-#search-input {
-    width: 98%;
-    background: none;
-    border: none;
-    height: 100%;
-    font-size: x-large;
 }
 
 #categories {
@@ -145,10 +202,12 @@ body {
 #club-feed {
     float: right;
     /* display: inline-block; */
-    border: 2px solid black;
+    /* border: 2px solid black; */
     width: 30%;
     height: 80%;
     text-align: center;
+    background-color: var(--color-secondary);
+    border-radius: var(--main-div-border-radius);
 }
 
 #left {
@@ -177,6 +236,7 @@ body {
     right: 5px;
     font-size: xx-large;
     transition: 0.5s;
+    cursor: pointer;
 }
 
 /* .announcement i:active{
@@ -203,6 +263,7 @@ body {
 
 #view-all-clubs {
     text-align: center;
+    cursor: pointer;
 }
 
 .club-div {
@@ -213,7 +274,7 @@ body {
     /* Box */
     width: 90%;
     margin-left: 5%;
-    border: 3px solid purple;
+    border: 3px solid black;
     border-radius: 10px;
     margin-bottom: 20px;
     /* Transition */
@@ -247,6 +308,7 @@ body {
 .club-dropdown-icon {
     font-size: 40px;
     margin-right: 10px;
+    cursor: pointer;
 }
 
 .club-dropdown-item {
@@ -265,12 +327,21 @@ body {
 }
 
 #sort-area .sort-field {
-    background-color: lightgrey;
     border-radius: 5px;
     display: inline-block;
     padding: 10px;
     padding-left: 13px;
     padding-right: 13px;
+}
+
+.sort-field {
+    border: 2px solid black;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.sort-field i {
+    cursor: pointer;
 }
 
 #back-screen {
@@ -301,7 +372,7 @@ body {
     animation-fill-mode: forwards;
     padding-left: 20px;
     padding-bottom: 50px;
-    overflow-y: scroll;
+    overflow-y: visible;
     max-height: 75vh;
     scrollbar-width: none;
 }
@@ -340,6 +411,15 @@ body {
     top: 2px;
 }
 
+#big-answer a {
+    text-decoration: none;
+    color: black;
+    margin-bottom: 10px;
+    border-bottom: 2px solid black;
+    padding-bottom: 2px;
+    display: inline-block;
+}
+
 #description {
     margin-left: 20px;
     margin-right: 20px;
@@ -349,19 +429,22 @@ body {
 #close-button {
     position: absolute;
     font-size: 22px;
-    right: 0;
-    top: 0;
+    right: -18px;
+    top: -18px;
     width: 30px;
     height: 30px;
-    border-top-right-radius: 7px;
-    color: white;
+    /* border-top-right-radius: 7px; */
+    color: rgb(255, 255, 255);
     opacity: 0.8;
-    background-color: red;
-    border-bottom-left-radius: 7px;
+    border-radius: 50%;
+    background-color: black;
+    /* background-color: red; */
+    /* border-bottom-left-radius: 7px; */
     animation-fill-mode: forwards;
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 #mobile-announcements {

@@ -17,6 +17,24 @@
 </head>
 
 <body>
+    <div id = "mobile-nav-right">
+        <div id="close-button-nav" > <i class="mdi mdi-close" onclick="appearNav()"></i></div>
+        <div class = "mobile-links">
+            <a href = "">
+            Club Resources
+            </a>
+        </div>
+        <div class = "mobile-links">
+            <a href = "">
+            Back to student page
+            </a>
+        </div>
+
+
+        </div>
+
+
+    
     <div id="back-screen">
 
         <div id="big-answer">
@@ -41,7 +59,7 @@
         <div id="links">
             <a>Club Resources</a>
             <a href="https://sites.google.com/site/avstudentweb/" id>Back to student page</a>
-            <i class="mdi mdi-menu" id="open-sidebar"></i>
+            <i class="mdi mdi-menu" id="open-sidebar" onclick = "appearNav()"></i>
         </div>
     </div>
     
@@ -54,6 +72,7 @@
         </div>
 
         <script>
+            
             var mySwiper = new Swiper('.swiper-container', {
                 // Optional parameters
                 slidesPerView: 'auto',
@@ -62,6 +81,23 @@
                 spaceBetween: 10,
                 slidesOffsetAfter: 10               
             });
+
+            var counting = 0;
+            function appearNav(){
+                console.log(5000);
+                var element = document.getElementById("mobile-nav-right");
+                if(counting%2==0){
+                    element.style.right = "0";
+                    console.log(5001);
+                    counting++;
+                }
+                else if(counting%2==1){
+                    element.style.right = "-100%";
+                    console.log(5002);
+                    counting++;
+                }
+               
+            }
 
         </script>
 
@@ -72,8 +108,8 @@
     <div id="main-wrapper">
         <div id="browse-clubs">
             <div id="search-bar">
-                <i class="mdi mdi-magnify search"></i>
-                <input type="text" placeholder="Search" id="search-input">
+                <input type="text" placeholder="Search..." id="search-input">
+                <i id="search-clear" class="mdi mdi-close"></i>
                 <div id="club-suggestions"></div>
             </div>
             <h2 id="category-header">Browse clubs by category</h2>
@@ -150,7 +186,7 @@
                             <i class="mdi mdi-link-variant"></i>
                             ${announcements[announcementKey][`Link ${i}`]}
                         </a>`;
-                        allParagraphs += "<br><br>";
+                        allParagraphs += "<br>";
                     }
                 }
                 desc.querySelector("#description").innerHTML += allParagraphs;
