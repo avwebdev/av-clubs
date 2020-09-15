@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.6.5/mousetrap.min.js" integrity="sha512-+Jg3Ynmj9hse704K48H6rBBI3jdNBjReRGBCxUWFfOz3yVurnJFWtAWssDAsGtzWYw89xFWPxShuj2T6E9EOpg==" crossorigin="anonymous"></script>
     <script src="announcements.js"></script>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet"
@@ -39,13 +40,15 @@
 
         <div id="big-answer">
             <div id="close-button" > <i class="mdi mdi-close" onclick="disappear();"></i></div>
-            <div id = "top-container">
+            <div id="modal-content-wrapper">
+                <div id = "top-container">
                 <h1>Title</h1>
                 <i class="mdi mdi-moon-full"></i>
                 <p id="date">01/02/2020</p>
             </div>
             <div id="description">
                 Get recked subha u suck
+            </div>
             </div>
         </div>
 
@@ -88,12 +91,12 @@
                 var element = document.getElementById("mobile-nav-right");
                 if(counting%2==0){
                     element.style.right = "0";
-                    console.log(5001);
+                   
                     counting++;
                 }
                 else if(counting%2==1){
                     element.style.right = "-100%";
-                    console.log(5002);
+                   
                     counting++;
                 }
                
@@ -108,7 +111,7 @@
     <div id="main-wrapper">
         <div id="browse-clubs">
             <div id="search-bar">
-                <input type="text" placeholder="Search..." id="search-input">
+                <input autocomplete="off" type="text" placeholder="Search..." id="search-input">
                 <i id="search-clear" class="mdi mdi-close"></i>
                 <div id="club-suggestions"></div>
             </div>
@@ -126,16 +129,16 @@
                 <div class="topic" data-tag-code="scienceandmath">
                     <h3>Science and mathematics</h3>
                 </div>
-                <div class="topic" data-tag-code="arts">
+                <div class="topic mobile-hidden" data-tag-code="arts">
                     <h3>Arts</h3>
                 </div>
-                <div class="topic" data-tag-code="entertainment">
+                <div class="topic mobile-hidden" data-tag-code="entertainment">
                     <h3>Entertainment</h3>
                 </div>
-                <div class="topic">
+                <div class="topic mobile-hidden">
                     <h3></h3>
                 </div>
-                <div class="topic" data-tag-code="other">
+                <div class="topic mobile-hidden" data-tag-code="other">
                     <h3>Other</h3>
                 </div>
             </div>

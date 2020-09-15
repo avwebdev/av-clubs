@@ -9,6 +9,10 @@ async function loadAnnouncements() {
     var mobileAnnouncementsRoot = document.querySelector(".swiper-wrapper");
     for (var key of Object.keys(data)) {
         announcement = data[key];
+        let expandButton = `<i class="mdi mdi-arrow-expand" onclick="appear(${key});"></i>`;
+        if (!(announcement["Paragraph 2"] || announcement["Link 1"])) {
+            expandButton="";
+        } 
         announcementsRoot.innerHTML += `
         <div class="announcement">
             <div class="main-text">
@@ -19,7 +23,7 @@ async function loadAnnouncements() {
             </div>
             <div class="announcement-bottom-bar">
                 <p class="date">${announcement.Date}</p>
-                <i class="mdi mdi-arrow-expand" onclick="appear(${key});"></i>
+                ${expandButton}
             </div>
         </div>    
         `;

@@ -1,6 +1,6 @@
 @media (max-width: 940px) {
     :root {
-        --navbar-height: 50px;
+        --navbar-height: 75px;
     }
     body {
         padding: 10px;
@@ -17,6 +17,7 @@
         width: 100%;
         margin-bottom: 5px;
     }
+   
     #announcements, #club-feed {
         display: none;
     }
@@ -48,6 +49,7 @@
         margin: 5px;
         border-radius: 5px;
         height: 160px;
+        background-color: var(--)
     }
     .swiper-slide h3 {
         height: 20px;
@@ -142,7 +144,7 @@
     #open-sidebar {
         display: inline-block;
         padding-top: 12px;
-        font-size: 17pt;
+        font-size: 35px;
         margin-right: 10px;
     }
     #browse-clubs {
@@ -188,6 +190,9 @@
 }
 
 @media (max-width: 700px) {
+    .mobile-hidden {
+        display: none;
+    }
     .topic {
         height: 100px;
         width: 100px;
@@ -207,6 +212,11 @@
     #categories {
         width: 97%;
         margin-left: 1.5%;
+    }
+
+    #close-button{
+        right:5px;
+        top:5px;
     }
 }
 

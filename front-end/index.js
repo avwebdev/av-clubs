@@ -25,6 +25,7 @@ async function getData() {
 getData().then((allClubs) => {
   searchInput.onchange = searchClubs;
   searchInput.oninput = searchClubs;
+  searchInput.onkeydown = searchKeyPress;
   document.onclick = checkIfSuggestionClicked;
   clearSearch.onclick = clearSearchInput;
 
@@ -49,13 +50,21 @@ getData().then((allClubs) => {
     let i = 0;
     for (const name in allClubs) {
       //If the search matches the name
-      if (i < 5 && name.toLowerCase().includes(search)) {
+      if (name.toLowerCase().includes(search)) {
         createSuggestion(name, true);
         i++;
       }
     }
     if (i === 0) {
       createSuggestion("No Results Found")
+    }
+  }
+
+  function searchKeyPress(e) {
+    if(e.key === "ArrowDown") {
+      e.preventDefault();
+      console.log(clubSuggestions);
+      clubSuggestions.firstChild.focus();
     }
   }
 
@@ -68,6 +77,7 @@ getData().then((allClubs) => {
     const clubSuggestion = createElement("div", {
       className: "club-suggestion",
       id: `club-suggestion-${text}`,
+      tabIndex: 0,
       onclick: () => {
         if (withOnClick) {
           openClubs("all");
@@ -123,7 +133,6 @@ getData().then((allClubs) => {
 
 //generate random tag name. With data tagname will equal club["category"]
     var randnum = Math.floor(Math.random()*8+1);
-    console.log(randnum);
     var tagname;
     switch (randnum) {
       case 1:
