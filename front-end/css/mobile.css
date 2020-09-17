@@ -17,7 +17,6 @@
         width: 100%;
         margin-bottom: 5px;
     }
-   
     #announcements, #club-feed {
         display: none;
     }
@@ -52,7 +51,11 @@
         padding: 3px;
     }
     .swiper-slide h3 {
-        height: 20px;
+        height: 25px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 1px;
     }
     .swiper-slide p {
         display: inline-block;
@@ -65,6 +68,7 @@
         /* number of lines to show */
         -webkit-box-orient: vertical;
         overflow: hidden;
+        font-size: 15px;
     }
     .swiper-slide * {
         margin: 5px;
@@ -77,7 +81,7 @@
         float: right;
         font-size: 25px;
         position: relative;
-        bottom: 8px;
+        bottom: 9px;
     }
     .swiper-container {
         z-index: 0;
@@ -213,10 +217,9 @@
         width: 97%;
         margin-left: 1.5%;
     }
-
-    #close-button{
-        right:5px;
-        top:5px;
+    #close-button {
+        right: 5px;
+        top: 5px;
     }
 }
 

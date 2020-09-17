@@ -92,6 +92,15 @@ background-color: #cecece;
     height: var(--navbar-height);
 }
 
+#navbar img {
+    height: 80px;
+}
+
+#logo-wrapper {
+    display: flex;
+    align-items: center;
+}
+
 #browse-clubs {
     /* border: 2px solid black; */
     height: auto;
@@ -334,7 +343,7 @@ background-color: #cecece;
 }
 
 .club-dropdown-showing {
-    max-height: 1000px;
+    max-height: 5000px;
     transition: max-height .5s ease-in;
 }
 
