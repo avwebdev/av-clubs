@@ -28,7 +28,14 @@
       padding: 0;
       margin: 0px;
       font-family: "Montserrat", sans-serif;
+      overflow-x: hidden;
     }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: "Montserrat", sans-serif;
+    }
+
+    
 
     #banner-welcome {
       height: auto;
@@ -226,7 +233,7 @@
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr 1fr;
-        grid-gap: 5%;
+        grid-gap: 20px;
         padding: 0;
         padding-top: 5%;
         padding-bottom: 5%;
@@ -236,12 +243,13 @@
         height: 40%;
         border-bottom: none;
         font-weight: lighter;
-        margin-bottom: 30px;
+        margin-bottom: 0px;
       }
 
       #big-rectangle div div {
         margin: auto;
-        height: 100%;
+        height: fit-content;
+        height: -moz-fit-content;
         border: 1px solid black;
         border-radius: 50px;
         text-align: center;
@@ -336,16 +344,17 @@
       }
 
       .new-club-info {
-        width: 80%;
+        width: 90%;
         margin: auto;
-        height: 100%;
         border-radius: 20px;
         margin: auto;
-        padding: 50px;
+        padding: 30px;
         background-color: #edeff2;
         font-size: 90%;
         margin-top: 50px;
         margin-bottom: 50px;
+        height: fit-content;
+        height: -moz-fit-content;
       }
 
       #big-rectangle {
@@ -400,13 +409,14 @@
     @media (max-width: 900px) {
       #club-stuff {
         padding: 20px;
-        width: 80%;
+        width: 100%;
         margin: auto;
         background-color: #ededeb;
         border-radius: 20px;
         text-align: center;
         line-height: 250%;
         padding-bottom: 50px;
+        margin-top: 20px;
       }
 
       #club-stuff ul {
@@ -415,6 +425,10 @@
 
       #club-stuff li {
         font-size: 100%;
+      }
+
+      #club-stuff h1 {
+        font-size: 10pt;
       }
     }
   </style>
@@ -523,7 +537,7 @@
     <div class="new-club-info">
       <div>
         <a href="https://docs.google.com/document/d/1VThzyfUIQtOGihlAHbwVwJDeAIWHypvzBv50FBtzw_g/edit">Application
-          Form</a>
+          Form <i class="mdi mdi-cursor-default-click"></i></a>
         <p>
           Please expect the application process to take two months. The cutoff
           deadline for new clubs to turn in applications is November 10th,
