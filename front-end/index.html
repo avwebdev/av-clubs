@@ -5,8 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amador Clubs</title>
+    <link rel="icon" href="images/logo1.png">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.6.5/mousetrap.min.js" integrity="sha512-+Jg3Ynmj9hse704K48H6rBBI3jdNBjReRGBCxUWFfOz3yVurnJFWtAWssDAsGtzWYw89xFWPxShuj2T6E9EOpg==" crossorigin="anonymous"></script>
@@ -59,7 +64,7 @@
             <div id="logo-wrapper">
                 <img src="images/logo1.png" alt="logo">
             </div> 
-            <h1>AV Clubs</h1>
+            <h1 id="title">AV Clubs</h1>
         </div>
         <div id="links">
             <a href = "resources.html">Club Resources</a>
@@ -144,6 +149,7 @@
                     <h3>Other</h3>
                 </div>
             </div>
+            <div id="see-more-categories">See More Categories</div>
 
 
             <div id="all-clubs">
@@ -179,6 +185,7 @@
 
                 desc.querySelector("#description").innerHTML = "";
                 var allParagraphs = "";
+
                 for (var i=1; i<20; i++) {
                     if(announcements[announcementKey][`Paragraph ${i}`]) {
                         allParagraphs+= announcements[announcementKey][`Paragraph ${i}`];
@@ -198,15 +205,6 @@
                 desc.style.animation = "movedown 1s forwards";
                 count++;
             }
-             
-                // var back = document.getElementById("back-screen");
-                // console.log(back);
-                // back.style.animation = "backScreen 1s forwards";
-                // back.style.opacity = "1";
-
-                // var desc = document.getElementById("big-answer");
-                // console.log(desc);
-                // desc.style.animation = "movedown 1s forwards";
             }
             function disappear(){
                 if (count % 2 == 1) {
@@ -222,73 +220,6 @@
                 count++;
              }
             }
-
-
-
-        //  removeBorderOnLast()
-        // //  mobileSlide();
-        //  var count = 0;
-
-
-        // // function split(){
-        // //     var list = document.getElementsByClassName("announcement");
-        // //     // if(list.length>=3){
-        // //     //     list[1].style.borderLeft= "1px solid black";
-        // //     //     list[1].style.borderRight= "1px solid black";
-        // //     // }
-        // //     for(var x = 0; x<list.length;){
-        // //         console.log(5);
-        // //         if(x+3<list.length){
-
-        // //             list[x+1].style.borderLeft= "1px solid black";
-        // //             list[x+1].style.borderRight= "1px solid black";
-        // //             x+=3;
-        // //         }
-        // //     }
-        // // }
-        // function removeBorderOnLast() {
-        //     var list = document.getElementsByClassName("announcement");
-        //     list[0].style.border = "none";
-        // }
-
-
-        // document.querySelectorAll("mdi mdi-arrow-down-drop-circle-outline").onclick = function (event) {
-        //     var element = evert.currentTarget;
-        //     rotate(element);
-        // }
-
-
-        // function mobileSlide() {
-        //     var announcements = document.querySelectorAll(".announcement");
-        //     announcements.forEach((v) => {
-
-        //         if (v.nextElementSibling && v.nextElementSibling.classList.contains("answer")) {
-        //             console.log("hello");
-        //             v.appendChild(v.nextElementSibling);
-        //         }
-        //     });
-        // }
-
-        // window.addEventListener("load", function() {
-        //    if (window.innerWidth <= 940) {
-        //         mobileSlide();
-        //        split();
-        //     }
-        //     else {
-
-        //     }
-        // });
-
-        // window.addEventListener("resize", function () {
-        //     if (window.innerWidth <= 940) {
-        //         mobileSlide();
-
-        //         // split();
-        //     }
-        //     else {
-
-        //     }
-        // });
 
         </script>
         <noscript>Enable JavaScript, please</noscript>
