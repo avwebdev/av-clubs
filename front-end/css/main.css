@@ -5,8 +5,10 @@
   /* Good gray combo */
   /* --color-primary: #dfe4ea;
   --color-secondary: #ced6e0; */
-  --color-primary: #8E8D8A;
-  --color-secondary: 
+  /* --color-primary: #74b9ff;
+  --color-secondary:#eaeef0; */
+  --color-primary: #a29bfe;
+  --color-secondary:#fcfcfc;
   --main-div-border-radius: 10px;
 }
 
@@ -14,12 +16,12 @@ body {
   height: 100%;
   padding: 10%;
   padding-top: 0px;
-  padding-bottom: 0px;
+  padding-bottom: 40px;
   margin: 0px;
   background-color: var(--color-primary);
   font-family: "Montserrat", sans-serif;
   /* font-weight: lighter; */
-  color: #e85a4f;
+  
 }
 
 #title {
@@ -39,10 +41,8 @@ body {
   margin: 8px;
   height: 40px;
   width: 40px;
-  border-radius: 50%;
-  color: white;
-  background-color: black;
-  font-size: 20px;
+  color: black;
+  font-size: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,7 +50,7 @@ body {
 .mobile-links {
   width: 200px;
   display: flex;
-  justify-content: center;
+  padding-left: 50px;
   align-items: center;
   height: 60px;
   transition: 0.5s;
@@ -264,13 +264,27 @@ body {
   text-align: center;
   background-color: var(--color-secondary);
   border-radius: var(--main-div-border-radius);
+  margin-bottom: 30px;
 }
 
 #left {
   display: none;
 }
 
-#club-feed h1 {
+.topic[data-tag-code ="codingandrobotics"]{
+  background-image: url("images/Coding.jpg");
+  background-position: center;
+  background-size: cover;
+}
+.topic[data-tag-code ="businessandfinance"]{
+  background-image: url("https://c1.sfdcstatic.com/content/dam/blogs/ca/Blog%20Posts/the-business-benefits-of-complementary-partnerships-open-graph.png");
+  background-position: center;
+  background-size: cover;
+}
+.topic[data-tag-code ="community"]{
+  background-image: url("https://www.soas.ac.uk/blogs/study/wp-content/uploads/2019/07/1000-humanitarian-globe.jpg");
+  background-position: center;
+  background-size: cover;
 }
 
 .announcement {
@@ -281,7 +295,6 @@ body {
 .date {
   position: absolute;
   bottom: 5px;
-  left: 5px;
   transform: none;
 }
 
@@ -446,20 +459,18 @@ body {
   display: inline-block;
 }
 
-#date,
-#top-container i {
+#big-answer h1 {
+  margin-bottom: 0px;
+}
+
+#date {
   position: relative;
   bottom: 3px;
+  font-weight: 700;
 }
 
 #date {
   font-size: 22px;
-}
-
-#top-container i {
-  font-size: 15px;
-  margin: 5px;
-  bottom: 4px;
 }
 
 #top-container {
@@ -547,6 +558,10 @@ body {
   display: block;
 }
 
+
+#footer h3 {
+  display: inline-block;
+}
 @keyframes backScreen {
   from {
     z-index: initial;

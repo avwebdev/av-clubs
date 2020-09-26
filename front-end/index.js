@@ -3,6 +3,8 @@ const searchBar = document.getElementById("search-bar");
 const searchInput = document.getElementById("search-input");
 const clubSuggestions = document.getElementById("club-suggestions");
 const clearSearch = document.getElementById("search-clear");
+const seeMoreCategories = document.getElementById("see-more-categories-btn");
+const hiddenCategories = document.querySelectorAll('[data-topic-toggle]');
 
 // Club fields
 const description = "What is the purpose of your club?";
@@ -14,6 +16,9 @@ const vicePresident = "Who is the current Club Vice President (or equivalent)?";
 const secretary = "Who is the current Club Secretary (or equivalent)?";
 const treasurer = "Who is the current Club Treasurer (or equivalent)?";
 const otherOfficers = "Are there any other Club Officer? (Please state their roles.)";
+const remindLink = "Do you have a remind link?";
+const howToJoin = "How can members join the club?";
+const otherLinks = "What are other important links for your club";
 
 async function getData() {
   const response = await fetch("/getData", { method: "POST" });
@@ -28,6 +33,7 @@ getData().then((allClubs) => {
   searchInput.onkeydown = searchKeyPress;
   document.onclick = checkIfSuggestionClicked;
   clearSearch.onclick = clearSearchInput;
+  seeMoreCategories.onclick = showMoreCategories;
 
   populateClubs(allClubs);
 
@@ -190,20 +196,25 @@ getData().then((allClubs) => {
     addClubDropdownItem("Meeting Time", club[meetingTime],"club-meeting-time", clubDropdown );
     addClubDropdownItem("Meeting Location", club[meetingLocation], "club-meeting-location", clubDropdown);
     addClubDropdownItem("Officers", `${club[president]} (President), ${club[vicePresident]} (Vice President), ${club[secretary]} (Secretary), ${club[treasurer]} (Treasurer), ${club[otherOfficers]}`, "club-officers", clubDropdown);
+    addClubDropdownItem("Remind Link", club[remindLink], clubDropdown);
+    addClubDropdownItem("How to join", club[howToJoin], clubDropdown);
+    addClubDropdownItem("Other Links", club[otherLinks], clubDropdown);
 
     clubDiv.appendChild(clubDropdown);
     return clubDiv;
   }
 
   function addClubDropdownItem(title, text, className, clubDropdown) {
-    const clubDropdownItemTitle = createElement("strong", {innerText: title});
-    const clubDropdownItemText = createElement("p", {innerText: text});
-    const clubDropdownItem = createElement("p", {
-      className: `club-dropdown-item ${className}`
-    });
-    clubDropdownItem.appendChild(clubDropdownItemTitle);
-    clubDropdownItem.appendChild(clubDropdownItemText);
-    clubDropdown.appendChild(clubDropdownItem);
+    if(text) {
+      const clubDropdownItemTitle = createElement("strong", {innerText: title});
+      const clubDropdownItemText = createElement("p", {innerText: text});
+      const clubDropdownItem = createElement("p", {
+        className: `club-dropdown-item ${className}`
+      });
+      clubDropdownItem.appendChild(clubDropdownItemTitle);
+      clubDropdownItem.appendChild(clubDropdownItemText);
+      clubDropdown.appendChild(clubDropdownItem);
+    }
   }
 
   function showClubInfo(element) {
@@ -229,7 +240,26 @@ getData().then((allClubs) => {
       parent.removeChild(parent.firstChild);
     }
   }
+  
 });
+
+function showMoreCategories() {
+  const isShowing = JSON.parse(seeMoreCategories.getAttribute("data-showing"));
+  if(!isShowing) {
+    for(let i = 0; i < hiddenCategories.length; i++) {
+      const hidden = hiddenCategories.item(i);
+      hidden.classList.remove("mobile-hidden");
+      seeMoreCategories.innerHTML = "See Less Categories";
+    }
+  } else {
+    for(let i = 0; i < hiddenCategories.length; i++) {
+      const hidden = hiddenCategories.item(i);
+      hidden.classList.add("mobile-hidden");
+      seeMoreCategories.innerHTML = "See More Categories";
+    }
+  }
+  seeMoreCategories.setAttribute("data-showing", JSON.stringify(!isShowing));
+}
 
 function openClubs(mode, tagName, oTagName) {
   switch (mode) {

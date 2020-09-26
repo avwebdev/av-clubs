@@ -48,7 +48,7 @@
             <div id="modal-content-wrapper">
                 <div id = "top-container">
                 <h1>Title</h1>
-                <i class="mdi mdi-moon-full"></i>
+                <br>
                 <p id="date">01/02/2020</p>
             </div>
             <div id="description">
@@ -89,7 +89,10 @@
                 centeredSlides: false,
                 freeMode: true,
                 spaceBetween: 10,
-                slidesOffsetAfter: 10               
+                slidesOffsetAfter: 10,
+                mousewheel: {
+                    forceToAxis: true
+                }               
             });
 
             var counting = 0;
@@ -136,20 +139,22 @@
                 <div class="topic" data-tag-code="scienceandmath">
                     <h3>Science and mathematics</h3>
                 </div>
-                <div class="topic mobile-hidden" data-tag-code="arts">
+                <div class="topic mobile-hidden" data-topic-toggle data-tag-code="arts">
                     <h3>Arts</h3>
                 </div>
-                <div class="topic mobile-hidden" data-tag-code="entertainment">
+                <div class="topic mobile-hidden" data-topic-toggle data-tag-code="entertainment">
                     <h3>Entertainment</h3>
                 </div>
-                <div class="topic mobile-hidden">
-                    <h3></h3>
+                <div class="topic mobile-hidden" data-topic-toggle>
+                    <h3>Retarded</h3>
                 </div>
-                <div class="topic mobile-hidden" data-tag-code="other">
+                <div class="topic mobile-hidden" data-topic-toggle data-tag-code="other">
                     <h3>Other</h3>
                 </div>
             </div>
-            <div id="see-more-categories">See More Categories</div>
+            <div id="see-more-categories">
+                <div data-showing="false" id="see-more-categories-btn">See More Categories</div>
+            </div>
 
 
             <div id="all-clubs">
@@ -164,6 +169,10 @@
             <div id="announcements">
 
             </div>
+        </div>
+        <div id="footer">
+            <img src="" alt="">
+            <h3>© Amador Valley Web Development Club</h3>
         </div>
         <script src="index.js"></script>
         <script>

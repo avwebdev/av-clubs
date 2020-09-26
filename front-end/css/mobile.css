@@ -1,4 +1,4 @@
-@media (max-width: 940px) {
+@media (max-width: 1000px) {
   :root {
     --navbar-height: 75px;
   }
@@ -9,7 +9,7 @@
   }
   #main-wrapper {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: center;
     width: 100%;
   }
@@ -63,7 +63,7 @@
     width: 100%;
     margin-top: 0px;
     text-overflow: ellipsis;
-    height: 96px;
+    height: 94px;
     display: -webkit-box;
     -webkit-line-clamp: 5;
     /* number of lines to show */
@@ -139,8 +139,8 @@
   }
   #left-navbar > h1 {
     margin: 0px;
-    margin-left: 20px;
-    padding-top: 17px;
+    margin-left: 10px;
+    padding-top: 23px;
     font-size: 13pt;
   }
   #links > a {
@@ -187,12 +187,13 @@
 
   #navbar img {
     height: 60px;
+    margin-left: 10px;
   }
 }
 
 @media (max-width: 1200px) {
   body {
-    padding: 0.8%;
+    padding: 5%;
     padding-top: 0px;
     padding-bottom: 0px;
   }
@@ -228,6 +229,22 @@
   }
   #see-more-categories {
     display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  #see-more-categories-btn {
+    padding: 4px;
+    border: 0.5px solid black;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+
+  #footer h3 {
+    display: inline-block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 9pt;
   }
 }
 
