@@ -30,7 +30,6 @@ async function getData() {
 getData().then((allClubs) => {
   searchInput.onchange = searchClubs;
   searchInput.oninput = searchClubs;
-  searchInput.onkeydown = searchKeyPress;
   document.onclick = checkIfSuggestionClicked;
   clearSearch.onclick = clearSearchInput;
   seeMoreCategories.onclick = showMoreCategories;
@@ -63,14 +62,6 @@ getData().then((allClubs) => {
     }
     if (i === 0) {
       createSuggestion("No Results Found");
-    }
-  }
-
-  function searchKeyPress(e) {
-    if (e.key === "ArrowDown") {
-      e.preventDefault();
-      console.log(clubSuggestions);
-      clubSuggestions.firstChild.focus();
     }
   }
 
