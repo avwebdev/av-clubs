@@ -414,7 +414,6 @@ body {
   /* display */
   display: flex;
   align-items: center;
-  justify-content: center;
   width: 90%;
   margin: 30px;
   margin-left: 5%;
@@ -425,6 +424,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 5px;
   border: 2px solid black;
   font-size: 20px;
   border-radius: 5px;
