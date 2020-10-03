@@ -269,6 +269,12 @@ body {
   margin-bottom: 30px;
 }
 
+#club-feed h1 {
+  font-size: 19pt;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 #left {
   display: none;
 }
