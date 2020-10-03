@@ -62,6 +62,15 @@ async function loadAnnouncements(sheets) {
     });
 }
 
-setInterval(() => {
-  if (auth.isTokenExpiring()) auth.authorize(setData);
+setInterval(async () => {
+  //console.log(auth);
+  if (auth.isTokenExpiring()) {
+    auth = new google.auth.JWT(
+      credentials.client_email,
+      null,
+      credentials.private_key,
+      ["https://www.googleapis.com/auth/spreadsheets"]
+    );
+    auth.authorize(setData);
+  }
 }, 4000);
