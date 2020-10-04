@@ -7,7 +7,10 @@ async function loadAnnouncements() {
     announcements = data;
     var announcementsRoot = document.getElementById("announcements");
     var mobileAnnouncementsRoot = document.querySelector(".swiper-wrapper");
+    var i=0;
     for (var key of Object.keys(data)) {
+        if (i>6) break; //limits amount of announcements
+        i++;
         announcement = data[key];
         let expandButton = `<i class="mdi mdi-arrow-expand" onclick="appear(${key});"></i>`;
         if (!(announcement["Paragraph 2"] || announcement["Link 1"])) {
