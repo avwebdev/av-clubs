@@ -29,6 +29,10 @@ app.post("/announcements", function (req, res) {
   res.end(JSON.stringify(announcements));
 });
 
+app.get("*", function(req, res) {
+  res.redirect("/");
+})
+
 app.listen(81, function () {
   console.log("server started on port 80");
 });
