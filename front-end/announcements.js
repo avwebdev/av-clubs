@@ -11,8 +11,8 @@ async function loadAnnouncements() {
     for (var key of Object.keys(data)) {
         if (i>6) break; //limits amount of announcements
         announcement = data[key];
-        i++;
         if (!(announcement["Title"] || announcement["Date"] || announcement["Paragraph 1"])) continue;
+        i++;
         let expandButton = `<i class="mdi mdi-arrow-expand" onclick="appear(${key});"></i>`;
         if (!(announcement["Paragraph 2"] || announcement["Link 1"])) {
             expandButton="";
