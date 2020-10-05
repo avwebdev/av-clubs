@@ -22,11 +22,14 @@ body {
   background-color: var(--color-primary);
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
-  
+}
+
+strong {
+  font-weight: 600;
 }
 
 #title, h1, h2, h3, h4 {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 #mobile-nav-right {
@@ -243,6 +246,7 @@ body {
   text-align: center;
   width: 100%;
   font-size: 10pt;
+  font-weight: 400;
 }
 
 #category-header {
