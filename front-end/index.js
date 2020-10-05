@@ -54,8 +54,9 @@ getData().then((allClubs) => {
     //Go through all clubs
     let i = 0;
     for (const name in allClubs) {
+      const club = allClubs[name];
       //If the search matches the name
-      if (name.toLowerCase().includes(search)) {
+      if (name.toLowerCase().includes(search) || club[description].toLowerCase().includes(search)) {
         createSuggestion(name, true);
         i++;
       }
@@ -174,16 +175,16 @@ getData().then((allClubs) => {
     const clubDiv = createElement("div", { className: `club-div ${tagname}`, id: `club-div-${name}` });
     clubDiv.setAttribute("data-count", "0");
     const clubDisplay = createElement("div", {className: "club-div-display"});
+    clubDisplay.onclick = () => {
+      showClubInfo(clubDiv);
+      rotate(clubDiv);
+    }
     const clubTitle = createElement("h1", {
       className: "club-title",
       innerText: name
     });
     clubDisplay.appendChild(clubTitle);
     const i = createElement("i", { className: "mdi mdi-arrow-down-drop-circle-outline club-dropdown-icon"});
-    i.onclick = () => {
-      showClubInfo(clubDiv);
-      rotate(clubDiv);
-    }
     i.style.transition = "0.5s";
     clubDisplay.appendChild(i);
     

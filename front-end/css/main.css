@@ -228,11 +228,13 @@ body {
   border-radius: 50%;
   height: 8vw;
   width: 8vw;
+  z-index:0;
   margin: 1.4vw;
   margin-bottom: var(--topic-margin-bottom);
   border: 5px solid black;
   position: relative;
   transition: 0.5s;
+  cursor: pointer;
 }
 
 .topic h3 {
@@ -382,6 +384,7 @@ background-position: center;
 .club-div-display {
   display: flex;
   align-items: center;
+  cursor: pointer;
   width: 100%;
 }
 
@@ -458,7 +461,7 @@ background-position: center;
 }
 
 #big-answer {
-  z-index: 100000000;
+  z-index: 10;
   width: 60%;
   margin-top: 5%;
   position: absolute;
@@ -595,10 +598,10 @@ background-position: center;
 }
 @keyframes backScreen {
   from {
-    z-index: initial;
+    z-index: 20;
   }
   to {
-    z-index: 1;
+    z-index: 20;
   }
 }
 
