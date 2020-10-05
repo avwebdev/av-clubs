@@ -21,11 +21,11 @@ body {
   margin: 0px;
   background-color: var(--color-primary);
   font-family: "Montserrat", sans-serif;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 strong {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 #title, h1, h2, h3, h4 {
@@ -504,7 +504,7 @@ background-position: center;
 #date {
   position: relative;
   bottom: 3px;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 #date {
