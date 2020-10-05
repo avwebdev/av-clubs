@@ -333,6 +333,7 @@ background-position: center;
   position: absolute;
   bottom: 5px;
   transform: none;
+  font-weight: 400;
 }
 
 .announcement i {
