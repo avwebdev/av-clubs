@@ -4,7 +4,7 @@ const searchInput = document.getElementById("search-input");
 const clubSuggestions = document.getElementById("club-suggestions");
 const clearSearch = document.getElementById("search-clear");
 const seeMoreCategories = document.getElementById("see-more-categories-btn");
-const hiddenCategories = document.querySelectorAll("[data-topic-toggle]");
+const hiddenCategories = document.querySelectorAll('[data-topic-toggle]');
 
 // Club fields
 const description = "What is the purpose of your club?";
@@ -15,8 +15,7 @@ const president = "Who is the current Club President (or equivalent)?";
 const vicePresident = "Who is the current Club Vice President (or equivalent)?";
 const secretary = "Who is the current Club Secretary (or equivalent)?";
 const treasurer = "Who is the current Club Treasurer (or equivalent)?";
-const otherOfficers =
-  "Are there any other Club Officer? (Please state their roles.)";
+const otherOfficers = "Are there any other Club Officer? (Please state their roles.)";
 const remindLink = "Do you have a remind link?";
 const howToJoin = "How can members join the club?";
 const otherLinks = "What are other important links for your club";
@@ -26,6 +25,7 @@ async function getData() {
   const json = await response.json();
   return json;
 }
+
 
 getData().then((allClubs) => {
   searchInput.onchange = searchClubs;
@@ -38,7 +38,7 @@ getData().then((allClubs) => {
 
   function checkIfSuggestionClicked(e) {
     const path = e.path || (event.composedPath && event.composedPath());
-    if (!path.includes(searchBar) && !path.includes(clubSuggestions)) {
+    if(!path.includes(searchBar) && !path.includes(clubSuggestions)) {
       searchInput.blur();
       clubSuggestions.style.display = "none";
     }
@@ -54,14 +54,23 @@ getData().then((allClubs) => {
     //Go through all clubs
     let i = 0;
     for (const name in allClubs) {
+      const club = allClubs[name];
       //If the search matches the name
-      if (name.toLowerCase().includes(search)) {
+      if (name.toLowerCase().includes(search) || club[description].toLowerCase().includes(search)) {
         createSuggestion(name, true);
         i++;
       }
     }
     if (i === 0) {
-      createSuggestion("No Results Found");
+      createSuggestion("No Results Found")
+    }
+  }
+
+  function searchKeyPress(e) {
+    if(e.key === "ArrowDown") {
+      e.preventDefault();
+      console.log(clubSuggestions);
+      clubSuggestions.firstChild.focus();
     }
   }
 
@@ -79,16 +88,16 @@ getData().then((allClubs) => {
         if (withOnClick) {
           openClubs("all");
           var div = document.getElementById(`club-div-${text}`);
-          if (parseInt(div.getAttribute("data-count")) % 2 === 0) {
+          if(parseInt(div.getAttribute("data-count"))%2===0)  {
             showClubInfo(div);
             rotate(div);
-          }
+          }        
           div.scrollIntoView({
             behavior: "smooth",
           });
         }
         clubSuggestions.style.display = "none";
-      },
+      }
     });
     const title = createElement("p", {
       innerText: text,
@@ -107,7 +116,8 @@ getData().then((allClubs) => {
         const club = createClubDiv(name, clubs[name]);
         club.classList.add("invisible-club");
         clubsDiv.appendChild(club);
-      } else {
+      }
+      else {
         const club = createClubDiv(name, clubs[name]);
         clubsDiv.appendChild(club);
       }
@@ -115,107 +125,77 @@ getData().then((allClubs) => {
     const viewAll = createElement("div", {
       id: "view-all-clubs",
       style: {
-        justifyContent: "center",
+        justifyContent: "center"
       },
       className: "club-div",
-      onclick: () => openClubs("all"),
+      onclick: () => openClubs("all")
     });
-    const viewAllTitle = createElement("h2", {
-      innerText: `View All ${Object.keys(clubs).length} Clubs`,
-    });
+    const viewAllTitle = createElement("h2", {innerText: `View All ${Object.keys(clubs).length} Clubs`});
     viewAll.appendChild(viewAllTitle);
     clubsDiv.appendChild(viewAll);
   }
 
   function createClubDiv(name, club) {
-    //generate random tag name. With data tagname will equal club["category"]
-    var randnum = Math.floor(Math.random() * 8 + 1);
+
+//generate random tag name. With data tagname will equal club["category"]
+    var randnum = Math.floor(Math.random()*8+1);
     var tagname;
     switch (randnum) {
       case 1:
-        tagname = "businessandfinance";
+        tagname = "businessandfinance"
         break;
 
       case 2:
-        tagname = "arts";
+        tagname = "arts"
         break;
 
       case 3:
-        tagname = "codingandrobotics";
+        tagname = "codingandrobotics"
         break;
 
       case 4:
-        tagname = "scienceandmath";
+        tagname = "scienceandmath"
         break;
 
       case 5:
-        tagname = "entertainment";
+        tagname = "entertainment"
         break;
-
+      
       case 6:
-        tagname = "community";
+        tagname = "community"
         break;
 
       default:
-        tagname = "other";
+        tagname = "other"
     }
 
-    //end
+//end
 
-    const clubDiv = createElement("div", {
-      className: `club-div ${tagname}`,
-      id: `club-div-${name}`,
-    });
+
+    const clubDiv = createElement("div", { className: `club-div ${tagname}`, id: `club-div-${name}` });
     clubDiv.setAttribute("data-count", "0");
-    const clubDisplay = createElement("div", { className: "club-div-display" });
-    const clubTitle = createElement("h1", {
-      className: "club-title",
-      innerText: name,
-    });
-    clubDisplay.appendChild(clubTitle);
-    const i = createElement("i", {
-      className: "mdi mdi-arrow-down-drop-circle-outline club-dropdown-icon",
-    });
-    i.onclick = () => {
+    const clubDisplay = createElement("div", {className: "club-div-display"});
+    clubDisplay.onclick = () => {
       showClubInfo(clubDiv);
       rotate(clubDiv);
-    };
+    }
+    const clubTitle = createElement("h1", {
+      className: "club-title",
+      innerText: name
+    });
+    clubDisplay.appendChild(clubTitle);
+    const i = createElement("i", { className: "mdi mdi-arrow-down-drop-circle-outline club-dropdown-icon"});
     i.style.transition = "0.5s";
     clubDisplay.appendChild(i);
-
+    
     clubDiv.appendChild(clubDisplay);
     //Dropdown
-    const clubDropdown = createElement("div", { className: "club-dropdown" });
-    addClubDropdownItem(
-      "Description",
-      club[description],
-      "club-description",
-      clubDropdown
-    );
-    addClubDropdownItem(
-      "Contact Email",
-      club[contact],
-      "club-contact",
-      clubDropdown
-    );
-    addClubDropdownItem(
-      "Meeting Time",
-      club[meetingTime],
-      "club-meeting-time",
-      clubDropdown
-    );
-    addClubDropdownItem(
-      "Meeting Location",
-      club[meetingLocation],
-      "club-meeting-location",
-      clubDropdown
-    );
-    addClubDropdownItem(
-      "Officers",
-      `${club[president]} (President), ${club[vicePresident]} (Vice President), ${club[secretary]} (Secretary), ${club[treasurer]} (Treasurer), ${club[otherOfficers]}`,
-      "club-officers",
-      clubDropdown
-    );
+    const clubDropdown = createElement("div", {className: "club-dropdown"});
+    addClubDropdownItem("Description", club[description], "club-description", clubDropdown);
+    addClubDropdownItem("Contact Email", club[contact], "club-contact", clubDropdown);
+    addClubDropdownItem("Meeting Time", club[meetingTime],"club-meeting-time", clubDropdown );
+    addClubDropdownItem("Meeting Location", club[meetingLocation], "club-meeting-location", clubDropdown);
+    addClubDropdownItem("Officers", `${club[president]} (President), ${club[vicePresident]} (Vice President), ${club[secretary]} (Secretary), ${club[treasurer]} (Treasurer), ${club[otherOfficers]}`, "club-officers", clubDropdown);
     addClubDropdownItem("Remind Link", club[remindLink], clubDropdown);
     addClubDropdownItem("How to join", club[howToJoin], clubDropdown);
     addClubDropdownItem("Other Links", club[otherLinks], clubDropdown);
@@ -225,13 +205,11 @@ getData().then((allClubs) => {
   }
 
   function addClubDropdownItem(title, text, className, clubDropdown) {
-    if (text) {
-      const clubDropdownItemTitle = createElement("strong", {
-        innerText: title,
-      });
-      const clubDropdownItemText = createElement("p", { innerText: text });
+    if(text) {
+      const clubDropdownItemTitle = createElement("strong", {innerText: title});
+      const clubDropdownItemText = createElement("p", {innerText: text});
       const clubDropdownItem = createElement("p", {
-        className: `club-dropdown-item ${className}`,
+        className: `club-dropdown-item ${className}`
       });
       clubDropdownItem.appendChild(clubDropdownItemTitle);
       clubDropdownItem.appendChild(clubDropdownItemText);
@@ -242,7 +220,7 @@ getData().then((allClubs) => {
   function showClubInfo(element) {
     const clubDropdown = element.getElementsByClassName("club-dropdown")[0];
     let count = parseInt(element.getAttribute("data-count"));
-    if (count % 2 === 0) {
+    if(count % 2 === 0) {
       clubDropdown.classList.add("club-dropdown-showing");
     } else {
       clubDropdown.classList.remove("club-dropdown-showing");
@@ -262,18 +240,19 @@ getData().then((allClubs) => {
       parent.removeChild(parent.firstChild);
     }
   }
+  
 });
 
 function showMoreCategories() {
   const isShowing = JSON.parse(seeMoreCategories.getAttribute("data-showing"));
-  if (!isShowing) {
-    for (let i = 0; i < hiddenCategories.length; i++) {
+  if(!isShowing) {
+    for(let i = 0; i < hiddenCategories.length; i++) {
       const hidden = hiddenCategories.item(i);
       hidden.classList.remove("mobile-hidden");
       seeMoreCategories.innerHTML = "See Less Categories";
     }
   } else {
-    for (let i = 0; i < hiddenCategories.length; i++) {
+    for(let i = 0; i < hiddenCategories.length; i++) {
       const hidden = hiddenCategories.item(i);
       hidden.classList.add("mobile-hidden");
       seeMoreCategories.innerHTML = "See More Categories";
@@ -285,33 +264,15 @@ function showMoreCategories() {
 function openClubs(mode, tagName, oTagName) {
   switch (mode) {
     case "all":
-      document.styleSheets[document.styleSheets.length - 1].addRule(
-        `.club-div`,
-        "display: flex !important"
-      );
-      document.styleSheets[document.styleSheets.length - 1].addRule(
-        ".invisible-club",
-        "display: flex !important"
-      );
-      document.styleSheets[document.styleSheets.length - 1].addRule(
-        `#view-all-clubs`,
-        "display: none !important"
-      );
+      document.styleSheets[document.styleSheets.length - 1].addRule(`.club-div`, "display: flex !important");
+      document.styleSheets[document.styleSheets.length - 1].addRule(".invisible-club", "display: flex !important");
+      document.styleSheets[document.styleSheets.length - 1].addRule(`#view-all-clubs`, "display: none !important");
       applyTag("all");
       break;
     case "tag":
-      document.styleSheets[document.styleSheets.length - 1].addRule(
-        `.club-div`,
-        "display: none !important"
-      );
-      document.styleSheets[document.styleSheets.length - 1].addRule(
-        `.${oTagName}`,
-        "display: flex !important"
-      );
-      document.styleSheets[document.styleSheets.length - 1].addRule(
-        `#view-all-clubs`,
-        "display: flex !important"
-      );
+      document.styleSheets[document.styleSheets.length - 1].addRule(`.club-div`, "display: none !important");
+      document.styleSheets[document.styleSheets.length - 1].addRule(`.${oTagName}`, "display: flex !important");
+      document.styleSheets[document.styleSheets.length - 1].addRule(`#view-all-clubs`, "display: flex !important");
       applyTag(mode, tagName, oTagName);
       document.getElementById("all-clubs").scrollIntoView({
         behavior: "smooth",
@@ -319,15 +280,17 @@ function openClubs(mode, tagName, oTagName) {
   }
 }
 
-function openTags() {}
+function openTags() {
 
-window.addEventListener("load", function () {
+}
+
+window.addEventListener("load", function() {
   for (var topic of document.querySelectorAll("#categories .topic")) {
     let tagName = topic.querySelector("h3").innerText;
     let oTagName = topic.getAttribute("data-tag-code");
-    topic.onclick = function () {
+    topic.onclick = function() {
       openClubs("tag", tagName, oTagName);
-    };
+    }
   }
 });
 
@@ -337,7 +300,7 @@ function applyTag(mode, tagName, oTagName) {
     case "all":
       document.querySelector("#sort-area").innerHTML += `
       <div class="sort-field">
-        <i class="mdi mdi-close sort-field-close"></i>
+        <i class="mdi mdi-close"></i>
         <span>All Clubs</span>
       </div>`;
       // document.querySelector("#sort-area").querySelector(".sort-field i").onclick = function() {
@@ -349,7 +312,7 @@ function applyTag(mode, tagName, oTagName) {
     case "tag":
       document.querySelector("#sort-area").innerHTML += `
       <div class="sort-field">
-        <i class="mdi mdi-close sort-field-close"></i>
+        <i class="mdi mdi-close"></i>
         <span>${tagName}</span>
       </div>`;
       // document.querySelector("#sort-area").querySelector(".sort-field i").onclick = function () {
@@ -359,35 +322,26 @@ function applyTag(mode, tagName, oTagName) {
       // }
       break;
   }
-  document
-    .querySelector("#sort-area")
-    .querySelector(".sort-field i").onclick = function () {
-    document.styleSheets[document.styleSheets.length - 1].addRule(
-      `.club-div`,
-      "display: block !important"
-    );
-    document.styleSheets[document.styleSheets.length - 1].addRule(
-      ".invisible-club",
-      "display: none !important"
-    );
-    document.styleSheets[document.styleSheets.length - 1].addRule(
-      `#view-all-clubs`,
-      "display: flex !important"
-    );
+  document.querySelector("#sort-area").querySelector(".sort-field i").onclick = function () {
+    document.styleSheets[document.styleSheets.length - 1].addRule(`.club-div`, "display: block !important");
+    document.styleSheets[document.styleSheets.length - 1].addRule(".invisible-club", "display: none !important");
+    document.styleSheets[document.styleSheets.length - 1].addRule(`#view-all-clubs`, "display: flex !important");
     clearTags();
-  };
+  }
 }
 
 function clearTags() {
   document.querySelector("#sort-area").innerHTML = "";
 }
 
-function rotate(element) {
-  const i = element.getElementsByTagName("i")[0];
+
+function rotate(element){
+  const i = element.getElementsByTagName('i')[0];
   const count = parseInt(element.getAttribute("data-count"));
-  if (count % 2 === 0) {
+  if(count % 2 === 0){
     i.style.transform = "rotate(-180deg)";
-  } else {
+  }
+  else {
     i.style.transform = "none";
   }
   element.setAttribute("data-count", (count + 1).toString());
@@ -402,7 +356,8 @@ function display(i, counter) {
       if (counter % 2 == 0) {
         answer[x].style.display = "block";
         answer[x].style.borderTop = "1px solid black";
-      } else if (counter % 2 == 1) {
+      }
+      else if (counter % 2 == 1) {
         answer[x].style.display = "none";
       }
     }

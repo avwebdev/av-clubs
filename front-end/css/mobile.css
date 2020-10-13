@@ -60,7 +60,7 @@
   }
   .swiper-slide p {
     display: inline-block;
-    width: 100%;
+    width: 97%;
     margin-top: 0px;
     text-overflow: ellipsis;
     height: 94px;
@@ -76,7 +76,7 @@
   }
   .swiper-slide .bottom-bar {
     margin-top: 0px;
-    font-weight: 600;
+    font-weight: 400;
   }
   .swiper-slide .bottom-bar i {
     float: right;

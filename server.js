@@ -29,6 +29,10 @@ app.post("/announcements", function (req, res) {
   res.end(JSON.stringify(announcements));
 });
 
+app.get("*", function(req, res) {
+  res.redirect("/");
+})
+
 app.listen(81, function () {
   console.log("server started on port 80");
 });
@@ -62,6 +66,15 @@ async function loadAnnouncements(sheets) {
     });
 }
 
-setInterval(() => {
-  if (auth.isTokenExpiring()) auth.authorize(setData);
+setInterval(async () => {
+  //console.log(auth);
+  if (auth.isTokenExpiring()) {
+    auth = new google.auth.JWT(
+      credentials.client_email,
+      null,
+      credentials.private_key,
+      ["https://www.googleapis.com/auth/spreadsheets"]
+    );
+    auth.authorize(setData);
+  }
 }, 4000);
