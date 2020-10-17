@@ -46,8 +46,8 @@ function setData(err, token) {
 
   sheets.spreadsheets.values
     .get({
-      spreadsheetId: "1mkEshytIqNDkkNUTpuhiZjYMJNNxSvAvzTZgYXizgh4",
-      range: "A1:N100",
+      spreadsheetId: "1LhB2_-7ZXsHk2boeTRIt2slaFVLsXy0lceJyfwyCB-E",
+      range: "A1:Z200",
     })
     .then((response) => {
       data = club(response.data.values);

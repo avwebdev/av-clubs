@@ -426,6 +426,18 @@ h4 {
   margin-left: 10px;
 }
 
+.club-other-links li {
+  margin-bottom: 12px;
+  list-style-type: none;
+}
+.club-dropdown-item a {
+  cursor: pointer;
+  padding-bottom: 2xpx;
+  text-decoration: none;
+  color: black;
+  border-bottom: 2px solid black;
+}
+
 .invisible-club {
   display: none !important;
 }

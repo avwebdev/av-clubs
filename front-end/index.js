@@ -15,10 +15,12 @@ const president = "Who is the current Club President (or equivalent)?";
 const vicePresident = "Who is the current Club Vice President (or equivalent)?";
 const secretary = "Who is the current Club Secretary (or equivalent)?";
 const treasurer = "Who is the current Club Treasurer (or equivalent)?";
-const otherOfficers = "Are there any other Club Officer? (Please state their roles.)";
-const remindLink = "Do you have a remind link?";
-const howToJoin = "How can members join the club?";
-const otherLinks = "What are other important links for your club";
+const otherOfficers = "Are there any other Club Officers? (Please state their roles.)";
+const remindLink = "What is the remind link for your club? Leave blank if none.";
+const otherLinks = "Any other important links?";
+const website = "What is the link of your website? Leave blank if none.";
+const category = "What category does your club fall under?";
+
 
 async function getData() {
   const response = await fetch("/getData", { method: "POST" });
@@ -138,31 +140,39 @@ getData().then((allClubs) => {
   function createClubDiv(name, club) {
 
 //generate random tag name. With data tagname will equal club["category"]
-    var randnum = Math.floor(Math.random()*8+1);
     var tagname;
-    switch (randnum) {
-      case 1:
+    console.log(club[category], club);
+    switch (club[category]) {
+      case "Business and Finance":
         tagname = "businessandfinance"
         break;
 
-      case 2:
+      case "Arts":
         tagname = "arts"
         break;
 
-      case 3:
+      case "Coding and Robotics":
         tagname = "codingandrobotics"
         break;
 
-      case 4:
+      case "Science and Math":
         tagname = "scienceandmath"
         break;
 
-      case 5:
+      case "Entertainment":
         tagname = "entertainment"
         break;
       
-      case 6:
-        tagname = "community"
+      case "Community Service":
+        tagname = "community";
+        break;
+      
+      case "Athletics":
+        tagname = "athletics";
+        break;
+      
+      case "Policy": 
+        tagname = "policy"
         break;
 
       default:
@@ -196,18 +206,42 @@ getData().then((allClubs) => {
     addClubDropdownItem("Meeting Time", club[meetingTime],"club-meeting-time", clubDropdown );
     addClubDropdownItem("Meeting Location", club[meetingLocation], "club-meeting-location", clubDropdown);
     addClubDropdownItem("Officers", `${club[president]} (President), ${club[vicePresident]} (Vice President), ${club[secretary]} (Secretary), ${club[treasurer]} (Treasurer), ${club[otherOfficers]}`, "club-officers", clubDropdown);
-    addClubDropdownItem("Remind Link", club[remindLink], clubDropdown);
-    addClubDropdownItem("How to join", club[howToJoin], clubDropdown);
-    addClubDropdownItem("Other Links", club[otherLinks], clubDropdown);
+    addClubDropdownItem("Remind Link", club[remindLink], "club-remind-link", clubDropdown, {
+      link: true
+    });
+    addClubDropdownItem("Website", club[website], "club-website", clubDropdown, {
+      link: true
+    });
+    // addClubDropdownItem("Remind Link", club[remindLink], clubDropdown);
+    addClubDropdownItem("Other Links", club[otherLinks], "club-other-links", clubDropdown, {
+      otherLinks: true
+    });
 
     clubDiv.appendChild(clubDropdown);
     return clubDiv;
   }
 
-  function addClubDropdownItem(title, text, className, clubDropdown) {
+  function addClubDropdownItem(title, text, className, clubDropdown, options) {
     if(text) {
       const clubDropdownItemTitle = createElement("strong", {innerText: title});
-      const clubDropdownItemText = createElement("p", {innerText: text});
+      var clubDropdownItemText;
+      if (options?.link) {
+        clubDropdownItemText = createElement("p", {innerHTML: `<a href="${text}">${text}</a>`});
+      }
+      else if (options?.otherLinks) {
+        const list = document.createElement("li");
+        var links = text.split(",");
+        for (var link of links) {
+          var li = document.createElement("li");
+          var a = document.createElement("a");
+          a.innerText=link; a.href = link;
+          li.appendChild(a);
+          list.appendChild(li);
+        }
+        clubDropdownItemText = createElement("p");
+        clubDropdownItemText.appendChild(list);
+      }
+      else  { clubDropdownItemText = createElement("p", {innerText: text}); }
       const clubDropdownItem = createElement("p", {
         className: `club-dropdown-item ${className}`
       });
