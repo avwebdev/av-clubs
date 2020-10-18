@@ -59,7 +59,7 @@ async function loadAnnouncements(sheets) {
   sheets.spreadsheets.values
     .get({
       spreadsheetId: "1JEatzOlJ5vKTxQE4EUSJjoa_ViSJ_TGfwoG1Zx8x9kM",
-      range: "A1:N100",
+      range: "A1:Z100",
     })
     .then((response) => {
       announcements = announcement(response.data.values);

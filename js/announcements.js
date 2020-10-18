@@ -22,25 +22,22 @@ function announcement(sheetsOb) {
             announcementOb[categories[`${index}`]] = value;
         });
 
-        toBeSorted.push(announcementOb);
+        if (announcementOb.Date && announcementOb.Title && announcementOb["Paragraph 1"]) toBeSorted.push(announcementOb);
     }
 
-    for (var i=0; i<toBeSorted.length; i++) {
-        var date = toBeSorted[i].Date;
-        date = new Date(date);
-        for (var x = 0; x<i; x++) {
-            var compareDate = new Date(toBeSorted[x].Date);
-            if (date > compareDate && (x === 0 || date < new Date(toBeSorted[x-1].Date))) {
-                var temp = toBeSorted.splice(i, 1);
-                toBeSorted.splice(x, 0, temp[0])
-            }
-            
+    for (var i=0; i<toBeSorted.length-1; i++) {
+        var date = new Date(toBeSorted[i].Date);
+        var nextDate = new Date(toBeSorted[i+1].Date);
+        if (date>nextDate) {
+            let [temp] = toBeSorted.splice(i+1, 1);
+            toBeSorted.splice(0, 0, temp);
+            i=-1;
         }
     }
 
-    toBeSorted.forEach(function(value, index) {
-        announcements[index] = value;
-    });
+    toBeSorted.reverse();
+
+    announcements["data"] = toBeSorted;
 
 
     return announcements;

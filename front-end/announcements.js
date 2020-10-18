@@ -4,11 +4,24 @@ async function loadAnnouncements() {
         method: "POST",
     });
     data = await data.json();
-    announcements = data;
+    data = data["data"];
+    for (var leadershipI=0; leadershipI<2; leadershipI++) {
+        if (data[leadershipI]["Who are you?"]==="Leadership") {
+            continue;
+        }
+        for (var i=leadershipI; i<data.length; i++) {
+            console.log(data[i]["Who are you?"])
+            if (data[i]["Who are you?"]==="Leadership") {
+                let [temp]=data.splice(i,1);
+                data.splice(leadershipI, 0, temp);
+                break;
+            }
+        }
+    }
     var announcementsRoot = document.getElementById("announcements");
     var mobileAnnouncementsRoot = document.querySelector(".swiper-wrapper");
     var i=0;
-    for (var key of Object.keys(data)) {
+    for (var key=0; key<data.length; key++) {
         if (i>6) break; //limits amount of announcements
         announcement = data[key];
         if (!(announcement["Title"] || announcement["Date"] || announcement["Paragraph 1"])) continue;
@@ -27,7 +40,11 @@ async function loadAnnouncements() {
                 <h4>
                     ${announcement.Title}
                 </h4>
-                <p>${announcement["Paragraph 1"]}${expandMessage}</p>
+                <p>${announcement["Paragraph 1"]}${expandMessage}
+                    <br>
+                    <br>
+                    — ${announcement["Who are you?"]}
+                </p>
             </div>
             <div class="announcement-bottom-bar">
                 <p class="date">${announcement.Date}</p>
