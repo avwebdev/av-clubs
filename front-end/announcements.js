@@ -5,7 +5,7 @@ async function loadAnnouncements() {
     });
     data = await data.json();
     data = data["data"];
-    for (var leadershipI=0; leadershipI<2; leadershipI++) {
+    for (var leadershipI=0; leadershipI<1; leadershipI++) {
         if (data[leadershipI]["Who are you?"]==="Leadership") {
             continue;
         }
@@ -18,6 +18,7 @@ async function loadAnnouncements() {
             }
         }
     }
+    announcements=data;
     var announcementsRoot = document.getElementById("announcements");
     var mobileAnnouncementsRoot = document.querySelector(".swiper-wrapper");
     var i=0;
@@ -55,7 +56,7 @@ async function loadAnnouncements() {
         mobileAnnouncementsRoot.innerHTML += `
         <div class="swiper-slide" onclick="appear(${key});">
             <h3>${announcement.Title}</h3>
-            <p>${announcement["Paragraph 1"]}${expandMessage}</p>
+            <p>From <span style="font-weight: 400; margin: 0px">${announcement["Who are you?"]}</span> - ${announcement["Paragraph 1"]}${expandMessage}</p>
             <div class="bottom-bar">
                 ${announcement.Date}
                 <i class="mdi mdi-arrow-expand"></i>
