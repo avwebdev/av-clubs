@@ -191,7 +191,7 @@
 
                 var desc = document.getElementById("big-answer");
                 desc.querySelector("h1").innerText = announcements[announcementKey].Title;
-                desc.querySelector("#date").innerText = announcements[announcementKey].Date;
+                desc.querySelector("#date").innerText = `${announcements[announcementKey].Date} - ${announcements[announcementKey]["Who are you?"]}`;
 
                 desc.querySelector("#description").innerHTML = "";
                 var allParagraphs = "";
