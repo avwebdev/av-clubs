@@ -290,37 +290,42 @@ h4 {
 }
 
 .topic[data-tag-code="codingandrobotics"] {
-  background-image: url("/images/Coding.jpg");
+  background-image: url("/images/codingAndRobtics.gif");
   background-position: center;
   background-size: cover;
 }
 .topic[data-tag-code="businessandfinance"] {
-  background-image: url("/images/business.png");
+  background-image: url("https://media0.giphy.com/media/3ohhwjUHA9kB6LY0Le/giphy.gif");
   background-position: center;
   background-size: cover;
 }
 .topic[data-tag-code="community"] {
-  background-image: url("/images/community.jpg");
+  background-image: url("https://i.pinimg.com/originals/81/2a/c2/812ac2e2ebdd85b28a3129fa7cf7118e.gif");
   background-position: center;
   background-size: cover;
 }
 .topic[data-tag-code="scienceandmath"] {
-  background-image: url("/images/science.png");
+  background-image: url("https://thumbs.gfycat.com/EnormousFinishedArthropods-size_restricted.gif");
   background-position: center;
   background-size: cover;
 }
 .topic[data-tag-code="arts"] {
-  background-image: url("/images/arts.jpg");
+  background-image: url("/images/arts.gif");
   background-position: center;
   background-size: cover;
 }
 .topic[data-tag-code="entertainment"] {
-  background-image: url("/images/entertainment.png");
+  background-image: url("/images/entertainment.gif");
   background-position: center;
   background-size: cover;
 }
-.topic[data-tag-code="other"] {
-  background-image: url("/images/other.png");
+.topic[data-tag-code="policy"] {
+  background-image: url("/images/policy.gif");
+  background-position: center;
+  background-size: cover;
+}
+.topic[data-tag-code = "athletics"]{
+  background-image: url("/images/athletics.gif");
   background-position: center;
   background-size: cover;
 }
