@@ -295,17 +295,17 @@ h4 {
   background-size: cover;
 }
 .topic[data-tag-code="businessandfinance"] {
-  background-image: url("https://media0.giphy.com/media/3ohhwjUHA9kB6LY0Le/giphy.gif");
+  background-image: url("/images/Business.gif");
   background-position: center;
   background-size: cover;
 }
 .topic[data-tag-code="community"] {
-  background-image: url("https://i.pinimg.com/originals/81/2a/c2/812ac2e2ebdd85b28a3129fa7cf7118e.gif");
+  background-image: url("/images/community.gif");
   background-position: center;
   background-size: cover;
 }
 .topic[data-tag-code="scienceandmath"] {
-  background-image: url("https://thumbs.gfycat.com/EnormousFinishedArthropods-size_restricted.gif");
+  background-image: url("/images/science.gif");
   background-position: center;
   background-size: cover;
 }
