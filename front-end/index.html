@@ -107,7 +107,7 @@
 
             var counting = 0;
             function appearNav(){
-                console.log(5000);
+                //console.log(5000);
                 var element = document.getElementById("mobile-nav-right");
                 if(counting%2==0){
                     element.style.right = "0";
@@ -191,7 +191,7 @@
             function appear(announcementKey) {
             if(count%2==0){
                 var back = document.getElementById("back-screen");
-                console.log(back);
+                //console.log(back);
                 back.style.position = "fixed";
                 back.style.animation = "backScreen 1s forwards";
                 
@@ -200,7 +200,7 @@
 
                 var desc = document.getElementById("big-answer");
                 desc.querySelector("h1").innerText = announcements[announcementKey].Title;
-                desc.querySelector("#date").innerText = `${announcements[announcementKey].Date} - ${announcements[announcementKey]["Who are you?"]}`;
+                desc.querySelector("#date").innerText = `${announcements[announcementKey].Date} - ${announcements[announcementKey]["Which club do you represent?"]}`;
 
                 desc.querySelector("#description").innerHTML = "";
                 var allParagraphs = "";
@@ -228,12 +228,12 @@
             function disappear(){
                 if (count % 2 == 1) {
                 var back = document.getElementById("back-screen");
-                console.log(back);
+                //console.log(back);
                 back.style.animation = "none";
                 back.style.opacity = "0";
                 back.style.position = "static";
                 var desc = document.getElementById("big-answer");
-                console.log(desc);
+                //console.log(desc);
                 desc.style.animation = "none";
                 desc.style.transform = "translateY(-200%)";
                 count++;

@@ -6,12 +6,12 @@ async function loadAnnouncements() {
     data = await data.json();
     data = data["data"];
     for (var leadershipI=0; leadershipI<1; leadershipI++) {
-        if (data[leadershipI]["Who are you?"]==="Leadership") {
+        if (data[leadershipI]["Which club do you represent?"]==="Leadership") {
             continue;
         }
         for (var i=leadershipI; i<data.length; i++) {
-            console.log(data[i]["Who are you?"])
-            if (data[i]["Who are you?"]==="Leadership") {
+            //console.log(data[i]["Which club do you represent?"])
+            if (data[i]["Which club do you represent?"]==="Leadership") {
                 let [temp]=data.splice(i,1);
                 data.splice(leadershipI, 0, temp);
                 break;
@@ -44,7 +44,7 @@ async function loadAnnouncements() {
                 <p>${announcement["Paragraph 1"]}${expandMessage}
                     <br>
                     <br>
-                    — ${announcement["Who are you?"]}
+                    — ${announcement["Which club do you represent?"]}
                 </p>
             </div>
             <div class="announcement-bottom-bar">
@@ -56,7 +56,7 @@ async function loadAnnouncements() {
         mobileAnnouncementsRoot.innerHTML += `
         <div class="swiper-slide" onclick="appear(${key});">
             <h3>${announcement.Title}</h3>
-            <p>From <span style="font-weight: 400; margin: 0px">${announcement["Who are you?"]}</span> - ${announcement["Paragraph 1"]}${expandMessage}</p>
+            <p>From <span style="font-weight: 400; margin: 0px">${announcement["Which club do you represent?"]}</span> - ${announcement["Paragraph 1"]}${expandMessage}</p>
             <div class="bottom-bar">
                 ${announcement.Date}
                 <i class="mdi mdi-arrow-expand"></i>
