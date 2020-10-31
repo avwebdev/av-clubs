@@ -22,7 +22,8 @@ function announcement(sheetsOb) {
             announcementOb[categories[`${index}`]] = value;
         });
 
-        if (announcementOb.Date && announcementOb.Title && announcementOb["Paragraph 1"]) toBeSorted.push(announcementOb);
+
+        if (announcementOb.Date && announcementOb.Title && announcementOb["Paragraph 1"] && announcementOb["Approved"] && announcementOb["Approved"]!="") toBeSorted.push(announcementOb);
     }
 
     for (var i=0; i<toBeSorted.length-1; i++) {
