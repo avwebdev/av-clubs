@@ -40,8 +40,54 @@ function announcement(sheetsOb) {
 
     announcements["data"] = toBeSorted;
 
+    mailingList.setAnnouncements(announcements);
 
     return announcements;
+}
+
+
+var mailingList = {
+    previousAnnouncements: null,
+    currentAnnouncements: null,
+    setAnnouncements: function(currentAnnouncements) {
+        this.previousAnnouncements = this.currentAnnouncements;
+        this.currentAnnouncements = currentAnnouncements;
+        var announcementsToEmail = this.checkForApprovalChanges();
+        if (announcementsToEmail.length>0) {
+            this.email(announcementsToEmail);
+        }
+    },
+
+    checkForApprovalChanges: function() {
+        var newAnnouncements = [];
+        for (var announcement of Object.values(this.currentAnnouncements.data)) {
+            let previousAnnouncement = null;
+
+            if (this.previousAnnouncements!=null) {
+                for (var otherAnnouncement of Object.values(this.previousAnnouncements.data)) {
+                    if (otherAnnouncement.Title===announcement.Title || otherAnnouncement["Paragraph 1"]===announcement["Paragraph 1"] || otherAnnouncement["Paragraph 2"]===announcement["Paragraph 2"]) {
+                        previousAnnouncement = otherAnnouncement;
+                        break;
+                    }
+                }
+            }
+
+            // console.log(announcement.Title, announcement.Approved);
+            // if (previousAnnouncement) {
+            //     console.log(previousAnnouncement.Title, previousAnnouncement.Approved);
+            // }
+
+            if (previousAnnouncement == null && announcement["Approved"] && announcement["Approved"].trim()!="") {
+                newAnnouncements.push(announcement); 
+            }
+        }
+        return newAnnouncements;
+    },
+
+    email: function(announcements) {
+        console.log(announcements);
+    },
+
 }
 
 module.exports = announcement;
