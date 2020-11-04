@@ -68,7 +68,7 @@ async function loadAnnouncements(sheets) {
 
 setInterval(async () => {
   //console.log(auth);
-  //if (auth.isTokenExpiring()) {
+  if (auth.isTokenExpiring()) {
     auth = new google.auth.JWT(
       credentials.client_email,
       null,
@@ -76,5 +76,5 @@ setInterval(async () => {
       ["https://www.googleapis.com/auth/spreadsheets"]
     );
     auth.authorize(setData);
-  //}
+  }
 }, 4000);

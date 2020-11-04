@@ -23,16 +23,16 @@ function announcement(sheetsOb) {
         });
 
 
-        if (announcementOb.Date && announcementOb.Title && announcementOb["Paragraph 1"] && announcementOb["Approved"] && announcementOb["Approved"]!="") toBeSorted.push(announcementOb);
+        if (announcementOb.Date && announcementOb.Title && announcementOb["Paragraph 1"] && announcementOb["Approved"] && announcementOb["Approved"] != "") toBeSorted.push(announcementOb);
     }
 
-    for (var i=0; i<toBeSorted.length-1; i++) {
+    for (var i = 0; i < toBeSorted.length - 1; i++) {
         var date = new Date(toBeSorted[i].Date);
-        var nextDate = new Date(toBeSorted[i+1].Date);
-        if (date>nextDate) {
-            let [temp] = toBeSorted.splice(i+1, 1);
+        var nextDate = new Date(toBeSorted[i + 1].Date);
+        if (date > nextDate) {
+            let [temp] = toBeSorted.splice(i + 1, 1);
             toBeSorted.splice(0, 0, temp);
-            i=-1;
+            i = -1;
         }
     }
 
@@ -49,42 +49,42 @@ function announcement(sheetsOb) {
 var mailingList = {
     previousAnnouncements: null,
     currentAnnouncements: null,
-    setAnnouncements: function(currentAnnouncements) {
+    setAnnouncements: function (currentAnnouncements) {
         this.previousAnnouncements = this.currentAnnouncements;
         this.currentAnnouncements = currentAnnouncements;
         var announcementsToEmail = this.checkForApprovalChanges();
-        if (announcementsToEmail.length>0) {
+        if (announcementsToEmail.length > 0) {
             this.email(announcementsToEmail);
         }
     },
 
-    checkForApprovalChanges: function() {
+    checkForApprovalChanges: function () {
         var newAnnouncements = [];
-        for (var announcement of Object.values(this.currentAnnouncements.data)) {
-            let previousAnnouncement = null;
+        if (this.previousAnnouncements != null) {
+            for (var announcement of Object.values(this.currentAnnouncements.data)) {
+                let previousAnnouncement = null;
 
-            if (this.previousAnnouncements!=null) {
                 for (var otherAnnouncement of Object.values(this.previousAnnouncements.data)) {
-                    if (otherAnnouncement.Title===announcement.Title || otherAnnouncement["Paragraph 1"]===announcement["Paragraph 1"] || otherAnnouncement["Paragraph 2"]===announcement["Paragraph 2"]) {
+                    if (otherAnnouncement.Title === announcement.Title || otherAnnouncement["Paragraph 1"] === announcement["Paragraph 1"] || otherAnnouncement["Paragraph 2"] === announcement["Paragraph 2"]) {
                         previousAnnouncement = otherAnnouncement;
                         break;
                     }
                 }
-            }
 
-            // console.log(announcement.Title, announcement.Approved);
-            // if (previousAnnouncement) {
-            //     console.log(previousAnnouncement.Title, previousAnnouncement.Approved);
-            // }
-
-            if (previousAnnouncement == null && announcement["Approved"] && announcement["Approved"].trim()!="") {
-                newAnnouncements.push(announcement); 
+                // console.log(announcement.Title, announcement.Approved);
+                // if (previousAnnouncement) {
+                //     console.log(previousAnnouncement.Title, previousAnnouncement.Approved);
+                // }
+ 
+                if (previousAnnouncement == null && announcement["Approved"] && announcement["Approved"].trim() != "") {
+                    newAnnouncements.push(announcement);
+                }
             }
         }
         return newAnnouncements;
     },
 
-    email: function(announcements) {
+    email: function (announcements) {
         console.log(announcements);
     },
 
