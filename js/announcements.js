@@ -1,3 +1,6 @@
+const fs = require("fs");
+const nodemailer = require("nodemailer");
+
 function announcement(sheetsOb) {
     var categories = {
 
@@ -70,11 +73,6 @@ var mailingList = {
                         break;
                     }
                 }
-
-                // console.log(announcement.Title, announcement.Approved);
-                // if (previousAnnouncement) {
-                //     console.log(previousAnnouncement.Title, previousAnnouncement.Approved);
-                // }
  
                 if (previousAnnouncement == null && announcement["Approved"] && announcement["Approved"].trim() != "") {
                     newAnnouncements.push(announcement);
@@ -84,10 +82,37 @@ var mailingList = {
         return newAnnouncements;
     },
 
-    email: function (announcements) {
-        console.log(announcements);
+    email: async function (announcements) {
+        var emails = await this.getAllEmails();
+        console.log(`sending ${announcements.length} announcements to ${emails}`);
     },
+
+    registerNewEmail: async function(email) {
+        var formattedEmail = email.toLowerCase().trim();
+        var emailAccessor = JSON.parse(fs.readFileSync("./js/mailingList.json"));
+        if (!emailAccessor.emails.includes(formattedEmail)) {
+            emailAccessor.emails.push(formattedEmail);
+            fs.writeFileSync("./js/mailingList.json", JSON.stringify(emailAccessor));
+        }
+
+    },
+
+    unsuscribeEmail: async function(email) {
+        var formattedEmail = email.toLowerCase().trim();
+        var emailAccessor = JSON.parse(fs.readFileSync("./js/mailingList.json"));
+        var indexFound = emailAccessor.emails.indexOf(formattedEmail);
+        if (indexFound!=-1) {
+            emailAccessor.emails.splice(indexFound, 1);
+            fs.writeFileSync("./js/mailingList.json", JSON.stringify(emailAccessor));
+        }
+    },
+
+    getAllEmails: async function() {
+        var {emails}= JSON.parse(await fs.promises.readFile("./js/mailingList.json"));
+        return emails;
+    }
 
 }
 
-module.exports = announcement;
+exports.announcement = announcement;
+exports.mailingList = mailingList;

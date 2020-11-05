@@ -13,15 +13,34 @@ var auth = new google.auth.JWT(
 var data = [];
 var announcements;
 const club = require("./js/club.js");
-const announcement = require("./js/announcements.js");
+const {announcement, mailingList} = require("./js/announcements.js");
+const validator = require("email-validator");
 
 auth.authorize(setData);
+
+app.use(express.json())
 
 app.use("/", express.static(__dirname + "/front-end"));
 
 app.post("/getData", function (req, res) {
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(data));
+});
+
+app.post("/suscribe", function(req, res) {
+  var email = req.body.email;
+  if (validator.validate(email)) {
+    mailingList.registerNewEmail(email);
+  }
+  res.end();
+});
+
+app.post("/unsuscribe", function(req, res) {
+  var email = req.body.email;
+  if (validator.validate(email)) {
+    mailingList.unsuscribeEmail(email);
+  }
+  res.end();
 });
 
 app.post("/announcements", function (req, res) {
@@ -31,7 +50,7 @@ app.post("/announcements", function (req, res) {
 
 app.get("*", function(req, res) {
   res.redirect("/");
-})
+});
 
 app.listen(81, function () {
   console.log("server started on port 80");
@@ -68,7 +87,7 @@ async function loadAnnouncements(sheets) {
 
 setInterval(async () => {
   //console.log(auth);
-  if (auth.isTokenExpiring()) {
+  //if (auth.isTokenExpiring()) {
     auth = new google.auth.JWT(
       credentials.client_email,
       null,
@@ -76,5 +95,5 @@ setInterval(async () => {
       ["https://www.googleapis.com/auth/spreadsheets"]
     );
     auth.authorize(setData);
-  }
-}, 4000);
+  //}
+}, 10000);
