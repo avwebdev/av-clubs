@@ -267,16 +267,46 @@ h4 {
   height: 0;
 }
 
-#club-feed {
+#right-container {
   float: right;
   /* display: inline-block; */
   /* border: 2px solid black; */
   width: 30%;
-  height: 80%;
+}
+
+#club-feed {
+  display: inline-block;
+  width: 100%;
   text-align: center;
   background-color: var(--color-secondary);
   border-radius: var(--main-div-border-radius);
   margin-bottom: 30px;
+}
+
+#mailing-list {
+  display: inline-block;
+  width: 90%;
+  background-color: var(--color-secondary);
+  border-radius: var(--main-div-border-radius);
+  padding: 5%;
+  margin-bottom: 25px;
+  cursor: pointer;
+}
+
+#mailing-list i {
+  display: inline-block;
+  width: 25%;
+  text-align: center;
+  font-size: 50px;
+  vertical-align: top;
+  position: relative;
+  top: 5px;
+}
+
+#mailing-list p {
+  display: inline-block;
+  width: 73%;
+  margin: 0px;
 }
 
 #club-feed h1 {
@@ -503,6 +533,64 @@ h4 {
   max-height: 75vh;
   scrollbar-width: none;
 }
+
+#expand-mailing-list {
+  z-index: 10;
+  width: 60%;
+  margin-top: 5%;
+  position: absolute;
+  height: fit-content;
+  height: -moz-fit-content;
+  background-color: white;
+  border-radius: 7px;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  padding-left: 20px;
+  padding-bottom: 15px;
+  overflow-y: visible;
+  max-height: 75vh;
+  scrollbar-width: none;
+  display: none;
+}
+
+#close-button-mailing-list {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 30px;
+  height: 30px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+#expand-mailing-list p {
+  width: 95%;
+  font-size: 25px;
+}
+
+#expand-mailing-list input {
+  width: 70%;
+  margin-right: 3px;
+}
+
+#expand-mailing-list button {
+  width: 20%;
+  background-color: lightblue;
+}
+
+#expand-mailing-list input, button {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-size: 22px;
+  border-radius: 5px;
+  border: 2px solid lightgrey;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+
+
+
 
 #modal-content-wrapper {
   overflow-y: scroll;

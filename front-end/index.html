@@ -57,6 +57,17 @@
             </div>
         </div>
 
+        <div id="expand-mailing-list">
+            <div id="close-button-mailing-list">
+                <i class="mdi mdi-close"></i>
+            </div>
+            <p>
+                Sign up for the club announcements mailing list to get up-to-date information about club events, procedures, and more, right in your inbox.
+            </p>
+            <input type="text" placeholder="Your Email">
+            <button type="button">Sign Up</button>
+        </div>
+
     </div>
 
     <div id="navbar">
@@ -173,11 +184,39 @@
                 </div>
             </div>
         </div>
-        <div id="club-feed">
-            <h1> Club Announcements </h1>
+        <div id="right-container">
+            <div id="mailing-list">
+                <p>Want important club announcements delivered straight to your inbox? Click here.</p>
+                <i class="mdi mdi-email"></i>
+            </div>
 
-            <div id="announcements">
+            <script>
+                var mailingListDiv = document.getElementById("mailing-list");
+                mailingListDiv.onclick = openMailingList;
+                document.getElementById("close-button-mailing-list").onclick = closeMailingList;
+                function openMailingList () {
+                    document.getElementById("back-screen").style.opacity = "1";
+                    document.getElementById("back-screen").style.animation = "backScreen 1s forwards";
+                    document.getElementById("back-screen").style.position = "fixed";
+                    document.getElementById("expand-mailing-list").style.display = "block";
+                }
 
+                function closeMailingList () {
+                    document.getElementById("back-screen").style.opacity = "0";
+                    document.getElementById("back-screen").style.animation = "backScreen 1s forwards";
+                    document.getElementById("back-screen").style.position = "static";
+                    document.getElementById("expand-mailing-list").style.display = "none";
+                }
+            </script>
+
+
+
+            <div id="club-feed">
+                <h1> Club Announcements </h1>
+    
+                <div id="announcements">
+    
+                </div>
             </div>
         </div>
         <div id="footer">

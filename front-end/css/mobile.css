@@ -18,7 +18,8 @@
     margin-bottom: 5px;
   }
   #announcements,
-  #club-feed {
+  #club-feed,
+  #right-container {
     display: none;
   }
   .announcement {
