@@ -140,6 +140,10 @@
     </div>
 
     <div id="main-wrapper">
+        <div id="mailing-list-mobile">
+            <p>Want important club announcements delivered straight to your inbox? Click here.</p>
+            <i class="mdi mdi-email"></i>
+        </div>
         <div id="browse-clubs">
             <div id="search-bar">
                 <input autocomplete="off" type="text" placeholder="Search..." id="search-input">
@@ -193,6 +197,7 @@
             <script>
                 var mailingListDiv = document.getElementById("mailing-list");
                 mailingListDiv.onclick = openMailingList;
+                document.getElementById("mailing-list-mobile").onclick = openMailingList;
                 document.getElementById("close-button-mailing-list").onclick = closeMailingList;
                 function openMailingList () {
                     document.getElementById("back-screen").style.opacity = "1";
@@ -244,7 +249,7 @@
         </div>
         <div id="footer">
             <img src="" alt="">
-            <h3>© Aron Thakur, Keerthi Kalyaan, Subha Das, Yash Totale</h3>
+            <h3>© Subha Das, Yash Totale, Aron Thakur, Keerthi Kalyaan</h3>
         </div>
         <script src="index.js"></script>
         <script>

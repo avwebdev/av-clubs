@@ -42,7 +42,7 @@
   }
   .swiper-container {
     display: block;
-    height: 200px;
+    height: 190px;
   }
   .swiper-slide {
     width: 240px;
@@ -192,7 +192,35 @@
   }
 
   #expand-mailing-list {
-    width: 90%
+    width: 90%;
+  }
+
+  #mailing-list-mobile {
+    display: block;
+    background-color: var(--color-secondary);
+    border-radius: var(--main-div-border-radius);
+    margin-bottom: 15px;
+    cursor: pointer;
+    width: 95%;
+  }
+
+  #mailing-list-mobile i {
+    display: inline-block;
+    width: 25%;
+    text-align: center;
+    font-size: 50px;
+    vertical-align: top;
+    position: relative;
+    top: 5px;
+  }
+  
+  #mailing-list-mobile p {
+    display: inline-block;
+    width: 68%;
+    margin: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
   }
 }
 
@@ -265,15 +293,14 @@
     display: inline-block;
   }
 
-  #expand-mailing-list input, #expand-mailing-list button {
+  #expand-mailing-list input,
+  #expand-mailing-list button {
     font-size: 18px;
     box-sizing: border-box;
     width: 85%;
     margin: 0px;
     margin-bottom: 10px;
   }
-
-  
 }
 
 @media (max-width: 550px) {
