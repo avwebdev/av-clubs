@@ -31,8 +31,10 @@ app.post("/suscribe", function(req, res) {
   var email = req.body.email;
   if (validator.validate(email)) {
     mailingList.registerNewEmail(email);
+    res.end();
+  } else {
+    res.end("Please put in a valid email");
   }
-  res.end();
 });
 
 app.post("/unsuscribe", function(req, res) {
