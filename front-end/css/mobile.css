@@ -190,6 +190,10 @@
     height: 60px;
     margin-left: 10px;
   }
+
+  #expand-mailing-list {
+    width: 90%
+  }
 }
 
 @media (max-width: 1200px) {
@@ -247,6 +251,29 @@
     margin-bottom: 15px;
     font-size: 9pt;
   }
+
+  #expand-mailing-list {
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  #expand-mailing-list p {
+    margin-top: 40px;
+    font-size: 18px;
+    text-align: left;
+    display: inline-block;
+  }
+
+  #expand-mailing-list input, #expand-mailing-list button {
+    font-size: 18px;
+    box-sizing: border-box;
+    width: 85%;
+    margin: 0px;
+    margin-bottom: 10px;
+  }
+
+  
 }
 
 @media (max-width: 550px) {
