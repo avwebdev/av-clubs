@@ -199,9 +199,10 @@
     display: block;
     background-color: var(--color-secondary);
     border-radius: var(--main-div-border-radius);
-    margin-bottom: 15px;
+    margin-top: 15px;
     cursor: pointer;
     width: 95%;
+    
   }
 
   #mailing-list-mobile i {
@@ -222,6 +223,7 @@
     margin-bottom: 10px;
     margin-left: 10px;
   }
+  
 }
 
 @media (max-width: 1200px) {
@@ -229,6 +231,10 @@
     padding: 5%;
     padding-top: 0px;
     padding-bottom: 0px;
+  }
+
+  .club-dropdown-item a {
+    line-height: 25px;
   }
 }
 
@@ -277,7 +283,7 @@
     display: inline-block;
     margin-top: 15px;
     margin-bottom: 15px;
-    font-size: 9pt;
+    font-size: 7pt;
   }
 
   #expand-mailing-list {

@@ -207,7 +207,7 @@ getData().then((allClubs) => {
     addClubDropdownItem("Meeting Location", club[meetingLocation], "club-meeting-location", clubDropdown);
     addClubDropdownItem("Officers", `${club[president]} (President), ${club[vicePresident]} (Vice President), ${club[secretary]} (Secretary), ${club[treasurer]} (Treasurer), ${club[otherOfficers]}`, "club-officers", clubDropdown);
     addClubDropdownItem("Remind Link", club[remindLink], "club-remind-link", clubDropdown, {
-      link: true
+      remindLink: true
     });
     addClubDropdownItem("Website", club[website], "club-website", clubDropdown, {
       link: true
@@ -240,6 +240,20 @@ getData().then((allClubs) => {
         }
         clubDropdownItemText = createElement("p");
         clubDropdownItemText.appendChild(list);
+      }
+      else if (options?.remindLink) {
+        let remindCode;
+        let remindLink;
+        if (text.includes("@") && text.length<12) {
+          remindCode = text;
+          remindLink = `https://www.remind.com/join/${text.substring(1)}`;
+        }
+        else {
+          remindLink = text;
+          let urlParts = text.split("/");
+          remindCode = "@" + urlParts[urlParts.length-1];
+        }
+        clubDropdownItemText = createElement("p", {innerHTML: `<a href="${remindLink}">${remindLink}</a> (or text ${remindCode} to 81010)`});
       }
       else  { clubDropdownItemText = createElement("p", {innerText: text}); }
       const clubDropdownItem = createElement("p", {

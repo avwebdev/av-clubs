@@ -459,6 +459,7 @@ h4 {
 .club-dropdown-item {
   margin-right: 10px;
   margin-left: 10px;
+  word-wrap: break-word;
 }
 
 .club-other-links li {
