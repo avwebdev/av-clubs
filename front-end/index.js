@@ -244,9 +244,15 @@ getData().then((allClubs) => {
       else if (options?.remindLink) {
         let remindCode;
         let remindLink;
-        if (text.includes("@") && text.length<12) {
-          remindCode = text;
-          remindLink = `https://www.remind.com/join/${text.substring(1)}`;
+        if (text.includes("@")) {
+          var fragments = text.split(" ");
+          for (var fragment of fragments) {
+            if (fragment.startsWith("@")) {
+              remindCode = fragment;
+              break;
+            }
+          }
+          remindLink = `https://www.remind.com/join/${remindCode.substring(1)}`;
         }
         else {
           remindLink = text;
