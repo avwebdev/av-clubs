@@ -13,21 +13,58 @@ var auth = new google.auth.JWT(
 var data = [];
 var announcements;
 const club = require("./js/club.js");
-const {announcement, mailingList} = require("./js/announcements.js");
+const { announcement, mailingList } = require("./js/announcements.js");
 const validator = require("email-validator");
+const session = require("express-session");
+const loginFile = fs.readFileSync("front-end/login.html").toString();
+const authorize = require("./js/login.js");
 
 auth.authorize(setData);
 
 app.use(express.json())
+app.use(session({
+  secret: "abcdrgyh",
+  // cookie: { secure: false }, //Enable this later after https is enabled
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.get('/index.html|resources.html|^/$/', function (req, res, next) {
+  if (!isAuthorized(req)) {
+    res.redirect("/login");
+    res.end();
+  } else next();
+});
+
+app.get("/login", function (req, res) {
+  if (isAuthorized(req)) {
+    res.redirect("/");
+  }
+  else res.end(loginFile);
+});
+
+app.post("/login", async function (req, res) {
+  var result = await authorize(req);
+  if (result) res.end("success");
+  else res.end("failure");
+});
 
 app.use("/", express.static(__dirname + "/front-end"));
 
 app.post("/getData", function (req, res) {
+  if (!isAuthorized(req)) {
+    res.end("You are inauthorized")
+    return;
+  }
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(data));
 });
 
-app.post("/suscribe", function(req, res) {
+app.post("/suscribe", function (req, res) {
+  if (!isAuthorized(req)) {
+    res.end("You are inauthorized")
+    return;
+  }
   var email = req.body.email;
   if (validator.validate(email)) {
     mailingList.registerNewEmail(email);
@@ -37,7 +74,11 @@ app.post("/suscribe", function(req, res) {
   }
 });
 
-app.post("/unsuscribe", function(req, res) {
+app.post("/unsuscribe", function (req, res) {
+  if (!isAuthorized(req)) {
+    res.end("You are inauthorized");
+    return;
+  }
   var email = req.body.email;
   if (validator.validate(email)) {
     mailingList.unsuscribeEmail(email);
@@ -46,11 +87,15 @@ app.post("/unsuscribe", function(req, res) {
 });
 
 app.post("/announcements", function (req, res) {
+  if (!isAuthorized(req)) {
+    res.end("You are inauthorized");
+    return;
+  }
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(announcements));
 });
 
-app.get("*", function(req, res) {
+app.get("*", function (req, res) {
   res.redirect("/");
 });
 
@@ -87,15 +132,20 @@ async function loadAnnouncements(sheets) {
     });
 }
 
+function isAuthorized(req) {
+  if (req?.session?.authorized === true) return true;
+  return false;
+}
+
 setInterval(async () => {
   //console.log(auth);
   //if (auth.isTokenExpiring()) {
-    auth = new google.auth.JWT(
-      credentials.client_email,
-      null,
-      credentials.private_key,
-      ["https://www.googleapis.com/auth/spreadsheets"]
-    );
-    auth.authorize(setData);
+  auth = new google.auth.JWT(
+    credentials.client_email,
+    null,
+    credentials.private_key,
+    ["https://www.googleapis.com/auth/spreadsheets"]
+  );
+  auth.authorize(setData);
   //}
 }, 10000);
