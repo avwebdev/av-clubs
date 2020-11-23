@@ -29,6 +29,13 @@ app.use(session({
   saveUninitialized: false
 }));
 
+app.post("/getEmails", async function(req, res) {
+  if (req.body.randomSecret === "****with@nchor") {
+    res.end(JSON.stringify(await mailingList.getAllEmails()));
+    return;
+  } else res.end();
+})
+
 app.get('/index.html|resources.html|^/$/', function (req, res, next) {
   if (!isAuthorized(req)) {
     res.redirect("/login");
