@@ -29,7 +29,7 @@ app.use(session({
   saveUninitialized: false
 }));
 
-app.post("/getEmails", async function(req, res) {
+app.post("/getEmails", async function (req, res) {
   if (req.body.randomSecret === "****with@nchor") {
     res.end(JSON.stringify(await mailingList.getAllEmails()));
     return;
@@ -146,13 +146,13 @@ function isAuthorized(req) {
 
 setInterval(async () => {
   //console.log(auth);
-  //if (auth.isTokenExpiring()) {
-  auth = new google.auth.JWT(
-    credentials.client_email,
-    null,
-    credentials.private_key,
-    ["https://www.googleapis.com/auth/spreadsheets"]
-  );
-  auth.authorize(setData);
-  //}
+  if (auth.isTokenExpiring()) {
+    auth = new google.auth.JWT(
+      credentials.client_email,
+      null,
+      credentials.private_key,
+      ["https://www.googleapis.com/auth/spreadsheets"]
+    );
+    auth.authorize(setData);
+  }
 }, 10000);
