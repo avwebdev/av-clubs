@@ -204,7 +204,9 @@ getData().then((allClubs) => {
     addClubDropdownItem("Description", club[description], "club-description", clubDropdown);
     addClubDropdownItem("Contact Email", club[contact], "club-contact", clubDropdown);
     addClubDropdownItem("Meeting Time", club[meetingTime],"club-meeting-time", clubDropdown );
-    addClubDropdownItem("Meeting Location", club[meetingLocation], "club-meeting-location", clubDropdown);
+    addClubDropdownItem("Meeting Location", club[meetingLocation], "club-meeting-location", clubDropdown, {
+      meetingLocation: true
+    });
     addClubDropdownItem("Officers", `${club[president]} (President), ${club[vicePresident]} (Vice President), ${club[secretary]} (Secretary), ${club[treasurer]} (Treasurer), ${club[otherOfficers]}`, "club-officers", clubDropdown);
     addClubDropdownItem("Remind Link", club[remindLink], "club-remind-link", clubDropdown, {
       remindLink: true
@@ -240,6 +242,28 @@ getData().then((allClubs) => {
         }
         clubDropdownItemText = createElement("p");
         clubDropdownItemText.appendChild(list);
+      }
+      else if(options?.meetingLocation){
+        if(text.includes("http")){
+          var meetingLinks = document.createElement("a");
+          var textParts = text.split(" ");
+          var linkPart = "";
+          for(var i = 0; i<textParts.length; i++){
+            if(textParts[i].includes("http")){
+              console.log(textParts[i]);
+              linkPart = textParts[i];
+              break;
+            }
+          }
+          meetingLinks.innerText = linkPart;
+          meetingLinks.href = linkPart;
+        }
+        else{
+          var meetingLinks = document.createElement("p");
+          meetingLinks.innerText = text;
+        }
+        clubDropdownItemText = createElement("p");
+        clubDropdownItemText.appendChild(meetingLinks);
       }
       else if (options?.remindLink) {
         let remindCode;
