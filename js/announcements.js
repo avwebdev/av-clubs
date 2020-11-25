@@ -95,7 +95,7 @@ var mailingList = {
 
     email: async function (announcements) {
         var emails = await this.getAllEmails();
-        console.log(`sending ${announcements.length} announcements to ${emails}`);
+        // console.log(`sending ${announcements.length} announcements to ${emails}`);
         for (var announcement of announcements) {
             let html = ``;
             html += `</p>${announcement["Paragraph 1"]}<br><br>
@@ -110,7 +110,7 @@ var mailingList = {
                         ${announcement["Link 3"] ? `${announcement["Link 3"]}<br>` : ""}
                         ${announcement["Link 4"] ? `${announcement["Link 4"]}<br>` : ""}
                         `;
-            console.log(html);
+            // console.log(html);
             for (var mail of emails) {
 
 

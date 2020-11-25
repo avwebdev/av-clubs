@@ -14,7 +14,7 @@ async function verify(token) {
     }
 
     catch (err) {
-        console.log(err);
+        // console.log(err);
         return false;
     }
     
@@ -26,7 +26,7 @@ async function authorize (req) {
     var token = req?.body?.token;
     if (token!=null) {
         var result = await verify(token);
-        console.log(result);
+        //console.log(result);
         if (result) {
             req.session.authorized = true;
             req.session.save();
