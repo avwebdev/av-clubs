@@ -1,322 +1,354 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Amador Clubs</title>
-    <link rel="icon" href="images/logo1.png">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="icon" href="images/logo1.png" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.6.5/mousetrap.min.js"
-        integrity="sha512-+Jg3Ynmj9hse704K48H6rBBI3jdNBjReRGBCxUWFfOz3yVurnJFWtAWssDAsGtzWYw89xFWPxShuj2T6E9EOpg=="
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="css/mobile.css">
-</head>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.6.5/mousetrap.min.js"
+      integrity="sha512-+Jg3Ynmj9hse704K48H6rBBI3jdNBjReRGBCxUWFfOz3yVurnJFWtAWssDAsGtzWYw89xFWPxShuj2T6E9EOpg=="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css"
+    />
+    <link rel="stylesheet" href="css/mobile.css" />
+  </head>
 
-<body>
+  <body>
     <div id="mobile-nav-right">
-        <div id="close-button-nav"> <i class="mdi mdi-close" onclick="appearNav()"></i></div>
-        <div class="mobile-links">
-            <a href="resources.html">
-                Club Resources
-            </a>
-        </div>
-        <div class="mobile-links">
-            <a href="https://sites.google.com/site/avstudentweb/">
-                Back to student page
-            </a>
-        </div>
-        <div class="mobile-links">
-            <a href="https://calendar.google.com/calendar/embed?src=amadorclub%40gmail.com&ctz=America%2FLos_Angeles">
-                Club Calendar
-            </a>
-        </div>
-
-
+      <div id="close-button-nav">
+        <i class="mdi mdi-close" onclick="appearNav()"></i>
+      </div>
+      <div class="mobile-links">
+        <a href="resources.html"> Club Resources </a>
+      </div>
+      <div class="mobile-links">
+        <a href="https://sites.google.com/site/avstudentweb/">
+          Back to student page
+        </a>
+      </div>
+      <div class="mobile-links">
+        <a
+          href="https://calendar.google.com/calendar/embed?src=amadorclub%40gmail.com&ctz=America%2FLos_Angeles"
+        >
+          Club Calendar
+        </a>
+      </div>
     </div>
 
-
-
     <div id="back-screen">
-
-        <div id="big-answer">
-            <div id="close-button"> <i class="mdi mdi-close" onclick="disappear();"></i></div>
-            <div id="modal-content-wrapper">
-                <div id="top-container">
-                    <h1>Title</h1>
-                    <br>
-                    <p id="date">01/02/2020</p>
-                </div>
-                <div id="description">
-
-                </div>
-            </div>
+      <div id="big-answer">
+        <div id="close-button">
+          <i class="mdi mdi-close" onclick="disappear();"></i>
         </div>
-
-        <div id="expand-mailing-list">
-            <div id="close-button-mailing-list">
-                <i class="mdi mdi-close"></i>
-            </div>
-            <p>
-                Sign up for the club announcements mailing list to get up-to-date information about club events,
-                procedures, and more, right in your inbox.
-            </p>
-            <input type="text" placeholder="Your Email">
-            <button type="button">Sign Up</button>
+        <div id="modal-content-wrapper">
+          <div id="top-container">
+            <h1>Title</h1>
+            <br />
+            <p id="date">01/02/2020</p>
+          </div>
+          <div id="description"></div>
         </div>
+      </div>
 
+      <div id="expand-mailing-list">
+        <div id="close-button-mailing-list">
+          <i class="mdi mdi-close"></i>
+        </div>
+        <p>
+          Sign up for the club announcements mailing list to get up-to-date
+          information about club events, procedures, and more, right in your
+          inbox.
+        </p>
+        <input type="text" placeholder="Your Email" />
+        <button type="button">Sign Up</button>
+      </div>
     </div>
 
     <div id="navbar">
-        <div id="left-navbar">
-            <a href="index.html">
-                <div id="logo-wrapper">
-
-                    <img href="index.html" src="images/logo1.png" alt="logo">
-
-                </div>
-            </a>
-            <h1 id="title">
-                <a href="index.html" style="text-decoration: none; color:black;">
-                    AV Clubs
-                </a>
-            </h1>
-
-        </div>
-        <div id="links">
-            <a href="resources.html">Club Resources</a>
-            <a href="https://calendar.google.com/calendar/embed?src=amadorclub%40gmail.com&ctz=America%2FLos_Angeles">Club
-                Calendar</a>
-            <a href="https://sites.google.com/site/avstudentweb/">Back to student page</a>
-            <i class="mdi mdi-menu" id="open-sidebar" onclick="appearNav()"></i>
-        </div>
+      <div id="left-navbar">
+        <a href="index.html">
+          <div id="logo-wrapper">
+            <img href="index.html" src="images/logo1.png" alt="logo" />
+          </div>
+        </a>
+        <h1 id="title">
+          <a href="index.html" style="text-decoration: none; color: black">
+            AV Clubs
+          </a>
+        </h1>
+      </div>
+      <div id="links">
+        <a href="resources.html">Club Resources</a>
+        <a
+          href="https://calendar.google.com/calendar/embed?src=amadorclub%40gmail.com&ctz=America%2FLos_Angeles"
+          >Club Calendar</a
+        >
+        <a href="https://sites.google.com/site/avstudentweb/"
+          >Back to student page</a
+        >
+        <i class="mdi mdi-menu" id="open-sidebar" onclick="appearNav()"></i>
+      </div>
     </div>
 
     <div id="mobile-announcements">
-        <div class="swiper-container">
-            <!-- Additional required wrapper -->
-            <div class="swiper-wrapper">
-                <!-- Slides -->
-            </div>
+      <div class="swiper-container">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
         </div>
+      </div>
 
-        <script>
+      <script>
+        var mySwiper = new Swiper(".swiper-container", {
+          // Optional parameters
+          slidesPerView: "auto",
+          centeredSlides: false,
+          freeMode: true,
+          spaceBetween: 10,
+          slidesOffsetAfter: 10,
+          mousewheel: {
+            forceToAxis: true,
+          },
+        });
 
-            var mySwiper = new Swiper('.swiper-container', {
-                // Optional parameters
-                slidesPerView: 'auto',
-                centeredSlides: false,
-                freeMode: true,
-                spaceBetween: 10,
-                slidesOffsetAfter: 10,
-                mousewheel: {
-                    forceToAxis: true
-                }
-            });
+        var counting = 0;
+        function appearNav() {
+          //console.log(5000);
+          var element = document.getElementById("mobile-nav-right");
+          if (counting % 2 == 0) {
+            element.style.right = "0";
 
-            var counting = 0;
-            function appearNav() {
-                //console.log(5000);
-                var element = document.getElementById("mobile-nav-right");
-                if (counting % 2 == 0) {
-                    element.style.right = "0";
+            counting++;
+          } else if (counting % 2 == 1) {
+            element.style.right = "-100%";
 
-                    counting++;
-                }
-                else if (counting % 2 == 1) {
-                    element.style.right = "-100%";
-
-                    counting++;
-                }
-
-            }
-
-        </script>
-
-
-
+            counting++;
+          }
+        }
+      </script>
     </div>
 
     <div id="main-wrapper">
-
-        <div id="browse-clubs">
-            <div id="search-bar">
-                <input autocomplete="off" type="text" placeholder="Search..." id="search-input">
-                <i id="search-clear" class="mdi mdi-close"></i>
-                <div id="club-suggestions"></div>
-            </div>
-            <h2 id="category-header">Browse clubs by category</h2>
-            <div id="categories">
-                <div class="topic" data-tag-code="codingandrobotics">
-                    <h3>Coding and Robotics</h3>
-                </div>
-                <div class="topic" data-tag-code="businessandfinance">
-                    <h3>Business and Finance</h3>
-                </div>
-                <div class="topic" data-tag-code="community">
-                    <h3>Community Service</h3>
-                </div>
-                <div class="topic" data-tag-code="scienceandmath">
-                    <h3>Science and Mathematics</h3>
-                </div>
-                <div class="topic mobile-hidden" data-topic-toggle data-tag-code="arts">
-                    <h3>Arts</h3>
-                </div>
-                <div class="topic mobile-hidden" data-topic-toggle data-tag-code="entertainment">
-                    <h3>Entertainment</h3>
-                </div>
-                <div class="topic mobile-hidden" data-topic-toggle data-tag-code="athletics">
-                    <h3>Athletics</h3>
-                </div>
-                <div class="topic mobile-hidden" data-topic-toggle data-tag-code="policy">
-                    <h3>Policy</h3>
-                </div>
-            </div>
-            <div id="see-more-categories">
-                <div data-showing="false" id="see-more-categories-btn">See More Categories</div>
-            </div>
-
-
-            <div id="all-clubs">
-                <div id="sort-area">
-
-                </div>
-            </div>
-
+      <div id="browse-clubs">
+        <div id="search-bar">
+          <input
+            autocomplete="off"
+            type="text"
+            placeholder="Search..."
+            id="search-input"
+          />
+          <i id="search-clear" class="mdi mdi-close"></i>
+          <div id="club-suggestions"></div>
         </div>
-        <div id="mailing-list-mobile">
-            <p>Want important club announcements delivered straight to your inbox? Click here.</p>
-            <i class="mdi mdi-email"></i>
+        <h2 id="category-header">Browse clubs by category</h2>
+        <div id="categories">
+          <div class="topic" data-tag-code="codingandrobotics">
+            <h3>Coding and Robotics</h3>
+          </div>
+          <div class="topic" data-tag-code="businessandfinance">
+            <h3>Business and Finance</h3>
+          </div>
+          <div class="topic" data-tag-code="community">
+            <h3>Community Service</h3>
+          </div>
+          <div class="topic" data-tag-code="scienceandmath">
+            <h3>Science and Mathematics</h3>
+          </div>
+          <div
+            class="topic mobile-hidden"
+            data-topic-toggle
+            data-tag-code="arts"
+          >
+            <h3>Arts</h3>
+          </div>
+          <div
+            class="topic mobile-hidden"
+            data-topic-toggle
+            data-tag-code="entertainment"
+          >
+            <h3>Entertainment</h3>
+          </div>
+          <div
+            class="topic mobile-hidden"
+            data-topic-toggle
+            data-tag-code="athletics"
+          >
+            <h3>Athletics</h3>
+          </div>
+          <div
+            class="topic mobile-hidden"
+            data-topic-toggle
+            data-tag-code="policy"
+          >
+            <h3>Policy</h3>
+          </div>
         </div>
-        <div id="right-container">
-            <div id="mailing-list">
-                <p>Want important club announcements delivered straight to your inbox? Click here.</p>
-                <i class="mdi mdi-email"></i>
-            </div>
-
-            <script>
-                var mailingListDiv = document.getElementById("mailing-list");
-                mailingListDiv.onclick = openMailingList;
-                document.getElementById("mailing-list-mobile").onclick = openMailingList;
-                document.getElementById("close-button-mailing-list").onclick = closeMailingList;
-                function openMailingList() {
-                    document.getElementById("back-screen").style.opacity = "1";
-                    document.getElementById("back-screen").style.animation = "backScreen 1s forwards";
-                    document.getElementById("back-screen").style.position = "fixed";
-                    document.getElementById("expand-mailing-list").style.display = "block";
-                }
-
-                function closeMailingList() {
-                    document.getElementById("back-screen").style.opacity = "0";
-                    document.getElementById("back-screen").style.animation = "backScreen 1s forwards";
-                    document.getElementById("back-screen").style.position = "static";
-                    document.getElementById("expand-mailing-list").style.display = "none";
-                }
-                var submitButton = document.querySelector("#expand-mailing-list button");
-                submitButton.onclick = async function (event) {
-                    if (event.currentTarget.innerText == "Sign Up") {
-                        var result = await fetch("/suscribe", {
-                            method: "POST",
-                            body: JSON.stringify({
-                                email: document.querySelector("#expand-mailing-list input").value
-                            }),
-                            headers: {
-                                "Content-Type": "application/json"
-                            }
-                        });
-                        result = await result.text();
-                        if (result != "") {
-                            document.querySelector("#expand-mailing-list input").value = result;
-                        }
-                        else {
-                            submitButton.innerHTML = "<i class='mdi mdi-check'></i>";
-                            document.querySelector("#expand-mailing-list input").value = "Your email has been added to the mailing list";
-                        }
-                    }
-                }
-                document.querySelector("#expand-mailing-list input").value = "";
-            </script>
-
-
-
-            <div id="club-feed">
-                <h1> Club Announcements </h1>
-
-                <div id="announcements">
-
-                </div>
-            </div>
+        <div id="see-more-categories">
+          <div data-showing="false" id="see-more-categories-btn">
+            See More Categories
+          </div>
         </div>
-        <div id="footer">
-            <img src="" alt="">
-            <h3>© Subha Das, Aron Thakur, Keerthi Kalyaan, Yash Totale</h3>
+
+        <div id="all-clubs">
+          <div id="sort-area"></div>
         </div>
+      </div>
+      <div id="mailing-list-mobile">
+        <p>
+          Want important club announcements delivered straight to your inbox?
+          Click here.
+        </p>
+        <i class="mdi mdi-email"></i>
+      </div>
+      <div id="right-container">
+        <div id="mailing-list">
+          <p>
+            Want important club announcements delivered straight to your inbox?
+            Click here.
+          </p>
+          <i class="mdi mdi-email"></i>
+        </div>
+
+        <script>
+          var mailingListDiv = document.getElementById("mailing-list");
+          mailingListDiv.onclick = openMailingList;
+          document.getElementById(
+            "mailing-list-mobile"
+          ).onclick = openMailingList;
+          document.getElementById(
+            "close-button-mailing-list"
+          ).onclick = closeMailingList;
+          function openMailingList() {
+            document.getElementById("back-screen").style.opacity = "1";
+            document.getElementById("back-screen").style.animation =
+              "backScreen 1s forwards";
+            document.getElementById("back-screen").style.position = "fixed";
+            document.getElementById("expand-mailing-list").style.display =
+              "block";
+          }
+
+          function closeMailingList() {
+            document.getElementById("back-screen").style.opacity = "0";
+            document.getElementById("back-screen").style.animation =
+              "backScreen 1s forwards";
+            document.getElementById("back-screen").style.position = "static";
+            document.getElementById("expand-mailing-list").style.display =
+              "none";
+          }
+          var submitButton = document.querySelector(
+            "#expand-mailing-list button"
+          );
+          submitButton.onclick = async function (event) {
+            if (event.currentTarget.innerText == "Sign Up") {
+              var result = await fetch("/suscribe", {
+                method: "POST",
+                body: JSON.stringify({
+                  email: document.querySelector("#expand-mailing-list input")
+                    .value,
+                }),
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              });
+              result = await result.text();
+              if (result != "") {
+                document.querySelector(
+                  "#expand-mailing-list input"
+                ).value = result;
+              } else {
+                submitButton.innerHTML = "<i class='mdi mdi-check'></i>";
+                document.querySelector("#expand-mailing-list input").value =
+                  "Your email has been added to the mailing list";
+              }
+            }
+          };
+          document.querySelector("#expand-mailing-list input").value = "";
+        </script>
+
+        <div id="club-feed">
+          <h1>Club Announcements</h1>
+
+          <div id="announcements"></div>
+        </div>
+      </div>
+      <div id="footer">
+        <img src="" alt="" />
+        <h3>© Subha Das, Aron Thakur, Keerthi Kalyaan, Yash Totale</h3>
+      </div>
     </div>
     <script src="index.js"></script>
     <script>
-        var count = 0;
-        //    appear();
-        function appear(announcementKey) {
-            if (count % 2 == 0) {
-                var back = document.getElementById("back-screen");
-                //console.log(back);
-                back.style.position = "fixed";
-                back.style.animation = "backScreen 1s forwards";
+      var count = 0;
+      //    appear();
+      function appear(announcementKey) {
+        if (count % 2 == 0) {
+          var back = document.getElementById("back-screen");
+          //console.log(back);
+          back.style.position = "fixed";
+          back.style.animation = "backScreen 1s forwards";
 
-                back.style.opacity = "1";
+          back.style.opacity = "1";
 
+          var desc = document.getElementById("big-answer");
+          desc.querySelector("h1").innerText =
+            announcements[announcementKey].Title;
+          desc.querySelector(
+            "#date"
+          ).innerText = `${announcements[announcementKey].Date} - ${announcements[announcementKey]["Which club do you represent?"]}`;
 
-                var desc = document.getElementById("big-answer");
-                desc.querySelector("h1").innerText = announcements[announcementKey].Title;
-                desc.querySelector("#date").innerText = `${announcements[announcementKey].Date} - ${announcements[announcementKey]["Which club do you represent?"]}`;
+          desc.querySelector("#description").innerHTML = "";
+          var allParagraphs = "";
 
-                desc.querySelector("#description").innerHTML = "";
-                var allParagraphs = "";
-
-                for (var i = 1; i < 20; i++) {
-                    if (announcements[announcementKey][`Paragraph ${i}`]) {
-                        allParagraphs += announcements[announcementKey][`Paragraph ${i}`];
-                        allParagraphs += "<br><br>";
-                    }
-                }
-                for (var i = 1; i < 20; i++) {
-                    if (announcements[announcementKey][`Link ${i}`]) {
-                        allParagraphs += `<a href="${announcements[announcementKey][`Link ${i}`]}">
+          for (var i = 1; i < 20; i++) {
+            if (announcements[announcementKey][`Paragraph ${i}`]) {
+              allParagraphs += announcements[announcementKey][`Paragraph ${i}`];
+              allParagraphs += "<br><br>";
+            }
+          }
+          for (var i = 1; i < 20; i++) {
+            if (announcements[announcementKey][`Link ${i}`]) {
+              allParagraphs += `<a href="${
+                announcements[announcementKey][`Link ${i}`]
+              }">
                             <i class="mdi mdi-link-variant"></i>
                             ${announcements[announcementKey][`Link ${i}`]}
                         </a>`;
-                        allParagraphs += "<br>";
-                    }
-                }
-                desc.querySelector("#description").innerHTML += allParagraphs;
-                desc.style.animation = "movedown 1s forwards";
-                count++;
+              allParagraphs += "<br>";
             }
+          }
+          desc.querySelector("#description").innerHTML += allParagraphs;
+          desc.style.animation = "movedown 1s forwards";
+          count++;
         }
-        function disappear() {
-            if (count % 2 == 1) {
-                var back = document.getElementById("back-screen");
-                //console.log(back);
-                back.style.animation = "none";
-                back.style.opacity = "0";
-                back.style.position = "static";
-                var desc = document.getElementById("big-answer");
-                //console.log(desc);
-                desc.style.animation = "none";
-                desc.style.transform = "translateY(-200%)";
-                count++;
-            }
+      }
+      function disappear() {
+        if (count % 2 == 1) {
+          var back = document.getElementById("back-screen");
+          //console.log(back);
+          back.style.animation = "none";
+          back.style.opacity = "0";
+          back.style.position = "static";
+          var desc = document.getElementById("big-answer");
+          //console.log(desc);
+          desc.style.animation = "none";
+          desc.style.transform = "translateY(-200%)";
+          count++;
         }
-
+      }
     </script>
     <script src="announcements.js"></script>
     <noscript>Enable JavaScript, please</noscript>
-</body>
-
+  </body>
 </html>

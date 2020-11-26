@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    ".huskyrc": "json",
+    ".prettierrc": "json",
+    ".eslintrc": "json"
+  }
+}
