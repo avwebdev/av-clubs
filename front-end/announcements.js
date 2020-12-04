@@ -1,6 +1,6 @@
 var announcements;
 
-const getData = async () => {
+const getAnnouncementData = async () => {
   const res = await fetch("announcements", {
     method: "POST",
   });
@@ -9,7 +9,8 @@ const getData = async () => {
 };
 
 async function loadAnnouncements() {
-  const data = await getData();
+  const data = await getAnnouncementData();
+  console.log(data);
   for (var leadershipI = 0; leadershipI < 1; leadershipI++) {
     if (data[leadershipI]["Which club do you represent?"] === "Leadership") {
       continue;
