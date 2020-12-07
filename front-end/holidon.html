@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HoliDON Videos</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+        body {
+            --color-primary: #a29bfe;
+            --color-secondary: #fcfcfc;
+            background-color: var(--color-primary);
+            font-family: "Montserrat", sans-serif;
+            font-weight: 300;
+        }
+
+        #big-header {
+            width: 100%;
+            text-align: center;
+            margin-top: 3vh;
+        }
+
+        #av-img {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            top: 40px;
+        }
+
+        #holidon-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 25px;
+        }
+
+        .holidon-video {
+            text-align: center;
+        }
+
+        .holidon-video video {
+            width: 80%;
+            margin-left: 10%;
+            margin-right: 10%;
+            margin-top: 3%;
+            margin-bottom: 3;
+        }
+
+        @media (max-width: 800px) {
+            #holidon-container {
+                grid-template-columns: 1fr;
+                
+            }
+
+            #av-img {
+                width: 80px;
+                height: 80px;
+                display: inline-block;
+                top: 30px;
+            }
+
+            #big-header {
+                font-size: 13pt;
+                margin-bottom: 30px;
+            }
+
+            #big-header p {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="big-header">
+        <img src="/images/logo1.png" alt="img" id="av-img">
+        <p style="display: inline-block;">AV Clubs - HoliDON Celebration Videos!</p>
+    </h1>
+
+    <div id="holidon-container">
+        
+    </div>
+
+    <script src="holidons.js"></script>
+
+</body>
+
+</html>
