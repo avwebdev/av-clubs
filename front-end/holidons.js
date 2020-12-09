@@ -1,9 +1,11 @@
 const holidonContainer = document.getElementById("holidon-container");
 const videos = [
+  "HoliDON-(A-compilation).mov",
   "AV-Technovation.mp4",
   "Kids-Against-Hunger.mp4",
   "AV-Bollywood-And-Bhangra.mov",
   "Lead-Club.mp4",
+  "Local-Leaders-Club.mp4"
 ];
 
 const createVideo = (video) => {
