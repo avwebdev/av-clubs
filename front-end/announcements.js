@@ -10,20 +10,21 @@ const getAnnouncementData = async () => {
 
 async function loadAnnouncements() {
   const data = await getAnnouncementData();
-  console.log(data);
-  for (var leadershipI = 0; leadershipI < 1; leadershipI++) {
-    if (data[leadershipI]["Which club do you represent?"] === "Leadership") {
-      continue;
-    }
-    for (var i = leadershipI; i < data.length; i++) {
-      //console.log(data[i]["Which club do you represent?"])
-      if (data[i]["Which club do you represent?"] === "Leadership") {
-        let [temp] = data.splice(i, 1);
-        data.splice(leadershipI, 0, temp);
-        break;
-      }
-    }
-  }
+  //Below is the code for prioritizing leadership announcements
+  // console.log(data);
+  // // for (var leadershipI = 0; leadershipI < 1; leadershipI++) {
+  // //   if (data[leadershipI]["Which club do you represent?"] === "Leadership") {
+  // //     continue;
+  // //   }
+  // //   for (var i = leadershipI; i < data.length; i++) {
+  // //     //console.log(data[i]["Which club do you represent?"])
+  // //     if (data[i]["Which club do you represent?"] === "Leadership") {
+  // //       let [temp] = data.splice(i, 1);
+  // //       data.splice(leadershipI, 0, temp);
+  // //       break;
+  // //     }
+  // //   }
+  // // }
   announcements = data;
   var announcementsRoot = document.getElementById("announcements");
   var mobileAnnouncementsRoot = document.querySelector(".swiper-wrapper");
