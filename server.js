@@ -1,17 +1,18 @@
-var express = require("express");
-var app = express();
+const express = require("express");
+const app = express();
 const fs = require("fs");
 const credentials = JSON.parse(fs.readFileSync("credentials.json"));
 const { google } = require("googleapis");
-const { sheets } = require("googleapis/build/src/apis/sheets");
-var auth = new google.auth.JWT(
+
+let auth = new google.auth.JWT(
   credentials.client_email,
   null,
   credentials.private_key,
   ["https://www.googleapis.com/auth/spreadsheets"]
 );
-var data = [];
-var announcements;
+let data = [];
+let announcements;
+
 const club = require("./js/club.js");
 const { announcement, mailingList } = require("./js/announcements.js");
 const validator = require("email-validator");
@@ -21,22 +22,24 @@ const authorize = require("./js/login.js");
 
 auth.authorize(setData);
 
-app.use(express.json())
-app.use(session({
-  secret: "abcdrgyh",
-  // cookie: { secure: false }, //Enable this later after https is enabled
-  resave: false,
-  saveUninitialized: false
-}));
+app.use(express.json());
+app.use(
+  session({
+    secret: "abcdrgyh",
+    // cookie: { secure: false }, //Enable this later after https is enabled
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
 app.post("/getEmails", async function (req, res) {
   if (req.body.randomSecret === "****with@nchor") {
     res.end(JSON.stringify(await mailingList.getAllEmails()));
     return;
   } else res.end();
-})
+});
 
-app.get('/index.html|resources.html|^/$/', function (req, res, next) {
+app.get("/index.html|resources.html|^/$/", function (req, res, next) {
   if (!isAuthorized(req)) {
     res.redirect("/login");
     res.end();
@@ -46,12 +49,11 @@ app.get('/index.html|resources.html|^/$/', function (req, res, next) {
 app.get("/login", function (req, res) {
   if (isAuthorized(req)) {
     res.redirect("/");
-  }
-  else res.end(loginFile);
+  } else res.end(loginFile);
 });
 
 app.post("/login", async function (req, res) {
-  var result = await authorize(req);
+  const result = await authorize(req);
   if (result) res.end("success");
   else res.end("failure");
 });
@@ -60,7 +62,7 @@ app.use("/", express.static(__dirname + "/front-end"));
 
 app.post("/getData", function (req, res) {
   if (!isAuthorized(req)) {
-    res.end("You are inauthorized")
+    res.end("You are inauthorized");
     return;
   }
   res.setHeader("Content-Type", "application/json");
@@ -69,10 +71,10 @@ app.post("/getData", function (req, res) {
 
 app.post("/suscribe", function (req, res) {
   if (!isAuthorized(req)) {
-    res.end("You are inauthorized")
+    res.end("You are inauthorized");
     return;
   }
-  var email = req.body.email;
+  const email = req.body.email;
   if (validator.validate(email)) {
     mailingList.registerNewEmail(email);
     res.end();
@@ -86,7 +88,7 @@ app.post("/unsuscribe", function (req, res) {
     res.end("You are inauthorized");
     return;
   }
-  var email = req.body.email;
+  const email = req.body.email;
   if (validator.validate(email)) {
     mailingList.unsuscribeEmail(email);
   }

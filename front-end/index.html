@@ -41,9 +41,7 @@
         </a>
       </div>
       <div class="mobile-links">
-        <a href="holidon.html">
-          HoliDON Videos
-        </a>
+        <a href="holidon.html"> HoliDON Videos </a>
       </div>
     </div>
 
@@ -112,7 +110,7 @@
       </div>
 
       <script>
-        var mySwiper = new Swiper(".swiper-container", {
+        const mySwiper = new Swiper(".swiper-container", {
           // Optional parameters
           slidesPerView: "auto",
           centeredSlides: false,
@@ -124,10 +122,10 @@
           },
         });
 
-        var counting = 0;
+        let counting = 0;
         function appearNav() {
           //console.log(5000);
-          var element = document.getElementById("mobile-nav-right");
+          let element = document.getElementById("mobile-nav-right");
           if (counting % 2 == 0) {
             element.style.right = "0";
 
@@ -214,7 +212,6 @@
         <i class="mdi mdi-email"></i>
       </div>
       <div id="right-container">
-
         <div id="club-feed">
           <h1>Club Announcements</h1>
 
@@ -222,69 +219,68 @@
         </div>
 
         <div id="mailing-list">
-            <p>
-              Want important club announcements delivered straight to your inbox?
-              Click here.
-            </p>
-            <i class="mdi mdi-email"></i>
-          </div>
-  
-          <script>
-            var mailingListDiv = document.getElementById("mailing-list");
-            mailingListDiv.onclick = openMailingList;
-            document.getElementById(
-              "mailing-list-mobile"
-            ).onclick = openMailingList;
-            document.getElementById(
-              "close-button-mailing-list"
-            ).onclick = closeMailingList;
-            function openMailingList() {
-              document.getElementById("back-screen").style.opacity = "1";
-              document.getElementById("back-screen").style.animation =
-                "backScreen 1s forwards";
-              document.getElementById("back-screen").style.position = "fixed";
-              document.getElementById("expand-mailing-list").style.display =
-                "block";
-            }
-  
-            function closeMailingList() {
-              document.getElementById("back-screen").style.opacity = "0";
-              document.getElementById("back-screen").style.animation =
-                "backScreen 1s forwards";
-              document.getElementById("back-screen").style.position = "static";
-              document.getElementById("expand-mailing-list").style.display =
-                "none";
-            }
-            var submitButton = document.querySelector(
-              "#expand-mailing-list button"
-            );
-            submitButton.onclick = async function (event) {
-              if (event.currentTarget.innerText == "Sign Up") {
-                var result = await fetch("/suscribe", {
-                  method: "POST",
-                  body: JSON.stringify({
-                    email: document.querySelector("#expand-mailing-list input")
-                      .value,
-                  }),
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                });
-                result = await result.text();
-                if (result != "") {
-                  document.querySelector(
-                    "#expand-mailing-list input"
-                  ).value = result;
-                } else {
-                  submitButton.innerHTML = "<i class='mdi mdi-check'></i>";
-                  document.querySelector("#expand-mailing-list input").value =
-                    "Your email has been added to the mailing list";
-                }
+          <p>
+            Want important club announcements delivered straight to your inbox?
+            Click here.
+          </p>
+          <i class="mdi mdi-email"></i>
+        </div>
+
+        <script>
+          const mailingListDiv = document.getElementById("mailing-list");
+          mailingListDiv.onclick = openMailingList;
+          document.getElementById(
+            "mailing-list-mobile"
+          ).onclick = openMailingList;
+          document.getElementById(
+            "close-button-mailing-list"
+          ).onclick = closeMailingList;
+          function openMailingList() {
+            document.getElementById("back-screen").style.opacity = "1";
+            document.getElementById("back-screen").style.animation =
+              "backScreen 1s forwards";
+            document.getElementById("back-screen").style.position = "fixed";
+            document.getElementById("expand-mailing-list").style.display =
+              "block";
+          }
+
+          function closeMailingList() {
+            document.getElementById("back-screen").style.opacity = "0";
+            document.getElementById("back-screen").style.animation =
+              "backScreen 1s forwards";
+            document.getElementById("back-screen").style.position = "static";
+            document.getElementById("expand-mailing-list").style.display =
+              "none";
+          }
+          const submitButton = document.querySelector(
+            "#expand-mailing-list button"
+          );
+          submitButton.onclick = async function (event) {
+            if (event.currentTarget.innerText == "Sign Up") {
+              let result = await fetch("/suscribe", {
+                method: "POST",
+                body: JSON.stringify({
+                  email: document.querySelector("#expand-mailing-list input")
+                    .value,
+                }),
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              });
+              result = await result.text();
+              if (result != "") {
+                document.querySelector(
+                  "#expand-mailing-list input"
+                ).value = result;
+              } else {
+                submitButton.innerHTML = "<i class='mdi mdi-check'></i>";
+                document.querySelector("#expand-mailing-list input").value =
+                  "Your email has been added to the mailing list";
               }
-            };
-            document.querySelector("#expand-mailing-list input").value = "";
-          </script>
-          
+            }
+          };
+          document.querySelector("#expand-mailing-list input").value = "";
+        </script>
       </div>
       <div id="footer">
         <img src="" alt="" />
@@ -293,18 +289,18 @@
     </div>
     <script src="index.js"></script>
     <script>
-      var count = 0;
+      let count = 0;
       //    appear();
       function appear(announcementKey) {
         if (count % 2 == 0) {
-          var back = document.getElementById("back-screen");
+          const back = document.getElementById("back-screen");
           //console.log(back);
           back.style.position = "fixed";
           back.style.animation = "backScreen 1s forwards";
 
           back.style.opacity = "1";
 
-          var desc = document.getElementById("big-answer");
+          const desc = document.getElementById("big-answer");
           desc.querySelector("h1").innerText =
             announcements[announcementKey].Title;
           desc.querySelector(
@@ -312,15 +308,15 @@
           ).innerText = `${announcements[announcementKey].Date} - ${announcements[announcementKey]["Which club do you represent?"]}`;
 
           desc.querySelector("#description").innerHTML = "";
-          var allParagraphs = "";
+          let allParagraphs = "";
 
-          for (var i = 1; i < 20; i++) {
+          for (let i = 1; i < 20; i++) {
             if (announcements[announcementKey][`Paragraph ${i}`]) {
               allParagraphs += announcements[announcementKey][`Paragraph ${i}`];
               allParagraphs += "<br><br>";
             }
           }
-          for (var i = 1; i < 20; i++) {
+          for (let i = 1; i < 20; i++) {
             if (announcements[announcementKey][`Link ${i}`]) {
               allParagraphs += `<a href="${
                 announcements[announcementKey][`Link ${i}`]
@@ -338,12 +334,12 @@
       }
       function disappear() {
         if (count % 2 == 1) {
-          var back = document.getElementById("back-screen");
+          const back = document.getElementById("back-screen");
           //console.log(back);
           back.style.animation = "none";
           back.style.opacity = "0";
           back.style.position = "static";
-          var desc = document.getElementById("big-answer");
+          const desc = document.getElementById("big-answer");
           //console.log(desc);
           desc.style.animation = "none";
           desc.style.transform = "translateY(-200%)";

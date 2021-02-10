@@ -1,451 +1,417 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amador Clubs</title>
+    <link rel="icon" href="images/logo1.png" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.6.5/mousetrap.min.js"
+      integrity="sha512-+Jg3Ynmj9hse704K48H6rBBI3jdNBjReRGBCxUWFfOz3yVurnJFWtAWssDAsGtzWYw89xFWPxShuj2T6E9EOpg=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="announcements.js"></script>
+    <link rel="stylesheet" href="css/main.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css"
+    />
+    <link rel="stylesheet" href="css/mobile.css" />
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0px;
+        font-family: "Montserrat", sans-serif;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Amador Clubs</title>
-  <link rel="icon" href="images/logo1.png">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.6.5/mousetrap.min.js"
-    integrity="sha512-+Jg3Ynmj9hse704K48H6rBBI3jdNBjReRGBCxUWFfOz3yVurnJFWtAWssDAsGtzWYw89xFWPxShuj2T6E9EOpg=="
-    crossorigin="anonymous"></script>
-  <script src="announcements.js"></script>
-  <link rel="stylesheet" href="css/main.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet" />
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css" />
-  <link rel="stylesheet" href="css/mobile.css" />
-  <style>
-    html,
-    body {
-      width: 100%;
-      height: 100%;
-      padding: 0;
-      margin: 0px;
-      font-family: "Montserrat", sans-serif;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-    }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Montserrat", sans-serif;
+      }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-family: "Montserrat", sans-serif;
-    }
-
-
-
-    #banner-welcome {
-      height: auto;
-      width: 40%;
-      background-color: white;
-      border: 1px solid lightblue;
-      padding: 6%;
-      margin-top: 5%;
-      border-radius: 10px;
-      font-family: "Montserrat", sans-serif;
-      font-weight: 300;
-      line-height: 30px;
-      float: left;
-    }
-
-    #circles {
-      width: 50%;
-      height: 100%;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      float: right;
-      margin: auto;
-      margin-top: 10%;
-    }
-
-    .forms-for-clubs {
-      height: 500px;
-      width: 100%;
-      background: white;
-    }
-
-    #circles div {
-      margin: 0;
-      padding: 0;
-    }
-
-    #circles button {
-      border: 1px solid lightblue;
-      background-color: white;
-      margin-right: 5vw;
-      width: 12vw;
-      height: 12vw;
-      border-radius: 50%;
-      transition: 0.5s;
-      font-size: 200%;
-    }
-
-    #circles button:hover {
-      opacity: 0.5;
-    }
-
-    ul {
-      padding: 0;
-    }
-
-    .new-club-info h1 {
-      text-align: center;
-      color: red;
-      font-weight: bold;
-      font-size: 15pt;
-    }
-
-    @media (max-width: 1000px) {
       #banner-welcome {
         height: auto;
-        width: 90%;
-        margin-left: 5%;
-        margin-right: 5%;
+        width: 40%;
+        background-color: white;
+        border: 1px solid lightblue;
+        padding: 6%;
+        margin-top: 5%;
+        border-radius: 10px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 300;
+        line-height: 30px;
+        float: left;
       }
 
       #circles {
-        margin-top: 10%;
-        width: 100%;
-        margin-right: 10%;
-        margin-bottom: 10%;
+        width: 50%;
         height: 100%;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        float: left;
-        margin-left: 5%;
+        float: right;
+        margin: auto;
+        margin-top: 10%;
+      }
+
+      .forms-for-clubs {
+        height: 500px;
+        width: 100%;
+        background: white;
+      }
+
+      #circles div {
+        margin: 0;
+        padding: 0;
       }
 
       #circles button {
         border: 1px solid lightblue;
         background-color: white;
         margin-right: 5vw;
-        width: 25vw;
-        height: 25vw;
+        width: 12vw;
+        height: 12vw;
         border-radius: 50%;
         transition: 0.5s;
-        font-size: 90%;
+        font-size: 200%;
+      }
+
+      #circles button:hover {
+        opacity: 0.5;
+      }
+
+      ul {
+        padding: 0;
       }
 
       .new-club-info h1 {
-        font-size: 9pt;
+        text-align: center;
+        color: red;
+        font-weight: bold;
+        font-size: 15pt;
       }
 
-    }
+      @media (max-width: 1000px) {
+        #banner-welcome {
+          height: auto;
+          width: 90%;
+          margin-left: 5%;
+          margin-right: 5%;
+        }
 
-    @media (min-width: 1001px) and (max-width: 1200px) {
-      #banner-welcome {
-        height: auto;
-        margin-left: 5%;
+        #circles {
+          margin-top: 10%;
+          width: 100%;
+          margin-right: 10%;
+          margin-bottom: 10%;
+          height: 100%;
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          float: left;
+          margin-left: 5%;
+        }
+
+        #circles button {
+          border: 1px solid lightblue;
+          background-color: white;
+          margin-right: 5vw;
+          width: 25vw;
+          height: 25vw;
+          border-radius: 50%;
+          transition: 0.5s;
+          font-size: 90%;
+        }
+
+        .new-club-info h1 {
+          font-size: 9pt;
+        }
       }
 
-    }
-
-    @media (min-width: 1000px) and (max-width: 1400px) {
-      #banner-welcome {
-        height: auto;
-        margin-top: 1%;
-        padding-top: 2%;
-        padding-bottom: 2%;
+      @media (min-width: 1001px) and (max-width: 1200px) {
+        #banner-welcome {
+          height: auto;
+          margin-left: 5%;
+        }
       }
 
-    }
-
-    #big-rectangle {
-      width: 100%;
-      background-color: white;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      min-height: 100vh;
-    }
-
-    .parent-container {
-      margin-top: 0px;
-      margin-bottom: 0px;
-      margin-left: 8%;
-      margin-right: 12%;
-      height: 100%;
-      width: 80%;
-
-      padding-bottom: 10%;
-    }
-
-    #back-screen {
-      height: 0;
-    }
-
-    iframe {
-      width: 70%;
-      height: 70%;
-      margin: 15%;
-      margin-top: 30%;
-      margin-bottom: 0%;
-      border-radius: 20px;
-    }
-
-    #big-rectangle div div {
-      margin: auto;
-      width: 80%;
-      height: 50vh;
-      margin-top: 100px;
-      background-color: white;
-      border: 1px solid white;
-      color: black;
-      border: 1px solid #3498db;
-      border-radius: 20px;
-      text-align: left;
-      transition: 0.5s;
-    }
-
-    #big-rectangle div div h1 {
-      border-bottom: 1px solid #3498db;
-      font-weight: lighter;
-      font-size: 25pt;
-      padding: 20px;
-    }
-
-    #big-rectangle div div h1:hover {
-      font-weight: normal;
-    }
-
-    #big-rectangle div div a {
-      font-size: 150%;
-      text-decoration: none;
-      color: black;
-    }
-
-    #big-rectangle div div .a {
-      margin-left: 20px;
-    }
-
-    #big-rectangle div div .a:hover {
-      border-bottom: white;
-      font-weight: 900;
-    }
-
-    #big-rectangle div div:hover {
-      background-color: #dfe4ea;
-      border: 1px solid white;
-    }
-
-    #big-rectangle {
-      padding-left: 3%;
-      padding-right: 3%;
-    }
-
-    @media (max-width: 1100px) {
-      .parent-container {
-        margin: 0px;
-        padding-left: 0.8%;
-        padding-right: 0.8%;
-        height: 100%;
-        width: 100%;
-        padding: 0;
+      @media (min-width: 1000px) and (max-width: 1400px) {
+        #banner-welcome {
+          height: auto;
+          margin-top: 1%;
+          padding-top: 2%;
+          padding-bottom: 2%;
+        }
       }
 
       #big-rectangle {
-        min-height: 100%;
         width: 100%;
         background-color: white;
         display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
-        grid-gap: 20px;
-        padding: 0;
-        padding-top: 5%;
-        padding-bottom: 5%;
+        grid-template-columns: 1fr 1fr 1fr;
+        min-height: 100vh;
       }
 
-      #big-rectangle div div h1 {
-        height: 40%;
-        border-bottom: none;
-        font-weight: lighter;
+      .parent-container {
+        margin-top: 0px;
         margin-bottom: 0px;
+        margin-left: 8%;
+        margin-right: 12%;
+        height: 100%;
+        width: 80%;
+
+        padding-bottom: 10%;
+      }
+
+      #back-screen {
+        height: 0;
+      }
+
+      iframe {
+        width: 70%;
+        height: 70%;
+        margin: 15%;
+        margin-top: 30%;
+        margin-bottom: 0%;
+        border-radius: 20px;
       }
 
       #big-rectangle div div {
         margin: auto;
-        height: fit-content;
-        height: -moz-fit-content;
-        border: 1px solid black;
+        width: 80%;
+        height: 50vh;
+        margin-top: 100px;
+        background-color: white;
+        border: 1px solid white;
+        color: black;
+        border: 1px solid #3498db;
         border-radius: 20px;
-        text-align: center;
-        padding-top: 5px;
+        text-align: left;
         transition: 0.5s;
-        padding-bottom: 10px;
-      }
-    }
-
-    .block {
-      display: block;
-    }
-
-    .none {
-      display: none;
-    }
-
-    #new-club {
-      min-height: 100%;
-      width: 100%;
-      background-color: #a29bfe;
-      padding-top: 30px;
-      margin-bottom: 10px;
-    }
-
-    .new-club-app {
-      background-color: white;
-      color: #2980b9;
-    }
-
-    .new-club-app h1 {
-      width: 50%;
-      margin: auto;
-      margin-top: 25%;
-      line-height: 200%;
-    }
-
-    .new-club-info {
-      width: 70%;
-      margin: auto;
-      min-height: 80%;
-      margin-top: 30px;
-      border-radius: 20px;
-      padding: 50px;
-      background-color: white;
-      font-size: 150%;
-    }
-
-    .new-club-info a {
-      color: #70a1ff;
-      font-size: 200%;
-      text-decoration: none;
-    }
-
-    .new-club-info a:hover {
-      border-bottom: 1px solid#70a1ff;
-      font-size: 200%;
-    }
-
-    @media (max-width: 1100px) {
-      #new-club {
-        min-height: 100%;
-        width: 100%;
-        background-color: #a29bfe;
       }
 
-      .new-club-info {
-        width: 100%;
-        margin: auto;
-        height: 93%;
-        margin-top: 5%;
-        border-radius: 20px;
-        padding: 50px;
-        background-color: #edeff2;
+      #big-rectangle div div h1 {
+        border-bottom: 1px solid #3498db;
+        font-weight: lighter;
+        font-size: 25pt;
+        padding: 20px;
+      }
+
+      #big-rectangle div div h1:hover {
+        font-weight: normal;
+      }
+
+      #big-rectangle div div a {
         font-size: 150%;
-      }
-    }
-
-    @media (max-width: 800px) {
-      #new-club {
-        min-height: 100%;
-        width: 100%;
-        background-color: #a29bfe;
+        text-decoration: none;
+        color: black;
       }
 
-      .new-club-app {
+      #big-rectangle div div .a {
+        margin-left: 20px;
+      }
+
+      #big-rectangle div div .a:hover {
+        border-bottom: white;
+        font-weight: 900;
+      }
+
+      #big-rectangle div div:hover {
         background-color: #dfe4ea;
-      }
-
-      .new-club-app h1 {
-        margin-top: 3%;
-        text-align: center;
-      }
-
-      .new-club-info {
-        width: 90%;
-        margin: auto;
-        border-radius: 20px;
-        margin: auto;
-        padding: 30px;
-        background-color: #edeff2;
-        font-size: 90%;
-        margin-top: 50px;
-        margin-bottom: 50px;
-        height: fit-content;
-        height: -moz-fit-content;
+        border: 1px solid white;
       }
 
       #big-rectangle {
-        padding: none;
+        padding-left: 3%;
+        padding-right: 3%;
       }
-    }
 
-    #important-links {
-      background-color: white;
-      width: 100%;
-      min-height: 100%;
-      padding-left: 5%;
-      padding-right: 5%;
-      padding-top: 5%;
-      margin-bottom: 5%;
-      padding-bottom: 5%;
-    }
+      @media (max-width: 1100px) {
+        .parent-container {
+          margin: 0px;
+          padding-left: 0.8%;
+          padding-right: 0.8%;
+          height: 100%;
+          width: 100%;
+          padding: 0;
+        }
 
-    #club-stuff {
-      padding: 20px;
-      width: 80%;
-      margin: auto;
-      background-color: #ededeb;
-      border-radius: 20px;
-      text-align: center;
-      line-height: 400%;
-    }
+        #big-rectangle {
+          min-height: 100%;
+          width: 100%;
+          background-color: white;
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-template-rows: 1fr 1fr 1fr;
+          grid-gap: 20px;
+          padding: 0;
+          padding-top: 5%;
+          padding-bottom: 5%;
+        }
 
-    #club-stuff ul {
-      list-style: none;
-    }
+        #big-rectangle div div h1 {
+          height: 40%;
+          border-bottom: none;
+          font-weight: lighter;
+          margin-bottom: 0px;
+        }
 
-    #club-stuff li {
-      font-size: 200%;
-    }
+        #big-rectangle div div {
+          margin: auto;
+          height: fit-content;
+          height: -moz-fit-content;
+          border: 1px solid black;
+          border-radius: 20px;
+          text-align: center;
+          padding-top: 5px;
+          transition: 0.5s;
+          padding-bottom: 10px;
+        }
+      }
 
-    #club-stuff a:hover {
-      opacity: 0.75;
-      text-decoration: underline;
-      color: #70a1ff;
-    }
+      .block {
+        display: block;
+      }
 
-    #important-links h1,
-    #important-links a {
-      font-weight: lighter;
-      text-decoration: none;
-      display: inline;
-    }
+      .none {
+        display: none;
+      }
 
-    #important-links p {
-      display: inline;
-    }
+      #new-club {
+        min-height: 100%;
+        width: 100%;
+        background-color: #a29bfe;
+        padding-top: 30px;
+        margin-bottom: 10px;
+      }
 
-    @media (max-width: 900px) {
+      .new-club-app {
+        background-color: white;
+        color: #2980b9;
+      }
+
+      .new-club-app h1 {
+        width: 50%;
+        margin: auto;
+        margin-top: 25%;
+        line-height: 200%;
+      }
+
+      .new-club-info {
+        width: 70%;
+        margin: auto;
+        min-height: 80%;
+        margin-top: 30px;
+        border-radius: 20px;
+        padding: 50px;
+        background-color: white;
+        font-size: 150%;
+      }
+
+      .new-club-info a {
+        color: #70a1ff;
+        font-size: 200%;
+        text-decoration: none;
+      }
+
+      .new-club-info a:hover {
+        border-bottom: 1px solid#70a1ff;
+        font-size: 200%;
+      }
+
+      @media (max-width: 1100px) {
+        #new-club {
+          min-height: 100%;
+          width: 100%;
+          background-color: #a29bfe;
+        }
+
+        .new-club-info {
+          width: 100%;
+          margin: auto;
+          height: 93%;
+          margin-top: 5%;
+          border-radius: 20px;
+          padding: 50px;
+          background-color: #edeff2;
+          font-size: 150%;
+        }
+      }
+
+      @media (max-width: 800px) {
+        #new-club {
+          min-height: 100%;
+          width: 100%;
+          background-color: #a29bfe;
+        }
+
+        .new-club-app {
+          background-color: #dfe4ea;
+        }
+
+        .new-club-app h1 {
+          margin-top: 3%;
+          text-align: center;
+        }
+
+        .new-club-info {
+          width: 90%;
+          margin: auto;
+          border-radius: 20px;
+          margin: auto;
+          padding: 30px;
+          background-color: #edeff2;
+          font-size: 90%;
+          margin-top: 50px;
+          margin-bottom: 50px;
+          height: fit-content;
+          height: -moz-fit-content;
+        }
+
+        #big-rectangle {
+          padding: none;
+        }
+      }
+
+      #important-links {
+        background-color: white;
+        width: 100%;
+        min-height: 100%;
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-top: 5%;
+        margin-bottom: 5%;
+        padding-bottom: 5%;
+      }
+
       #club-stuff {
         padding: 20px;
-        width: 100%;
+        width: 80%;
         margin: auto;
         background-color: #ededeb;
         border-radius: 20px;
         text-align: center;
-        line-height: 250%;
-        padding-bottom: 50px;
-        margin-top: 20px;
+        line-height: 400%;
       }
 
       #club-stuff ul {
@@ -453,208 +419,278 @@
       }
 
       #club-stuff li {
-        font-size: 100%;
+        font-size: 200%;
       }
 
-      #club-stuff h1 {
-        font-size: 10pt;
+      #club-stuff a:hover {
+        opacity: 0.75;
+        text-decoration: underline;
+        color: #70a1ff;
       }
-    }
-  </style>
-</head>
 
-<body>
-  <div class="parent-container">
-    <div id="mobile-nav-right">
-      <div id="close-button-nav">
-        <i class="mdi mdi-close" onclick="appearNav()"></i>
-      </div>
-      <div class="mobile-links">
-        <a href="/"> Home Page </a>
-      </div>
-      <div class="mobile-links">
-        <a href="https://sites.google.com/site/avstudentweb/"> Back to student page </a>
-      </div>
-      <div class="mobile-links">
-        <a href="https://calendar.google.com/calendar/embed?src=amadorclub%40gmail.com&ctz=America%2FLos_Angeles">Club
-          Calendar</a>
-      </div>
-    </div>
+      #important-links h1,
+      #important-links a {
+        font-weight: lighter;
+        text-decoration: none;
+        display: inline;
+      }
 
-    <div id="back-screen">
-      <div id="big-answer">
-        <div id="close-button">
-          <i class="mdi mdi-close" onclick="disappear();"></i>
+      #important-links p {
+        display: inline;
+      }
+
+      @media (max-width: 900px) {
+        #club-stuff {
+          padding: 20px;
+          width: 100%;
+          margin: auto;
+          background-color: #ededeb;
+          border-radius: 20px;
+          text-align: center;
+          line-height: 250%;
+          padding-bottom: 50px;
+          margin-top: 20px;
+        }
+
+        #club-stuff ul {
+          list-style: none;
+        }
+
+        #club-stuff li {
+          font-size: 100%;
+        }
+
+        #club-stuff h1 {
+          font-size: 10pt;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="parent-container">
+      <div id="mobile-nav-right">
+        <div id="close-button-nav">
+          <i class="mdi mdi-close" onclick="appearNav()"></i>
         </div>
-        <div id="modal-content-wrapper">
-          <div id="top-container">
-            <h1>Title</h1>
-            <i class="mdi mdi-moon-full"></i>
-            <p id="date">01/02/2020</p>
-          </div>
-          <div id="description">Keerthi is a god</div>
+        <div class="mobile-links">
+          <a href="/"> Home Page </a>
         </div>
-      </div>
-    </div>
-
-    <div id="navbar">
-      <div id="left-navbar">
-        <a href="index.html">
-          <div id="logo-wrapper">
-
-            <img href="index.html" src="images/logo1.png" alt="logo">
-
-          </div>
-        </a>
-        <h1 id="title">
-          <a href="index.html" style="text-decoration: none; color:black;">
-            AV Clubs
+        <div class="mobile-links">
+          <a href="https://sites.google.com/site/avstudentweb/">
+            Back to student page
           </a>
-        </h1>
+        </div>
+        <div class="mobile-links">
+          <a
+            href="https://calendar.google.com/calendar/embed?src=amadorclub%40gmail.com&ctz=America%2FLos_Angeles"
+            >Club Calendar</a
+          >
+        </div>
+      </div>
 
+      <div id="back-screen">
+        <div id="big-answer">
+          <div id="close-button">
+            <i class="mdi mdi-close" onclick="disappear();"></i>
+          </div>
+          <div id="modal-content-wrapper">
+            <div id="top-container">
+              <h1>Title</h1>
+              <i class="mdi mdi-moon-full"></i>
+              <p id="date">01/02/2020</p>
+            </div>
+            <div id="description">Keerthi is a god</div>
+          </div>
+        </div>
       </div>
-      <div id="links">
-        <a href="/">Home Page</a>
-        <a href="https://calendar.google.com/calendar/embed?src=amadorclub%40gmail.com&ctz=America%2FLos_Angeles">Club
-          Calendar</a>
-        <a href="https://sites.google.com/site/avstudentweb/" id>Back to student page</a>
-        <i class="mdi mdi-menu" id="open-sidebar" onclick="appearNav()"></i>
-      </div>
-    </div>
 
-    <div class="container-for-top">
-      <div id="banner-welcome">
-        <h2>Welcome to the Resources Page!</h2>
-        <p>
-          Here you can find a guide to fill out all the forms that clubs use.
-          <!--  Also available is a
-          guide to fill out all the forms that clubs use. --> If you planning on
-          applying for a club in the school year, the New Club Application is
-          linked below.
-        </p>
+      <div id="navbar">
+        <div id="left-navbar">
+          <a href="index.html">
+            <div id="logo-wrapper">
+              <img href="index.html" src="images/logo1.png" alt="logo" />
+            </div>
+          </a>
+          <h1 id="title">
+            <a href="index.html" style="text-decoration: none; color: black">
+              AV Clubs
+            </a>
+          </h1>
+        </div>
+        <div id="links">
+          <a href="/">Home Page</a>
+          <a
+            href="https://calendar.google.com/calendar/embed?src=amadorclub%40gmail.com&ctz=America%2FLos_Angeles"
+            >Club Calendar</a
+          >
+          <a href="https://sites.google.com/site/avstudentweb/" id
+            >Back to student page</a
+          >
+          <i class="mdi mdi-menu" id="open-sidebar" onclick="appearNav()"></i>
+        </div>
       </div>
-      <div id="circles">
-        <a href="#big-rectangle"><button>Forms</button></a>
-        <a href="#new-club"><button>New Club</button></a>
-        <a href="#important-links"><button>Links</button></a>
-      </div>
-    </div>
-  </div>
-  <div id="big-rectangle">
-    <div>
-      <div id="po">
-        <a href="resources/poform.pdf">
-          <h1>Click here for Blank PO Form</h1>
-        </a>
-        <a class="a" href="https://drive.google.com/drive/folders/1DTBdnqDSP3QrjbrSQgksV2X0kO_oaSZ4">Alternative
-          Link</a>
-      </div>
-      <div class="abosolute none" id="absolute-po">
-        <iframe src="resources/poform.pdf" frameborder="0"></iframe>
-      </div>
-    </div>
-    <div>
-      <div id="mm">
-        <a href="resources/cmm.pdf">
-          <h1>Click for Club Meeting Minutes</h1>
-        </a>
-        <a class="a" href="https://drive.google.com/drive/folders/1DTBdnqDSP3QrjbrSQgksV2X0kO_oaSZ4">Alternative
-          Link</a>
-      </div>
-      <div class="abosolute none" id="absolute-mm">
-        <iframe src="resources/cmm.pdf" frameborder="0"></iframe>
-      </div>
-    </div>
-    <div>
-      <div id="cb">
-        <a href="resources/cb.pdf">
-          <h1>Click here for Club Budget</h1>
-        </a>
-        <a class="a" href="https://drive.google.com/drive/folders/1DTBdnqDSP3QrjbrSQgksV2X0kO_oaSZ4">Alternative
-          Link</a>
-      </div>
-      <div class="abosolute none" id="absolute-cb">
-        <iframe src="resources/cb.pdf" frameborder="0"></iframe>
+
+      <div class="container-for-top">
+        <div id="banner-welcome">
+          <h2>Welcome to the Resources Page!</h2>
+          <p>
+            Here you can find a guide to fill out all the forms that clubs use.
+            <!--  Also available is a
+          guide to fill out all the forms that clubs use. -->
+            If you planning on applying for a club in the school year, the New
+            Club Application is linked below.
+          </p>
+        </div>
+        <div id="circles">
+          <a href="#big-rectangle"><button>Forms</button></a>
+          <a href="#new-club"><button>New Club</button></a>
+          <a href="#important-links"><button>Links</button></a>
+        </div>
       </div>
     </div>
-  </div>
-  <div id="new-club">
-    <div class="new-club-info">
+    <div id="big-rectangle">
       <div>
-        <a href="https://docs.google.com/document/d/1VThzyfUIQtOGihlAHbwVwJDeAIWHypvzBv50FBtzw_g/edit">Application
-          Form <i class="mdi mdi-cursor-default-click"></i></a>
-        <p>
-          Please expect the application process to take two months. The cutoff
-          deadline for new clubs to turn in applications is November 10th,
-          2020.
-        </p>
-        <p>
-          For the 2020-21 school year, please email your club application to
-          amadorclub@gmail.com, smarek@pleasantonusd.net,
-          asuto@pleasantonusd.net, and mjaramillo@pleasantonusd.net. The
-          signatures that are needed for the application can be obtained
-          digitally.
-        </p>
-        <h1>We have finished receiving applications for the semester as the maximum of 25 new club applications has been
-          reached. This section of the website will be updated when the acceptance interval of new club applications
-          opens again.</h1>
+        <div id="po">
+          <a href="resources/poform.pdf">
+            <h1>Click here for Blank PO Form</h1>
+          </a>
+          <a
+            class="a"
+            href="https://drive.google.com/drive/folders/1DTBdnqDSP3QrjbrSQgksV2X0kO_oaSZ4"
+            >Alternative Link</a
+          >
+        </div>
+        <div class="abosolute none" id="absolute-po">
+          <iframe src="resources/poform.pdf" frameborder="0"></iframe>
+        </div>
+      </div>
+      <div>
+        <div id="mm">
+          <a href="resources/cmm.pdf">
+            <h1>Click for Club Meeting Minutes</h1>
+          </a>
+          <a
+            class="a"
+            href="https://drive.google.com/drive/folders/1DTBdnqDSP3QrjbrSQgksV2X0kO_oaSZ4"
+            >Alternative Link</a
+          >
+        </div>
+        <div class="abosolute none" id="absolute-mm">
+          <iframe src="resources/cmm.pdf" frameborder="0"></iframe>
+        </div>
+      </div>
+      <div>
+        <div id="cb">
+          <a href="resources/cb.pdf">
+            <h1>Click here for Club Budget</h1>
+          </a>
+          <a
+            class="a"
+            href="https://drive.google.com/drive/folders/1DTBdnqDSP3QrjbrSQgksV2X0kO_oaSZ4"
+            >Alternative Link</a
+          >
+        </div>
+        <div class="abosolute none" id="absolute-cb">
+          <iframe src="resources/cb.pdf" frameborder="0"></iframe>
+        </div>
       </div>
     </div>
-  </div>
-  <div id="important-links">
-    <div id="club-stuff">
-      <a href="https://docs.google.com/document/d/1mVgS1bIMLDnXgTMaVYZe2Is5t_-u3z_yFZ1SR_SbREA/edit">
-        <h1>The Club Handbook</h1>
-      </a>
-      <br />
-      <h1>Submit Meeting Minutes</h1>
-      <ul>
-        <li>
-          <a href="https://docs.google.com/forms/u/3/d/1Rchw1DOtHHuPIUadhwCbpbHubouS_o207kEX5ST8bPw/edit?usp=drive_web">Quarter
-            1</a>
-        </li>
-        <li>
-          <a href="https://docs.google.com/forms/u/3/d/1OFB781QNCDez5m5MlYXs0pJ6n9q3r3_f1TFh09XEMSI/edit?usp=drive_web">Quarter
-            2</a>
-        </li>
-        <li>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdPzjxn0l8xEuLjAoeCJLZpei30OnxWxqybzo7iaaFne5uoZA/viewform">Quarter
-            3</a>
-        </li>
-        <li>
-          <a href="https://docs.google.com/forms/d/1ZCtvtrbbEh1Ehp-JvJyY890FfA6U7gMFGi-MCegPI2E/edit#responses">Quarter
-            4</a>
-        </li>
-      </ul>
-      <br /><a
-        href="http://www.google.com/url?q=http%3A%2F%2Ftinyurl.com%2Fclubupdate1&sa=D&sntz=1&usg=AFQjCNH6YKDDjAPZxlcA4CLM3wHGcJSYHg">
-        <h1>Renewal Checklist and Pigskin Info</h1>
-      </a>
-      <br /><a href="https://drive.google.com/file/d/1Ceo6rnNlbns0Kcva3Vpv8ASpSqs7w77i/view">
-        <h1>Assistant Club Advisor Form</h1>
-      </a>
-      <br /><a
-        href="https://docs.google.com/presentation/d/1G9VgGoIEFq6Az5wpxJaDfnU80sbnrZrvOuOa8pJWAtI/edit#slide=id.p">
-        <h1>Club Finance Workshop</h1>
-      </a>
+    <div id="new-club">
+      <div class="new-club-info">
+        <div>
+          <a
+            href="https://docs.google.com/document/d/1VThzyfUIQtOGihlAHbwVwJDeAIWHypvzBv50FBtzw_g/edit"
+            >Application Form <i class="mdi mdi-cursor-default-click"></i
+          ></a>
+          <p>
+            Please expect the application process to take two months. The cutoff
+            deadline for new clubs to turn in applications is November 10th,
+            2020.
+          </p>
+          <p>
+            For the 2020-21 school year, please email your club application to
+            amadorclub@gmail.com, smarek@pleasantonusd.net,
+            asuto@pleasantonusd.net, and mjaramillo@pleasantonusd.net. The
+            signatures that are needed for the application can be obtained
+            digitally.
+          </p>
+          <h1>
+            We have finished receiving applications for the semester as the
+            maximum of 25 new club applications has been reached. This section
+            of the website will be updated when the acceptance interval of new
+            club applications opens again.
+          </h1>
+        </div>
+      </div>
     </div>
-  </div>
-  <script>
-    var counting = 0;
-    function appearNav() {
-      //console.log(5000);
-      var element = document.getElementById("mobile-nav-right");
-      if (counting % 2 == 0) {
-        element.style.right = "0";
+    <div id="important-links">
+      <div id="club-stuff">
+        <a
+          href="https://docs.google.com/document/d/1mVgS1bIMLDnXgTMaVYZe2Is5t_-u3z_yFZ1SR_SbREA/edit"
+        >
+          <h1>The Club Handbook</h1>
+        </a>
+        <br />
+        <h1>Submit Meeting Minutes</h1>
+        <ul>
+          <li>
+            <a
+              href="https://docs.google.com/forms/u/3/d/1Rchw1DOtHHuPIUadhwCbpbHubouS_o207kEX5ST8bPw/edit?usp=drive_web"
+              >Quarter 1</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://docs.google.com/forms/u/3/d/1OFB781QNCDez5m5MlYXs0pJ6n9q3r3_f1TFh09XEMSI/edit?usp=drive_web"
+              >Quarter 2</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdPzjxn0l8xEuLjAoeCJLZpei30OnxWxqybzo7iaaFne5uoZA/viewform"
+              >Quarter 3</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://docs.google.com/forms/d/1ZCtvtrbbEh1Ehp-JvJyY890FfA6U7gMFGi-MCegPI2E/edit#responses"
+              >Quarter 4</a
+            >
+          </li>
+        </ul>
+        <br /><a
+          href="http://www.google.com/url?q=http%3A%2F%2Ftinyurl.com%2Fclubupdate1&sa=D&sntz=1&usg=AFQjCNH6YKDDjAPZxlcA4CLM3wHGcJSYHg"
+        >
+          <h1>Renewal Checklist and Pigskin Info</h1>
+        </a>
+        <br /><a
+          href="https://drive.google.com/file/d/1Ceo6rnNlbns0Kcva3Vpv8ASpSqs7w77i/view"
+        >
+          <h1>Assistant Club Advisor Form</h1>
+        </a>
+        <br /><a
+          href="https://docs.google.com/presentation/d/1G9VgGoIEFq6Az5wpxJaDfnU80sbnrZrvOuOa8pJWAtI/edit#slide=id.p"
+        >
+          <h1>Club Finance Workshop</h1>
+        </a>
+      </div>
+    </div>
+    <script>
+      let counting = 0;
+      function appearNav() {
+        //console.log(5000);
+        const element = document.getElementById("mobile-nav-right");
+        if (counting % 2 == 0) {
+          element.style.right = "0";
 
-        counting++;
-      } else if (counting % 2 == 1) {
-        element.style.right = "-100%";
+          counting++;
+        } else if (counting % 2 == 1) {
+          element.style.right = "-100%";
 
-        counting++;
+          counting++;
+        }
       }
-    }
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>

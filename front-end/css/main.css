@@ -354,7 +354,7 @@ h4 {
   background-position: center;
   background-size: cover;
 }
-.topic[data-tag-code = "athletics"]{
+.topic[data-tag-code="athletics"] {
   background-image: url("/images/athletics.gif");
   background-position: center;
   background-size: cover;
@@ -583,7 +583,8 @@ h4 {
   background-color: lightblue;
 }
 
-#expand-mailing-list input, button {
+#expand-mailing-list input,
+button {
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
   font-size: 22px;
@@ -592,10 +593,6 @@ h4 {
   padding: 5px;
   margin-bottom: 10px;
 }
-
-
-
-
 
 #modal-content-wrapper {
   overflow-y: scroll;

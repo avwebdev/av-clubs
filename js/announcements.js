@@ -1,7 +1,6 @@
-/* eslint-disable indent */
 const fs = require("fs");
 const nodemailer = require("nodemailer");
-var mailClient = nodemailer.createTransport({
+const mailClient = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465,
   secure: true, // true for 465, false for other ports
@@ -12,18 +11,18 @@ var mailClient = nodemailer.createTransport({
 });
 
 function announcement(sheetsOb) {
-  var categories = {};
+  const categories = {};
 
-  var announcements = {};
+  const announcements = {};
 
-  var toBeSorted = [];
+  const toBeSorted = [];
 
   sheetsOb[0].forEach(function (category, index) {
     categories[`${index}`] = category;
   });
 
-  for (var announcement of sheetsOb.slice(1)) {
-    var announcementOb = {};
+  for (const announcement of sheetsOb.slice(1)) {
+    const announcementOb = {};
 
     announcement.forEach(function (value, index) {
       announcementOb[categories[`${index}`]] = value;
@@ -39,9 +38,9 @@ function announcement(sheetsOb) {
       toBeSorted.push(announcementOb);
   }
 
-  for (var i = 0; i < toBeSorted.length - 1; i++) {
-    var date = new Date(toBeSorted[i].Date);
-    var nextDate = new Date(toBeSorted[i + 1].Date);
+  for (let i = 0; i < toBeSorted.length - 1; i++) {
+    const date = new Date(toBeSorted[i].Date);
+    const nextDate = new Date(toBeSorted[i + 1].Date);
     if (date > nextDate) {
       let [temp] = toBeSorted.splice(i + 1, 1);
       toBeSorted.splice(0, 0, temp);
@@ -58,25 +57,27 @@ function announcement(sheetsOb) {
   return announcements;
 }
 
-var mailingList = {
+const mailingList = {
   previousAnnouncements: null,
   currentAnnouncements: null,
   setAnnouncements: function (currentAnnouncements) {
     this.previousAnnouncements = this.currentAnnouncements;
     this.currentAnnouncements = currentAnnouncements;
-    var announcementsToEmail = this.checkForApprovalChanges();
+    const announcementsToEmail = this.checkForApprovalChanges();
     if (announcementsToEmail.length > 0) {
       this.email(announcementsToEmail);
     }
   },
 
   checkForApprovalChanges: function () {
-    var newAnnouncements = [];
+    const newAnnouncements = [];
     if (this.previousAnnouncements != null) {
-      for (var announcement of Object.values(this.currentAnnouncements.data)) {
+      for (const announcement of Object.values(
+        this.currentAnnouncements.data
+      )) {
         let previousAnnouncement = null;
 
-        for (var otherAnnouncement of Object.values(
+        for (const otherAnnouncement of Object.values(
           this.previousAnnouncements.data
         )) {
           if (
@@ -102,9 +103,9 @@ var mailingList = {
   },
 
   email: async function (announcements) {
-    var emails = await this.getAllEmails();
+    const emails = await this.getAllEmails();
     // console.log(`sending ${announcements.length} announcements to ${emails}`);
-    for (var announcement of announcements) {
+    for (const announcement of announcements) {
       let html = `
       </p>${announcement["Paragraph 1"]}<br><br>
       ${
@@ -135,7 +136,7 @@ var mailingList = {
       ${announcement["Link 4"] ? `${announcement["Link 4"]}<br>` : ""}
                         `;
       // console.log(html);
-      for (var mail of emails) {
+      for (const mail of emails) {
         await mailClient.sendMail({
           from: "AV Clubs <amadorvalleyweb.org>",
           to: emails,
@@ -147,8 +148,8 @@ var mailingList = {
   },
 
   registerNewEmail: async function (email) {
-    var formattedEmail = email.toLowerCase().trim();
-    var emailAccessor = JSON.parse(fs.readFileSync("./js/mailingList.json"));
+    const formattedEmail = email.toLowerCase().trim();
+    const emailAccessor = JSON.parse(fs.readFileSync("./js/mailingList.json"));
     if (!emailAccessor.emails.includes(formattedEmail)) {
       emailAccessor.emails.push(formattedEmail);
       fs.writeFileSync("./js/mailingList.json", JSON.stringify(emailAccessor));
@@ -156,9 +157,9 @@ var mailingList = {
   },
 
   unsuscribeEmail: async function (email) {
-    var formattedEmail = email.toLowerCase().trim();
-    var emailAccessor = JSON.parse(fs.readFileSync("./js/mailingList.json"));
-    var indexFound = emailAccessor.emails.indexOf(formattedEmail);
+    const formattedEmail = email.toLowerCase().trim();
+    const emailAccessor = JSON.parse(fs.readFileSync("./js/mailingList.json"));
+    const indexFound = emailAccessor.emails.indexOf(formattedEmail);
     if (indexFound != -1) {
       emailAccessor.emails.splice(indexFound, 1);
       fs.writeFileSync("./js/mailingList.json", JSON.stringify(emailAccessor));
@@ -166,7 +167,7 @@ var mailingList = {
   },
 
   getAllEmails: async function () {
-    var { emails } = JSON.parse(
+    const { emails } = JSON.parse(
       await fs.promises.readFile("./js/mailingList.json")
     );
     return emails;

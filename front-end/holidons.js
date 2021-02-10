@@ -5,7 +5,7 @@ const videos = [
   "Kids-Against-Hunger.mp4",
   "AV-Bollywood-And-Bhangra.mov",
   "Lead-Club.mp4",
-  "Local-Leaders-Club.mp4"
+  "Local-Leaders-Club.mp4",
 ];
 
 const createVideo = (video) => {

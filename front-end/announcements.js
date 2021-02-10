@@ -1,4 +1,4 @@
-var announcements;
+let announcements;
 
 const getAnnouncementData = async () => {
   const res = await fetch("announcements", {
@@ -26,11 +26,11 @@ async function loadAnnouncements() {
   // //   }
   // // }
   announcements = data;
-  var announcementsRoot = document.getElementById("announcements");
-  var mobileAnnouncementsRoot = document.querySelector(".swiper-wrapper");
+  const announcementsRoot = document.getElementById("announcements");
+  const mobileAnnouncementsRoot = document.querySelector(".swiper-wrapper");
   // eslint-disable-next-line no-redeclare
-  var i = 0;
-  for (var key = 0; key < data.length; key++) {
+  let i = 0;
+  for (let key = 0; key < data.length; key++) {
     if (i > 6) break; //limits amount of announcements
     announcement = data[key];
     if (
@@ -66,7 +66,7 @@ async function loadAnnouncements() {
                 <p class="date">${announcement.Date}</p>
                 ${expandButton}
             </div>
-        </div>    
+        </div>
         `;
     mobileAnnouncementsRoot.innerHTML += `
         <div class="swiper-slide" onclick="appear(${key});">
@@ -77,7 +77,7 @@ async function loadAnnouncements() {
                 <i class="mdi mdi-arrow-expand"></i>
             </div>
         </div>
-        
+
         `;
   }
   mySwiper.update();
