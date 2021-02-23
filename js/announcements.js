@@ -164,9 +164,9 @@ const mailingList = {
   },
 
   unsubscribeEmail: async function (email) {
-    var formattedEmail = email.toLowerCase().trim();
-    var emailAccessor = JSON.parse(fs.readFileSync("./js/mailingList.json"));
-    var indexFound = emailAccessor.emails.indexOf(formattedEmail);
+    const formattedEmail = email.toLowerCase().trim();
+    const emailAccessor = JSON.parse(fs.readFileSync("./js/mailingList.json"));
+    const indexFound = emailAccessor.emails.indexOf(formattedEmail);
     if (indexFound != -1) {
       emailAccessor.emails.splice(indexFound, 1);
       fs.writeFileSync("./js/mailingList.json", JSON.stringify(emailAccessor));

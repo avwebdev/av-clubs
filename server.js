@@ -3,7 +3,7 @@ const app = express();
 const fs = require("fs");
 const { google } = require("googleapis");
 const secrets = require("./js/secrets.js");
-var auth = new google.auth.JWT(
+let auth = new google.auth.JWT(
   secrets.SERVICE_ACCOUNT.client_email,
   null,
   secrets.SERVICE_ACCOUNT.private_key,
