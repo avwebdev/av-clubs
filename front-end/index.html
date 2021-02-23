@@ -260,7 +260,7 @@
             );
             submitButton.onclick = async function (event) {
               if (event.currentTarget.innerText == "Sign Up") {
-                var result = await fetch("/suscribe", {
+                var result = await fetch("/subscribe", {
                   method: "POST",
                   body: JSON.stringify({
                     email: document.querySelector("#expand-mailing-list input")

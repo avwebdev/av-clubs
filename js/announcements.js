@@ -161,7 +161,7 @@ var mailingList = {
     }
   },
 
-  unsuscribeEmail: async function (email) {
+  unsubscribeEmail: async function (email) {
     var formattedEmail = email.toLowerCase().trim();
     var emailAccessor = JSON.parse(fs.readFileSync("./js/mailingList.json"));
     var indexFound = emailAccessor.emails.indexOf(formattedEmail);

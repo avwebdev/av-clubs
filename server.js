@@ -34,7 +34,7 @@ app.post("/getEmails", async function (req, res) {
   if (req.body.randomSecret === secrets.SECRET_CODE) {
     res.end(JSON.stringify(await mailingList.getAllEmails()));
     return;
-  } else res.end();
+  } else res.status(403).end();
 });
 
 app.get("/index.html|resources.html|^/$/", function (req, res, next) {
@@ -67,7 +67,7 @@ app.post("/getData", function (req, res) {
   res.end(JSON.stringify(data));
 });
 
-app.post("/suscribe", function (req, res) {
+app.post("/subscribe", function (req, res) {
   if (!isAuthorized(req)) {
     res.end("You are inauthorized");
     return;
@@ -81,14 +81,14 @@ app.post("/suscribe", function (req, res) {
   }
 });
 
-app.post("/unsuscribe", function (req, res) {
+app.post("/unsubscribe", function (req, res) {
   if (!isAuthorized(req)) {
     res.end("You are inauthorized");
     return;
   }
   var email = req.body.email;
   if (validator.validate(email)) {
-    mailingList.unsuscribeEmail(email);
+    mailingList.unsubscribeEmail(email);
   }
   res.end();
 });
