@@ -1,15 +1,15 @@
 /* eslint-disable indent */
 function club(sheetsOb) {
-  var categories = {};
+  const categories = {};
 
-  var clubs = {};
+  const clubs = {};
 
   sheetsOb[0].forEach(function (category, index) {
     categories[`${index}`] = category;
   });
 
-  for (var club of sheetsOb.slice(1)) {
-    var clubOb = {};
+  for (const club of sheetsOb.slice(1)) {
+    const clubOb = {};
 
     club.forEach(function (value, index) {
       clubOb[categories[`${index}`]] = value;

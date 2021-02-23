@@ -1,5 +1,5 @@
-var express = require("express");
-var app = express();
+const express = require("express");
+const app = express();
 const fs = require("fs");
 const { google } = require("googleapis");
 const secrets = require("./js/secrets.js");
@@ -9,8 +9,9 @@ var auth = new google.auth.JWT(
   secrets.SERVICE_ACCOUNT.private_key,
   ["https://www.googleapis.com/auth/spreadsheets"]
 );
-var data = [];
-var announcements;
+let data = [];
+let announcements;
+
 const club = require("./js/club.js");
 const { announcement, mailingList } = require("./js/announcements.js");
 const validator = require("email-validator");
@@ -51,7 +52,7 @@ app.get("/login", function (req, res) {
 });
 
 app.post("/login", async function (req, res) {
-  var result = await authorize(req);
+  const result = await authorize(req);
   if (result) res.end("success");
   else res.end("failure");
 });
@@ -72,7 +73,7 @@ app.post("/subscribe", function (req, res) {
     res.end("You are inauthorized");
     return;
   }
-  var email = req.body.email;
+  const email = req.body.email;
   if (validator.validate(email)) {
     mailingList.registerNewEmail(email);
     res.end();
@@ -86,7 +87,7 @@ app.post("/unsubscribe", function (req, res) {
     res.end("You are inauthorized");
     return;
   }
-  var email = req.body.email;
+  const email = req.body.email;
   if (validator.validate(email)) {
     mailingList.unsubscribeEmail(email);
   }

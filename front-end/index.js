@@ -93,7 +93,7 @@ getData().then((allClubs) => {
       onclick: () => {
         if (withOnClick) {
           openClubs("all");
-          var div = document.getElementById(`club-div-${text}`);
+          const div = document.getElementById(`club-div-${text}`);
           if (parseInt(div.getAttribute("data-count")) % 2 === 0) {
             showClubInfo(div);
             rotate(div);
@@ -144,7 +144,7 @@ getData().then((allClubs) => {
 
   function createClubDiv(name, club) {
     //generate random tag name. With data tagname will equal club["category"]
-    var tagname;
+    let tagname;
     //console.log(club[category], club);
     switch (club[category]) {
       case "Business and Finance":
@@ -280,17 +280,17 @@ getData().then((allClubs) => {
       const clubDropdownItemTitle = createElement("strong", {
         innerText: title,
       });
-      var clubDropdownItemText;
+      let clubDropdownItemText;
       if (options?.link) {
         clubDropdownItemText = createElement("p", {
           innerHTML: `<a href="${text}">${text}</a>`,
         });
       } else if (options?.otherLinks) {
         const list = document.createElement("li");
-        var links = text.split(",");
-        for (var link of links) {
-          var li = document.createElement("li");
-          var a = document.createElement("a");
+        const links = text.split(",");
+        for (const link of links) {
+          const li = document.createElement("li");
+          const a = document.createElement("a");
           a.innerText = link;
           a.href = link;
           li.appendChild(a);
@@ -299,12 +299,12 @@ getData().then((allClubs) => {
         clubDropdownItemText = createElement("p");
         clubDropdownItemText.appendChild(list);
       } else if (options?.meetingLocation) {
-        var meetingLinks;
+        let meetingLinks;
         if (text.includes("http")) {
           meetingLinks = document.createElement("a");
-          var textParts = text.split(" ");
-          var linkPart = "";
-          for (var i = 0; i < textParts.length; i++) {
+          const textParts = text.split(" ");
+          let linkPart = "";
+          for (let i = 0; i < textParts.length; i++) {
             if (textParts[i].includes("http")) {
               console.log(textParts[i]);
               linkPart = textParts[i];
@@ -323,8 +323,8 @@ getData().then((allClubs) => {
         let remindCode;
         let remindLink;
         if (text.includes("@")) {
-          var fragments = text.split(" ");
-          for (var fragment of fragments) {
+          const fragments = text.split(" ");
+          for (const fragment of fragments) {
             if (fragment.startsWith("@")) {
               remindCode = fragment;
               break;
@@ -434,7 +434,7 @@ function openClubs(mode, tagName, oTagName) {
 function openTags() {}
 
 window.addEventListener("load", function () {
-  for (var topic of document.querySelectorAll("#categories .topic")) {
+  for (const topic of document.querySelectorAll("#categories .topic")) {
     let tagName = topic.querySelector("h3").innerText;
     let oTagName = topic.getAttribute("data-tag-code");
     topic.onclick = function () {
@@ -506,10 +506,10 @@ function rotate(element) {
 }
 
 function display(i, counter) {
-  var element = i.parentNode;
-  var feed = document.getElementsByClassName("announcement");
-  var answer = document.getElementsByClassName("answer");
-  for (var x = 0; x < feed.length; x++) {
+  const element = i.parentNode;
+  const feed = document.getElementsByClassName("announcement");
+  const answer = document.getElementsByClassName("answer");
+  for (let x = 0; x < feed.length; x++) {
     if (element.isEqualNode(feed[x])) {
       if (counter % 2 == 0) {
         answer[x].style.display = "block";

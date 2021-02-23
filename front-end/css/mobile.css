@@ -202,7 +202,6 @@
     margin-top: 15px;
     cursor: pointer;
     width: 95%;
-    
   }
 
   #mailing-list-mobile i {
@@ -214,7 +213,7 @@
     position: relative;
     top: 5px;
   }
-  
+
   #mailing-list-mobile p {
     display: inline-block;
     width: 68%;
@@ -223,7 +222,6 @@
     margin-bottom: 10px;
     margin-left: 10px;
   }
-  
 }
 
 @media (max-width: 1200px) {

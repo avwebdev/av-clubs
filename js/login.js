@@ -20,9 +20,9 @@ async function verify(token) {
 }
 
 async function authorize(req) {
-  var token = req?.body?.token;
+  const token = req?.body?.token;
   if (token != null) {
-    var result = await verify(token);
+    const result = await verify(token);
     //console.log(result);
     if (result) {
       req.session.authorized = true;

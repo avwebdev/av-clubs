@@ -10,7 +10,7 @@
     "ecmaVersion": 12
   },
   "rules": {
-    "indent": ["warn", 2, { "SwitchCase": 1 }],
+    "indent": "off",
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "double"],
     "semi": ["error", "always"],
