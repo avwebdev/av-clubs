@@ -1,3 +1,4 @@
+.eslintrc linguist-language=JSON
 .prettierrc linguist-language=JSON
 
 .huskyrc linguist-language=JSON

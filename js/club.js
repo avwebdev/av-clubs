@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 function club(sheetsOb) {
   const categories = {};
 

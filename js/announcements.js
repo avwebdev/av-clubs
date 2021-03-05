@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 const secrets = require("./secrets.js");
 const fs = require("fs");
 const nodemailer = require("nodemailer");

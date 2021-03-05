@@ -1,3 +1,9 @@
 {
-  "recommendations": ["esbenp.prettier-vscode", "dbaeumer.vscode-eslint"]
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "DavidAnson.vscode-markdownlint",
+    "ms-azuretools.vscode-docker",
+    "yasht.terminal-all-in-one"
+  ]
 }

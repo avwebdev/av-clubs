@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "lint": "npx lint-check",
+    "lint:staged": "lint-staged"
   },
   "keywords": [],
   "author": "",
@@ -21,7 +23,7 @@
   },
   "devDependencies": {
     "eslint": "^7.14.0",
-    "husky": "^4.3.0",
+    "husky": "^5.1.3",
     "lint-staged": "^10.5.2",
     "markdownlint": "^0.22.0",
     "prettier": "^2.2.0"

@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 const clubsDiv = document.getElementById("all-clubs");
 const searchBar = document.getElementById("search-bar");
 const searchInput = document.getElementById("search-input");

@@ -84,7 +84,7 @@ app.post("/subscribe", function (req, res) {
 
 app.post("/unsubscribe", function (req, res) {
   if (!isAuthorized(req)) {
-    res.end("You are inauthorized");
+    res.end("You are unauthorized");
     return;
   }
   const email = req.body.email;
@@ -96,7 +96,7 @@ app.post("/unsubscribe", function (req, res) {
 
 app.post("/announcements", function (req, res) {
   if (!isAuthorized(req)) {
-    res.end("You are inauthorized");
+    res.end("You are unauthorized");
     return;
   }
   res.setHeader("Content-Type", "application/json");

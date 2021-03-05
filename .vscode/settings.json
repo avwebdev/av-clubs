@@ -1,7 +1,16 @@
 {
   "files.associations": {
-    ".huskyrc": "json",
     ".prettierrc": "json",
-    ".eslintrc": "json"
+    ".eslintrc": "json",
+
+    ".imgbotconfig": "json",
+
+    ".huskyrc": "json",
+    ".lintstagedrc": "json",
+
+    ".markdownlintrc": "json",
+    ".markdownlintignore": "ignore",
+
+    ".snyk": "yaml"
   }
 }
