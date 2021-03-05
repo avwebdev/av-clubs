@@ -1,13 +1,12 @@
 const express = require("express");
 const app = express();
 const fs = require("fs");
-const credentials = JSON.parse(fs.readFileSync("credentials.json"));
 const { google } = require("googleapis");
-
+const secrets = require("./js/secrets.js");
 let auth = new google.auth.JWT(
-  credentials.client_email,
+  secrets.SERVICE_ACCOUNT.client_email,
   null,
-  credentials.private_key,
+  secrets.SERVICE_ACCOUNT.private_key,
   ["https://www.googleapis.com/auth/spreadsheets"]
 );
 let data = [];
@@ -25,7 +24,7 @@ auth.authorize(setData);
 app.use(express.json());
 app.use(
   session({
-    secret: "abcdrgyh",
+    secret: secrets.SECRET_CODE,
     // cookie: { secure: false }, //Enable this later after https is enabled
     resave: false,
     saveUninitialized: false,
@@ -33,10 +32,10 @@ app.use(
 );
 
 app.post("/getEmails", async function (req, res) {
-  if (req.body.randomSecret === "****with@nchor") {
+  if (req.body.randomSecret === secrets.SECRET_CODE) {
     res.end(JSON.stringify(await mailingList.getAllEmails()));
     return;
-  } else res.end();
+  } else res.status(403).end();
 });
 
 app.get("/index.html|resources.html|^/$/", function (req, res, next) {
@@ -69,7 +68,7 @@ app.post("/getData", function (req, res) {
   res.end(JSON.stringify(data));
 });
 
-app.post("/suscribe", function (req, res) {
+app.post("/subscribe", function (req, res) {
   if (!isAuthorized(req)) {
     res.end("You are inauthorized");
     return;
@@ -83,14 +82,14 @@ app.post("/suscribe", function (req, res) {
   }
 });
 
-app.post("/unsuscribe", function (req, res) {
+app.post("/unsubscribe", function (req, res) {
   if (!isAuthorized(req)) {
     res.end("You are inauthorized");
     return;
   }
   const email = req.body.email;
   if (validator.validate(email)) {
-    mailingList.unsuscribeEmail(email);
+    mailingList.unsubscribeEmail(email);
   }
   res.end();
 });
@@ -121,8 +120,8 @@ function setData(err, token) {
 
   sheets.spreadsheets.values
     .get({
-      spreadsheetId: "1LhB2_-7ZXsHk2boeTRIt2slaFVLsXy0lceJyfwyCB-E",
-      range: "A1:Z200",
+      spreadsheetId: secrets.CLUBS_SHEET,
+      range: "A1:Z900",
     })
     .then((response) => {
       data = club(response.data.values);
@@ -133,8 +132,8 @@ function setData(err, token) {
 async function loadAnnouncements(sheets) {
   sheets.spreadsheets.values
     .get({
-      spreadsheetId: "1JEatzOlJ5vKTxQE4EUSJjoa_ViSJ_TGfwoG1Zx8x9kM",
-      range: "A1:Z100",
+      spreadsheetId: secrets.ANNOUNCEMENTS_SHEET,
+      range: "A1:Z900",
     })
     .then((response) => {
       announcements = announcement(response.data.values);
@@ -150,9 +149,9 @@ setInterval(async () => {
   //console.log(auth);
   if (auth.isTokenExpiring()) {
     auth = new google.auth.JWT(
-      credentials.client_email,
+      secrets.SERVICE_ACCOUNT.client_email,
       null,
-      credentials.private_key,
+      secrets.SERVICE_ACCOUNT.private_key,
       ["https://www.googleapis.com/auth/spreadsheets"]
     );
     auth.authorize(setData);

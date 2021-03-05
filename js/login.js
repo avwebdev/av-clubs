@@ -1,11 +1,13 @@
+/* eslint-disable indent */
 const { OAuth2Client } = require("google-auth-library");
 const client = new OAuth2Client();
+const secrets = require("./secrets.js");
+
 async function verify(token) {
   try {
     const ticket = await client.verifyIdToken({
       idToken: token,
-      audience:
-        "559805050687-jg9mfqa2mq2qnu4kcjt32lqe661uqacg.apps.googleusercontent.com",
+      audience: secrets.OAUTH_AUDIENCE,
     });
     const payload = ticket.getPayload();
     if (payload.email != null && payload.email.includes("@pleasantonusd.net")) {

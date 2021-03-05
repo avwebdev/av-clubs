@@ -1,3 +1,5 @@
+/* eslint-disable indent */
+const secrets = require("./secrets.js");
 const fs = require("fs");
 const nodemailer = require("nodemailer");
 const mailClient = nodemailer.createTransport({
@@ -5,10 +7,15 @@ const mailClient = nodemailer.createTransport({
   port: 465,
   secure: true, // true for 465, false for other ports
   auth: {
-    user: "amadorvalleyweb@gmail.com", // generated ethereal user
-    pass: "****with@nchor", // generated ethereal password
+    user: secrets.AV_EMAIL, // generated ethereal user
+    pass: secrets.AV_PASS, // generated ethereal password
   },
 });
+
+const emailAccessFileExists = fs.existsSync("js/mailingList.json");
+if (!emailAccessFileExists) {
+  fs.writeFileSync("./js/mailingList.json", JSON.stringify({ emails: [] }));
+}
 
 function announcement(sheetsOb) {
   const categories = {};
@@ -156,7 +163,7 @@ const mailingList = {
     }
   },
 
-  unsuscribeEmail: async function (email) {
+  unsubscribeEmail: async function (email) {
     const formattedEmail = email.toLowerCase().trim();
     const emailAccessor = JSON.parse(fs.readFileSync("./js/mailingList.json"));
     const indexFound = emailAccessor.emails.indexOf(formattedEmail);
