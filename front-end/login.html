@@ -65,6 +65,14 @@
         font-weight: 500;
       }
 
+      .person-link {
+        text-decoration: none;
+      }
+
+      .person-link:hover {
+        text-decoration: underline;
+      }
+
       @media (max-width: 1000px) {
         #main-banner img {
           width: 75px;
@@ -129,6 +137,40 @@
     <div class="container" id="button-container">
       <div id="my-signin2" data-onsuccess="onSignIn" data-theme="light"></div>
       <p id="failure-message">Invalid PUSD account</p>
+    </div>
+    <div style="display: flex; width: 100%; justify-content: center">
+      <p style="position: fixed; bottom: 0">
+        ©
+        <a
+          href="https://www.linkedin.com/in/subha-das-760b861aa/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="person-link"
+          >Subha Das</a
+        >,
+        <a
+          href="https://www.linkedin.com/in/aron-thakur-910846209/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="person-link"
+          >Aron Thakur</a
+        >,
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.linkedin.com/in/keerthi-kalyaan-004a9018a/"
+          class="person-link"
+          >Keerthi Kalyaan</a
+        >,
+        <a
+          href="https://github.com/YashTotale/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="person-link"
+        >
+          Yash Totale</a
+        >
+      </p>
     </div>
 
     <script src="https://apis.google.com/js/platform.js?onload=renderButton"></script>

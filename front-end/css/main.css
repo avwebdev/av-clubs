@@ -728,3 +728,11 @@ button {
     transform: none;
   }
 }
+
+.person-link {
+  text-decoration: none;
+}
+
+.person-link:hover {
+  text-decoration: underline;
+}
