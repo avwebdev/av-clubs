@@ -305,7 +305,6 @@ getData().then((allClubs) => {
           let linkPart = "";
           for (let i = 0; i < textParts.length; i++) {
             if (textParts[i].includes("http")) {
-              console.log(textParts[i]);
               linkPart = textParts[i];
               break;
             }

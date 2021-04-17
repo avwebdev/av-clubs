@@ -3,6 +3,7 @@ const app = express();
 const fs = require("fs");
 const { google } = require("googleapis");
 const secrets = require("./js/secrets.js");
+const cookieParser = require("cookie-parser");
 let auth = new google.auth.JWT(
   secrets.SERVICE_ACCOUNT.client_email,
   null,
@@ -15,21 +16,13 @@ let announcements;
 const club = require("./js/club.js");
 const { announcement, mailingList } = require("./js/announcements.js");
 const validator = require("email-validator");
-const session = require("express-session");
 const loginFile = fs.readFileSync("front-end/login.html").toString();
-const authorize = require("./js/login.js");
+const {authorize, login, redirectToLoginIfNotAuthorized, sendMessageIfNotAuthorized} = require("./js/login.js");
 
 auth.authorize(setData);
 
 app.use(express.json());
-app.use(
-  session({
-    secret: secrets.SECRET_CODE,
-    cookie: { secure: false },
-    resave: false,
-    saveUninitialized: false,
-  })
-);
+app.use(cookieParser());
 
 app.post("/getEmails", async function (req, res) {
   if (req.body.randomSecret === secrets.SECRET_CODE) {
@@ -38,41 +31,23 @@ app.post("/getEmails", async function (req, res) {
   } else res.status(403).end();
 });
 
-app.get("/index.html|resources.html|^/$/", function (req, res, next) {
-  if (!isAuthorized(req)) {
-    res.redirect("/login");
-    res.end();
-  } else next();
+app.get("/index.html|resources.html|^/$/", authorize, redirectToLoginIfNotAuthorized);
+
+app.get("/login", authorize, (req, res) => {
+  if (req.authorized) res.redirect("/");
+  else res.end(loginFile);
 });
 
-app.get("/login", function (req, res) {
-  if (isAuthorized(req)) {
-    res.redirect("/");
-  } else res.end(loginFile);
-});
-
-app.post("/login", async function (req, res) {
-  const result = await authorize(req);
-  if (result) res.end("success");
-  else res.end("failure");
-});
+app.post("/login", login);
 
 app.use("/", express.static(__dirname + "/front-end"));
 
-app.post("/getData", function (req, res) {
-  if (!isAuthorized(req)) {
-    res.end("You are inauthorized");
-    return;
-  }
+app.post("/getData", authorize, sendMessageIfNotAuthorized("You are unauthorized."), (req, res) => {
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(data));
 });
 
-app.post("/subscribe", function (req, res) {
-  if (!isAuthorized(req)) {
-    res.end("You are inauthorized");
-    return;
-  }
+app.post("/subscribe", authorize, sendMessageIfNotAuthorized("You are unauthorized."), function (req, res) {
   const email = req.body.email;
   if (validator.validate(email)) {
     mailingList.registerNewEmail(email);
@@ -82,11 +57,7 @@ app.post("/subscribe", function (req, res) {
   }
 });
 
-app.post("/unsubscribe", function (req, res) {
-  if (!isAuthorized(req)) {
-    res.end("You are unauthorized");
-    return;
-  }
+app.post("/unsubscribe", authorize, sendMessageIfNotAuthorized("You are unauthorized."), function (req, res) {
   const email = req.body.email;
   if (validator.validate(email)) {
     mailingList.unsubscribeEmail(email);
@@ -94,11 +65,7 @@ app.post("/unsubscribe", function (req, res) {
   res.end();
 });
 
-app.post("/announcements", function (req, res) {
-  if (!isAuthorized(req)) {
-    res.end("You are unauthorized");
-    return;
-  }
+app.post("/announcements", authorize, sendMessageIfNotAuthorized("You are unauthorized."), function (req, res) {
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(announcements));
 });
@@ -149,13 +116,7 @@ async function loadAnnouncements(sheets) {
   }
 }
 
-function isAuthorized(req) {
-  if (req?.session?.authorized === true) return true;
-  return false;
-}
-
 setInterval(async () => {
-  //console.log(auth);
   if (auth.isTokenExpiring()) {
     auth = new google.auth.JWT(
       secrets.SERVICE_ACCOUNT.client_email,
