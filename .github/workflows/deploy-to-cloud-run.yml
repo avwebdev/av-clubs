@@ -1,0 +1,35 @@
+name: Deploy to Cloud Run
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GITHUBS_ACTIONS_SA }}
+          export_default_credentials: true
+
+      - name: Setup Secrets File
+        run: echo '${{ secrets.SECRETS_FILE }}' > secrets.json
+
+      - name: Build Docker Container
+        run: docker build -t av-clubs ./
+
+      - name: Tag Docker Container with GCR tag
+        run: docker tag av-clubs gcr.io/${{ secrets.GCP_PROJECT_ID }}/av-clubs
+
+      - name: Push to GCR
+        run: docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/av-clubs
+
+      - name: Deploy to Cloud Run
+        run: |-
+          gcloud run deploy av-clubs \
+            --region us-central1 \
+            --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/av-clubs \
+            --platform managed
