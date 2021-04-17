@@ -17,9 +17,7 @@ const club = require("./js/club.js");
 const { announcement, mailingList } = require("./js/announcements.js");
 const validator = require("email-validator");
 const loginFile = fs.readFileSync("front-end/login.html").toString();
-const {authorize, login, redirectToLoginIfNotAuthorized, sendMessageIfNotAuthorized} = require("./js/login.js");
-
-auth.authorize(setData);
+const { authorize, login, redirectToLoginIfNotAuthorized, sendMessageIfNotAuthorized } = require("./js/login.js");
 
 app.use(express.json());
 app.use(cookieParser());
@@ -74,47 +72,41 @@ app.get("*", function (req, res) {
   res.redirect("/");
 });
 
-app.listen(process.env.PORT || 81, function () {
-  console.log("server started");
-});
-
-function setData(err, token) {
-  if (err) return;
+async function setData(token) {
   const sheets = google.sheets({
     version: "v4",
     auth: auth,
   });
+  const response = await sheets.spreadsheets.values.get({
+    spreadsheetId: secrets.CLUBS_SHEET,
+    range: "A1:Z900",
+  });
 
-  try {
-    sheets.spreadsheets.values
-      .get({
-        spreadsheetId: secrets.CLUBS_SHEET,
-        range: "A1:Z900",
-      })
-      .then((response) => {
-        data = club(response.data.values);
-        loadAnnouncements(sheets);
-      });
-  }
-  catch (e) {
-    console.log(e);
-  }
+  data = club(response.data.values);
+  await loadAnnouncements(sheets);
 }
 
 async function loadAnnouncements(sheets) {
-  try {
-    sheets.spreadsheets.values
+  const response = await sheets.spreadsheets.values
     .get({
       spreadsheetId: secrets.ANNOUNCEMENTS_SHEET,
       range: "A1:Z900",
-    })
-    .then((response) => {
-      announcements = announcement(response.data.values);
+    });
+  announcements = announcement(response.data.values);
+}
+
+(async () => {
+  try {
+    const credentials = await auth.authorize();
+    await setData(credentials);
+    app.listen(process.env.PORT || 81, function () {
+      console.log("server started");
     });
   } catch (e) {
-    console.log(e);
+    console.log("Unable to authenticate", e);
+    process.exit();
   }
-}
+})();
 
 setInterval(async () => {
   if (auth.isTokenExpiring()) {
