@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(
   session({
     secret: secrets.SECRET_CODE,
-    cookie: { secure: true },
+    cookie: { secure: false },
     resave: false,
     saveUninitialized: false,
   })
@@ -107,8 +107,8 @@ app.get("*", function (req, res) {
   res.redirect("/");
 });
 
-app.listen(81, function () {
-  console.log("server started on port 81");
+app.listen(process.env.PORT || 81, function () {
+  console.log("server started");
 });
 
 function setData(err, token) {
@@ -128,8 +128,8 @@ function setData(err, token) {
         data = club(response.data.values);
         loadAnnouncements(sheets);
       });
-
-  } catch (e) {
+  }
+  catch (e) {
     console.log(e);
   }
 }
@@ -137,13 +137,13 @@ function setData(err, token) {
 async function loadAnnouncements(sheets) {
   try {
     sheets.spreadsheets.values
-      .get({
-        spreadsheetId: secrets.ANNOUNCEMENTS_SHEET,
-        range: "A1:Z900",
-      })
-      .then((response) => {
-        announcements = announcement(response.data.values);
-      });
+    .get({
+      spreadsheetId: secrets.ANNOUNCEMENTS_SHEET,
+      range: "A1:Z900",
+    })
+    .then((response) => {
+      announcements = announcement(response.data.values);
+    });
   } catch (e) {
     console.log(e);
   }

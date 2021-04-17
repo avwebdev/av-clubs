@@ -13,7 +13,7 @@ async function verify(token) {
       return true;
     } else return false;
   } catch (err) {
-    // console.log(err);
+    console.log(err);
     return false;
   }
 }
