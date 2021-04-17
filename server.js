@@ -9,6 +9,7 @@ let auth = new google.auth.JWT(
   secrets.SERVICE_ACCOUNT.private_key,
   ["https://www.googleapis.com/auth/spreadsheets"]
 );
+console.log(secrets.SERVICE_ACCOUNT.client_email, secrets.SERVICE_ACCOUNT.private_key);
 let data = [];
 let announcements;
 
