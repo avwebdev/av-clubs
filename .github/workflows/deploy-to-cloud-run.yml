@@ -18,6 +18,9 @@ jobs:
           service_account_key: ${{ secrets.GITHUBS_ACTIONS_SA }}
           export_default_credentials: true
 
+      - name: Authenticate Docker
+        run: gcloud auth configure-docker
+
       - name: Setup Secrets File
         run: echo '${{ secrets.SECRETS_FILE }}' > secrets.json
 
