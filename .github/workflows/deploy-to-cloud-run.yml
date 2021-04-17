@@ -19,7 +19,7 @@ jobs:
         run: echo '${{ secrets.SECRETS_FILE }}' > secrets.json
 
       - name: Build Docker Container
-        run: docker build -t av-clubs ./
+        run: docker build --tag av-clubs ./
 
       - name: Tag Docker Container with GCR tag
         run: docker tag av-clubs gcr.io/${{ secrets.GCP_PROJECT_ID }}/av-clubs
