@@ -118,27 +118,32 @@ function setData(err, token) {
     auth: auth,
   });
 
-  sheets.spreadsheets.values
-    .get({
-      spreadsheetId: secrets.CLUBS_SHEET,
-      range: "A1:Z900",
-    })
-    .then((response) => {
-      data = club(response.data.values);
-      loadAnnouncements(sheets);
-    });
+  try {
+    sheets.spreadsheets.values
+      .get({
+        spreadsheetId: secrets.CLUBS_SHEET,
+        range: "A1:Z900",
+      })
+      .then((response) => {
+        data = club(response.data.values);
+        loadAnnouncements(sheets);
+      });
+
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 async function loadAnnouncements(sheets) {
   try {
     sheets.spreadsheets.values
-    .get({
-      spreadsheetId: secrets.ANNOUNCEMENTS_SHEET,
-      range: "A1:Z900",
-    })
-    .then((response) => {
-      announcements = announcement(response.data.values);
-    });
+      .get({
+        spreadsheetId: secrets.ANNOUNCEMENTS_SHEET,
+        range: "A1:Z900",
+      })
+      .then((response) => {
+        announcements = announcement(response.data.values);
+      });
   } catch (e) {
     console.log(e);
   }
