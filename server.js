@@ -9,7 +9,6 @@ let auth = new google.auth.JWT(
   secrets.SERVICE_ACCOUNT.private_key,
   ["https://www.googleapis.com/auth/spreadsheets"]
 );
-console.log(secrets.SERVICE_ACCOUNT.client_email, secrets.SERVICE_ACCOUNT.private_key);
 let data = [];
 let announcements;
 
@@ -26,7 +25,7 @@ app.use(express.json());
 app.use(
   session({
     secret: secrets.SECRET_CODE,
-    // cookie: { secure: false }, //Enable this later after https is enabled
+    cookie: { secure: true },
     resave: false,
     saveUninitialized: false,
   })
@@ -131,7 +130,8 @@ function setData(err, token) {
 }
 
 async function loadAnnouncements(sheets) {
-  sheets.spreadsheets.values
+  try {
+    sheets.spreadsheets.values
     .get({
       spreadsheetId: secrets.ANNOUNCEMENTS_SHEET,
       range: "A1:Z900",
@@ -139,6 +139,9 @@ async function loadAnnouncements(sheets) {
     .then((response) => {
       announcements = announcement(response.data.values);
     });
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 function isAuthorized(req) {
