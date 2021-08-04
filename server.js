@@ -16,8 +16,6 @@ let announcements;
 const club = require("./js/club.js");
 const { announcement, mailingList } = require("./js/announcements.js");
 const validator = require("email-validator");
-const loginFile = fs.readFileSync("front-end/login.html").toString();
-const { authorize, login, redirectToLoginIfNotAuthorized, sendMessageIfNotAuthorized } = require("./js/login.js");
 
 app.use(express.json());
 app.use(cookieParser());
@@ -29,23 +27,14 @@ app.post("/getEmails", async function (req, res) {
   } else res.status(403).end();
 });
 
-app.get("/index.html|resources.html|^/$/", authorize, redirectToLoginIfNotAuthorized);
-
-app.get("/login", authorize, (req, res) => {
-  if (req.authorized) res.redirect("/");
-  else res.end(loginFile);
-});
-
-app.post("/login", login);
-
 app.use("/", express.static(__dirname + "/front-end"));
 
-app.post("/getData", authorize, sendMessageIfNotAuthorized("You are unauthorized."), (req, res) => {
+app.post("/getData", (req, res) => {
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(data));
 });
 
-app.post("/subscribe", authorize, sendMessageIfNotAuthorized("You are unauthorized."), function (req, res) {
+app.post("/subscribe", function (req, res) {
   const email = req.body.email;
   if (validator.validate(email)) {
     mailingList.registerNewEmail(email);
@@ -55,7 +44,7 @@ app.post("/subscribe", authorize, sendMessageIfNotAuthorized("You are unauthoriz
   }
 });
 
-app.post("/unsubscribe", authorize, sendMessageIfNotAuthorized("You are unauthorized."), function (req, res) {
+app.post("/unsubscribe", function (req, res) {
   const email = req.body.email;
   if (validator.validate(email)) {
     mailingList.unsubscribeEmail(email);
@@ -63,7 +52,7 @@ app.post("/unsubscribe", authorize, sendMessageIfNotAuthorized("You are unauthor
   res.end();
 });
 
-app.post("/announcements", authorize, sendMessageIfNotAuthorized("You are unauthorized."), function (req, res) {
+app.post("/announcements", function (req, res) {
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(announcements));
 });
