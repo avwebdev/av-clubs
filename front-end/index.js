@@ -7,7 +7,7 @@ const seeMoreCategories = document.getElementById("see-more-categories-btn");
 const hiddenCategories = document.querySelectorAll("[data-topic-toggle]");
 
 // Club fields
-const description = "What is the purpose of your club?";
+const description = "Provide a description of your club.";
 const contact = "What is the club contact email?";
 const meetingTime = "When are meetings held? (What day and how often?)";
 const meetingLocation = "Where are meetings held?";
@@ -17,8 +17,6 @@ const secretary = "Who is the current Club Secretary (or equivalent)?";
 const treasurer = "Who is the current Club Treasurer (or equivalent)?";
 const otherOfficers =
   "Are there any other Club Officers? (Please state their roles.)";
-const remindLink =
-  "What is the remind link for your club? Leave blank if none.";
 const otherLinks = "Any other important links?";
 const website = "What is the link of your website? Leave blank if none.";
 const category = "What category does your club fall under?";
@@ -242,15 +240,6 @@ getData().then((allClubs) => {
       clubDropdown
     );
     addClubDropdownItem(
-      "Remind Link",
-      club[remindLink],
-      "club-remind-link",
-      clubDropdown,
-      {
-        remindLink: true,
-      }
-    );
-    addClubDropdownItem(
       "Website",
       club[website],
       "club-website",
@@ -259,7 +248,6 @@ getData().then((allClubs) => {
         link: true,
       }
     );
-    // addClubDropdownItem("Remind Link", club[remindLink], clubDropdown);
     addClubDropdownItem(
       "Other Links",
       club[otherLinks],
@@ -317,26 +305,6 @@ getData().then((allClubs) => {
         }
         clubDropdownItemText = createElement("p");
         clubDropdownItemText.appendChild(meetingLinks);
-      } else if (options?.remindLink) {
-        let remindCode;
-        let remindLink;
-        if (text.includes("@")) {
-          const fragments = text.split(" ");
-          for (const fragment of fragments) {
-            if (fragment.startsWith("@")) {
-              remindCode = fragment;
-              break;
-            }
-          }
-          remindLink = `https://www.remind.com/join/${remindCode.substring(1)}`;
-        } else {
-          remindLink = text;
-          let urlParts = text.split("/");
-          remindCode = "@" + urlParts[urlParts.length - 1];
-        }
-        clubDropdownItemText = createElement("p", {
-          innerHTML: `<a href="${remindLink}">${remindLink}</a> (or text ${remindCode} to 81010)`,
-        });
       } else {
         clubDropdownItemText = createElement("p", { innerText: text });
       }
