@@ -1,21 +1,15 @@
 const express = require("express");
 const app = express();
 const fs = require("fs");
-const { google } = require("googleapis");
-const secrets = require("./js/secrets.js");
+const secrets = require("./back-end/secrets.js");
 const cookieParser = require("cookie-parser");
-let auth = new google.auth.JWT(
-  secrets.SERVICE_ACCOUNT.client_email,
-  null,
-  secrets.SERVICE_ACCOUNT.private_key,
-  ["https://www.googleapis.com/auth/spreadsheets"]
-);
 let data = [];
 let announcements;
 
-const club = require("./js/club.js");
-const { announcement, mailingList } = require("./js/announcements.js");
+const club = require("./back-end/club.js");
+const { announcement, mailingList } = require("./back-end/announcements.js");
 const validator = require("email-validator");
+const {sheets, resetAuth, auth} = require("./back-end/sheetsSetup.js");
 
 app.use(express.json());
 app.use(cookieParser());
@@ -44,12 +38,13 @@ app.post("/subscribe", function (req, res) {
   }
 });
 
-app.post("/unsubscribe", function (req, res) {
-  const email = req.body.email;
+app.get("/unsubscribe", function (req, res) {
+  const email = req.query.email;
+  console.log(email);
   if (validator.validate(email)) {
     mailingList.unsubscribeEmail(email);
   }
-  res.end();
+  res.end("You have unsubscribed from the mailing list.");
 });
 
 app.post("/announcements", function (req, res) {
@@ -61,11 +56,7 @@ app.get("*", function (req, res) {
   res.redirect("/");
 });
 
-async function setData(token) {
-  const sheets = google.sheets({
-    version: "v4",
-    auth: auth,
-  });
+async function setData() {
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId: secrets.CLUBS_SHEET,
     range: "A1:Z900",
@@ -76,11 +67,10 @@ async function setData(token) {
 }
 
 async function loadAnnouncements(sheets) {
-  const response = await sheets.spreadsheets.values
-    .get({
-      spreadsheetId: secrets.ANNOUNCEMENTS_SHEET,
-      range: "A1:Z900",
-    });
+  const response = await sheets.spreadsheets.values.get({
+    spreadsheetId: secrets.ANNOUNCEMENTS_SHEET,
+    range: "A1:Z900",
+  });
   announcements = announcement(response.data.values);
 }
 
@@ -99,12 +89,7 @@ async function loadAnnouncements(sheets) {
 
 setInterval(async () => {
   if (auth.isTokenExpiring()) {
-    auth = new google.auth.JWT(
-      secrets.SERVICE_ACCOUNT.client_email,
-      null,
-      secrets.SERVICE_ACCOUNT.private_key,
-      ["https://www.googleapis.com/auth/spreadsheets"]
-    );
+    resetAuth();
     auth.authorize(setData);
   }
 }, 10000);
