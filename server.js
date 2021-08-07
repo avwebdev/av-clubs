@@ -89,9 +89,9 @@ async function loadAnnouncements(sheets) {
 })();
 
 setInterval(async () => {
-  // if (auth.isTokenExpiring()) {
+  if (auth.isTokenExpiring()) {
     console.log(`Refreshing auth and data at ${(new Date()).toLocaleString()}`);
     resetAuth();
     auth.authorize(setData);
-  // }
+  }
 }, 10000);
