@@ -72,7 +72,6 @@ getData().then((allClubs) => {
   function searchKeyPress(e) {
     if (e.key === "ArrowDown") {
       e.preventDefault();
-      //console.log(clubSuggestions);
       clubSuggestions.firstChild.focus();
     }
   }
@@ -142,7 +141,6 @@ getData().then((allClubs) => {
   function createClubDiv(name, club) {
     //generate random tag name. With data tagname will equal club["category"]
     let tagname;
-    //console.log(club[category], club);
     switch (club[category]) {
       case "Business and Finance":
         tagname = "businessandfinance";

@@ -13,6 +13,7 @@ const mailClient = nodemailer.createTransport({
 });
 
 const { Firestore } = require("@google-cloud/firestore");
+const { docs_v1 } = require("googleapis");
 const firestore = new Firestore({
   credentials: {
     client_email: secrets.SERVICE_ACCOUNT.client_email,
@@ -87,6 +88,7 @@ const mailingList = {
     const announcementsToEmail = [];
     for (const announcement of this.announcements.data) {
       if (!announcement["Email sent"] && announcement["Approved"] != "") {
+        console.log(`New announcement to email: ${announcement.Title}.`);
         announcementsToEmail.push(announcement);
       }
     }
@@ -96,10 +98,18 @@ const mailingList = {
   email: async function (announcements, emails = null) {
     if (!emails) {
       emails = await this.getAllEmails();
+      // Filtering out duplicates
+      emails = emails.filter((e, index) => {
+        return emails.indexOf(e) === index;
+      });
+      console.log(`Unique emails in mailing list: ${emails}`);
     }
 
     for (const announcement of announcements) {
       this.setEmailSent(announcement);
+      console.log(
+        `Sending announcement to mailing list: ${announcement.Title}.`
+      );
 
       for (const mail of emails) {
         const html = this.getMailingTemplate(announcement, mail);
@@ -114,14 +124,16 @@ const mailingList = {
   },
 
   registerNewEmail: async function (email) {
-    console.log(`New subscriber: ${email}`);
     await subscribers.add({
       email,
     });
   },
 
   unsubscribeEmail: async function (email) {
-    console.log("Unsubscribing.");
+    const docs = await subscribers.where("email", "==", email).get();
+    docs.forEach(async (doc) => {
+      await doc.ref.delete();
+    });
   },
 
   getAllEmails: async function () {
@@ -148,9 +160,10 @@ const mailingList = {
 
   getMailingTemplate: function (announcement, mail) {
     let html = `
-    <p>Hey Amador students!</p>
+    <p>Hey Amador students!
     <br>
-    </p>${announcement["Paragraph 1"]}<br><br>
+    <br>
+    ${announcement["Paragraph 1"]}<br><br>
     ${
       announcement["Paragraph 2"]
         ? announcement["Paragraph 2"] + "<br><br>"
@@ -170,7 +183,7 @@ const mailingList = {
       announcement["Paragraph 5"]
         ? announcement["Paragraph 5"] + "<br><br>"
         : ""
-    }</p>
+    }
     ${
       announcement["Link 1"]
         ? `<a href=${`${announcement["Link 1"]}`}>${
@@ -197,9 +210,9 @@ const mailingList = {
           }</a><br>`
         : ""
     }
-    <br><p>Thanks,<br> ${announcement["Which club do you represent?"]}</p>
+    <br>Thanks,<br> ${announcement["Which club do you represent?"]}</p>
     <br>
-    <a href="https://clubs.amadorweb.org/unsubscribe?email=${mail}">Click here to unsubscribe</a>
+    <a href="https://clubs.amadorweb.org/unsubscribe?email=${mail}">Click here to unsubscribe.</a>
     `;
 
     return html;

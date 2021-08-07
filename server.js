@@ -30,6 +30,7 @@ app.post("/getData", (req, res) => {
 
 app.post("/subscribe", function (req, res) {
   const email = req.body.email;
+  console.log(`${email} is subscribing!`);
   if (validator.validate(email)) {
     mailingList.registerNewEmail(email);
     res.end();
@@ -40,7 +41,7 @@ app.post("/subscribe", function (req, res) {
 
 app.get("/unsubscribe", function (req, res) {
   const email = req.query.email;
-  console.log(email);
+  console.log(`${email} is unsubscribing.`);
   if (validator.validate(email)) {
     mailingList.unsubscribeEmail(email);
   }
@@ -79,7 +80,7 @@ async function loadAnnouncements(sheets) {
     const credentials = await auth.authorize();
     await setData(credentials);
     app.listen(process.env.PORT || 81, function () {
-      console.log("server started");
+      console.log(`Server started at ${(new Date()).toLocaleString()}`);
     });
   } catch (e) {
     console.log("Unable to authenticate", e);
@@ -88,8 +89,9 @@ async function loadAnnouncements(sheets) {
 })();
 
 setInterval(async () => {
-  if (auth.isTokenExpiring()) {
+  // if (auth.isTokenExpiring()) {
+    console.log(`Refreshing auth and data at ${(new Date()).toLocaleString()}`);
     resetAuth();
     auth.authorize(setData);
-  }
+  // }
 }, 10000);

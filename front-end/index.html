@@ -123,7 +123,6 @@
 
         let counting = 0;
         function appearNav() {
-          //console.log(5000);
           let element = document.getElementById("mobile-nav-right");
           if (counting % 2 == 0) {
             element.style.right = "0";
@@ -325,7 +324,6 @@
       function appear(announcementKey) {
         if (count % 2 == 0) {
           const back = document.getElementById("back-screen");
-          //console.log(back);
           back.style.position = "fixed";
           back.style.animation = "backScreen 1s forwards";
 
@@ -366,12 +364,10 @@
       function disappear() {
         if (count % 2 == 1) {
           const back = document.getElementById("back-screen");
-          //console.log(back);
           back.style.animation = "none";
           back.style.opacity = "0";
           back.style.position = "static";
           const desc = document.getElementById("big-answer");
-          //console.log(desc);
           desc.style.animation = "none";
           desc.style.transform = "translateY(-200%)";
           count++;
